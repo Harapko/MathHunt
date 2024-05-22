@@ -1,0 +1,6 @@
+@MathHunt_HostAddress = http://localhost:5117
+
+GET {{MathHunt_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
