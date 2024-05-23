@@ -15,6 +15,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 var summaries = new[]
 {
