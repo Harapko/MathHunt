@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("MathHunt")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("FrontEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37a3584a673e803dec1ffdc375a987c8f545377e")]
-[assembly: System.Reflection.AssemblyProductAttribute("MathHunt")]
-[assembly: System.Reflection.AssemblyTitleAttribute("MathHunt")]
+[assembly: System.Reflection.AssemblyProductAttribute("FrontEnd")]
+[assembly: System.Reflection.AssemblyTitleAttribute("FrontEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
