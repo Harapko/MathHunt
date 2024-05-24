@@ -1,0 +1,15 @@
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\bin\Debug\net8.0\MathHunt.Core.deps.json
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\bin\Debug\net8.0\MathHunt.Core.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\bin\Debug\net8.0\MathHunt.Core.pdb
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.AssemblyInfoInputs.cache
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.AssemblyInfo.cs
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.csproj.CoreCompileInputs.cache
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.sourcelink.json
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\refint\MathHunt.Core.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.pdb
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\ref\MathHunt.Core.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\bin\Debug\net8.0\MathHunt.Core.runtimeconfig.json
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.csproj.AssemblyReference.cache
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Core\obj\Debug\net8.0\MathHunt.Core.genruntimeconfig.cache
