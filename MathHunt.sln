@@ -1,8 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt", "MathHunt\MathHunt.csproj", "{A4A1CCF6-2B59-4B3D-A3D5-8FE4F75D68C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt.Project", "MathHunt.Project\MathHunt.Project.csproj", "{A4A1CCF6-2B59-4B3D-A3D5-8FE4F75D68C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{02A21D7A-D0AF-4216-ADFA-4461A5FBFF4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt.Core", "MathHunt.Core\MathHunt.Core.csproj", "{87F1B50B-C4E0-4445-A13D-809001BC0B80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt.DataAccess", "MathHunt.DataAccess\MathHunt.DataAccess.csproj", "{E4238400-B4CB-4B13-9036-CC94CAD44447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,13 @@ Global
 		{02A21D7A-D0AF-4216-ADFA-4461A5FBFF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02A21D7A-D0AF-4216-ADFA-4461A5FBFF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02A21D7A-D0AF-4216-ADFA-4461A5FBFF4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F1B50B-C4E0-4445-A13D-809001BC0B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F1B50B-C4E0-4445-A13D-809001BC0B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F1B50B-C4E0-4445-A13D-809001BC0B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F1B50B-C4E0-4445-A13D-809001BC0B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4238400-B4CB-4B13-9036-CC94CAD44447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4238400-B4CB-4B13-9036-CC94CAD44447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4238400-B4CB-4B13-9036-CC94CAD44447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4238400-B4CB-4B13-9036-CC94CAD44447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

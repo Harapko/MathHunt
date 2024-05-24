@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "jZDN+BcUYYmNGNdzBQZhbHIX6LTA3PaI2mTF8OlJsBc=",
+  "Source": "MathHunt.Project",
+  "BasePath": "_content/MathHunt.Project",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MathHunt.Project\\wwwroot",
+      "Source": "MathHunt.Project",
+      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "BasePath": "_content/MathHunt.Project",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
