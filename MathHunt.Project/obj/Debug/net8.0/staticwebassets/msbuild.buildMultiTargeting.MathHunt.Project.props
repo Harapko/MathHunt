@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MathHunt.Project.props" />
+</Project>
