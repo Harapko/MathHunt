@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EfCoreDialogsState">
+    <option name="keyValueStorage">
+      <map>
+        <entry key="Common:a4a1ccf6-2b59-4b3d-a3d5-8fe4f75d68c2:dbContext" value="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext`3" />
+        <entry key="Common:buildConfiguration" value="Debug" />
+        <entry key="Common:e4238400-b4cb-4b13-9036-cc94cad44447:dbContext" value="MathHunt.DataAccess.AppDbContext" />
+        <entry key="Common:enableDiagnosticLogging" value="false" />
+        <entry key="Common:noBuild" value="false" />
+        <entry key="Common:outputFolder" value="Migrations" />
+        <entry key="Common:useDefaultConnection" value="true" />
+      </map>
+    </option>
+  </component>
+</project>

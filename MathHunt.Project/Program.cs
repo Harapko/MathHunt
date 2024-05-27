@@ -1,28 +1,41 @@
+using MathHunt.Application;
+using MathHunt.Core.Abstraction.IRepositories;
+using MathHunt.Core.Abstraction.IServices;
+using MathHunt.Core.Models;
 using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
+using MathHunt.DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(AppDbContext)));
 });
 
-builder.Services.AddAuthorization();
 
-// builder.Services.AddIdentity<AppUserEntity, IdentityRole>()
-//     .AddEntityFrameworkStores<AppDbContext>()
-//     .AddDefaultTokenProviders();
-
-builder.Services.AddIdentityApiEndpoints<AppUserEntity>()
+builder.Services
+    .AddIdentityApiEndpoints<AppUserEntity>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+
+
+
+
+builder.Services.AddScoped<IRoleUserService, RoleUserService>();
+builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/account/login"; // Путь перенаправления при неудачной аутентификации
+});
+
 
 builder.Services.AddControllers();
 
@@ -35,9 +48,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapIdentityApi<AppUserEntity>();
-app.MapControllers();
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<AppUserEntity>();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 app.UseStaticFiles();
 app.UseCors();
 app.Run();

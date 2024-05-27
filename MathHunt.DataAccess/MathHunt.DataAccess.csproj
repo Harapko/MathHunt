@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MathHunt.Application\MathHunt.Application.csproj" />
       <ProjectReference Include="..\MathHunt.Core\MathHunt.Core.csproj" />
     </ItemGroup>
 

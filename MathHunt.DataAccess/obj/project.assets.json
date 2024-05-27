@@ -1585,6 +1585,19 @@
           }
         }
       },
+      "MathHunt.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MathHunt.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MathHunt.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MathHunt.Application.dll": {}
+        }
+      },
       "MathHunt.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -4285,6 +4298,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "MathHunt.Application/1.0.0": {
+      "type": "project",
+      "path": "../MathHunt.Application/MathHunt.Application.csproj",
+      "msbuildProject": "../MathHunt.Application/MathHunt.Application.csproj"
+    },
     "MathHunt.Core/1.0.0": {
       "type": "project",
       "path": "../MathHunt.Core/MathHunt.Core.csproj",
@@ -4293,6 +4311,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "MathHunt.Application >= 1.0.0",
       "MathHunt.Core >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.5",
       "Microsoft.EntityFrameworkCore >= 8.0.5",
@@ -4302,34 +4321,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bakud\\.nuget\\packages\\": {}
+    "/Users/maks/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj",
+      "projectUniqueName": "/Users/maks/RiderProjects/MathHunt/MathHunt.DataAccess/MathHunt.DataAccess.csproj",
       "projectName": "MathHunt.DataAccess",
-      "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj",
-      "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\obj\\",
+      "projectPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.DataAccess/MathHunt.DataAccess.csproj",
+      "packagesPath": "/Users/maks/.nuget/packages/",
+      "outputPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.DataAccess/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/maks/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
-              "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
+            "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/MathHunt.Application.csproj": {
+              "projectPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/MathHunt.Application.csproj"
+            },
+            "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj": {
+              "projectPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj"
             }
           }
         }
@@ -4385,7 +4405,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.105/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
