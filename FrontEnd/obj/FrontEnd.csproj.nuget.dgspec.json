@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/maks/RiderProjects/MathHunt/FrontEnd/FrontEnd.csproj": {}
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\FrontEnd.csproj": {}
   },
   "projects": {
-    "/Users/maks/RiderProjects/MathHunt/FrontEnd/FrontEnd.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maks/RiderProjects/MathHunt/FrontEnd/FrontEnd.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\FrontEnd.csproj",
         "projectName": "FrontEnd",
-        "projectPath": "/Users/maks/RiderProjects/MathHunt/FrontEnd/FrontEnd.csproj",
-        "packagesPath": "/Users/maks/.nuget/packages/",
-        "outputPath": "/Users/maks/RiderProjects/MathHunt/FrontEnd/obj/",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\FrontEnd.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/maks/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +44,14 @@
               "target": "Package",
               "version": "[8.0.5, )"
             },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -57,6 +67,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.5, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
@@ -75,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.105/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
