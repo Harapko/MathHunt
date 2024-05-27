@@ -1,0 +1,16 @@
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/bin/Debug/net8.0/MathHunt.Application.deps.json
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/bin/Debug/net8.0/MathHunt.Application.dll
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/bin/Debug/net8.0/MathHunt.Application.pdb
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/bin/Debug/net8.0/MathHunt.Core.dll
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/bin/Debug/net8.0/MathHunt.Core.pdb
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.csproj.AssemblyReference.cache
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.AssemblyInfoInputs.cache
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.AssemblyInfo.cs
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.csproj.CoreCompileInputs.cache
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.sourcelink.json
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.17BE58FA.Up2Date
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.dll
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/refint/MathHunt.Application.dll
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/MathHunt.Application.pdb
+/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/Debug/net8.0/ref/MathHunt.Application.dll

@@ -24,11 +24,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
       <Folder Include="wwwroot\" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MathHunt.Application\MathHunt.Application.csproj" />
       <ProjectReference Include="..\MathHunt.Core\MathHunt.Core.csproj" />
       <ProjectReference Include="..\MathHunt.DataAccess\MathHunt.DataAccess.csproj" />
     </ItemGroup>

@@ -17,30 +17,31 @@ public class IdentityUserConfiguration : IEntityTypeConfiguration<AppUserEntity>
             .HasMany(u => u.UserSkillsEntities)
             .WithMany(s => s.AppUserEntities);
 
-        builder
-            .Property(u => u.UserName)
-            .IsRequired()
-            .HasMaxLength(15);
-        
-        builder
-            .Property(u => u.UserSurname)
-            .IsRequired()
-            .HasMaxLength(15);
-        
-        builder
-            .Property(u => u.Email)
-            .IsRequired()
-            .HasMaxLength(30);
-        
-        builder
-            .Property(u => u.PhoneNumber)
-            .IsRequired()
-            .HasMaxLength(12);
-        
-        builder
-            .Property(u => u.UserName)
-            .IsRequired()
-            .HasMaxLength(12);
-        
+        // builder
+        //     .Property(u => u.UserName)
+        //     .IsRequired()
+        //     .HasMaxLength(15);
+        //
+        // builder
+        //     .Property(u => u.UserSurname)
+        //     .IsRequired()
+        //     .HasMaxLength(15);
+        //
+        // builder
+        //     .Property(u => u.Email)
+        //     .IsRequired()
+        //     .HasMaxLength(30);
+        //
+        // builder
+        //     .Property(u => u.PhoneNumber)
+        //     .IsRequired()
+        //     .HasMaxLength(12);
+        //
+        // builder
+        //     .Property(u => u.UserName)
+        //     .IsRequired()
+        //     .HasMaxLength(12);
+    
+
     }
 }

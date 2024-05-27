@@ -4,6 +4,6 @@ namespace MathHunt.Core.Models;
 
 public class AppUser : IdentityUser
 {
-    public string UserSurname { get; set; }
-    public List<UserSkill> UserSkills { get; set; }
+    public string? UserSurname { get; set; }
+    public List<UserSkill>? UserSkills { get; set; }
 }
