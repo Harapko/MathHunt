@@ -1,6 +1,7 @@
 using System.Net;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
+using MathHunt.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,30 +9,30 @@ namespace MathHunt.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class RoleController(IRoleUserService userService) : ControllerBase
+public class RoleController(IRoleUserService userRoleService) : ControllerBase
 {
   [Authorize(Roles = "admin")]
   [HttpGet("/getRoles")]
-  public async Task<IActionResult> GetAllRoles()
+  public async Task<ActionResult<List<RoleModel>>> GetAllRoles()
   {
-    var roleList = await userService.GetRoles();
+    var roleList = await userRoleService.GetRoles();
     return Ok(roleList);
   }
   
   [Authorize(Roles = "admin")]
   [HttpGet("/getUserRole")]
-  public async Task<IActionResult> GetUserRole(string userEmail)
+  public async Task<ActionResult<List<string>>> GetUserRole(string userEmail)
   {
-    var userClaims = userService.GetUserRole(userEmail);
+    var userClaims = await userRoleService.GetUserRole(userEmail);
     return Ok(userClaims);
   }
 
   [Authorize(Roles = "admin")]
-  [HttpPost("addRoles")]
-  public async Task<IActionResult> AddRoles(string[] roles)
+  [HttpPost("/addRoles")]
+  public async Task<ActionResult<List<string>>> AddRoles(string roles)
   {
-    var userRoles = await userService.AddRole(roles);
-    if (userRoles.Count == 0)
+    var userRoles = await userRoleService.AddRole(roles);
+    if (string.IsNullOrWhiteSpace(userRoles))
     {
       return BadRequest();
     }
@@ -41,13 +42,22 @@ public class RoleController(IRoleUserService userService) : ControllerBase
   
   [Authorize(Roles = "admin")]
   [HttpPost("/addRoleToUser")]
-  public async Task<IActionResult> AddRoleToUser([FromBody] AddUserRoleRequest request)
+  public async Task<ActionResult<bool>> AddRoleToUser([FromBody] AddUserRoleRequest request)
   {
-    var result = await userService.AddRoleToUser(request.email, request.roles);
+    var result = await userRoleService.AddRoleToUser(request.email, request.roles);
     if (!result)
     {
       return BadRequest();
     }
     return StatusCode((int)HttpStatusCode.Created, result);
+  }
+  
+  // [Authorize(Roles = "admin")]
+  [HttpDelete("/deleteRoles")]
+  public async Task<ActionResult> DeleteRoles(string roles)
+  { 
+    await userRoleService.DeleteRole(roles);
+    
+    return Ok();
   }
 }

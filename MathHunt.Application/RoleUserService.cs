@@ -11,18 +11,23 @@ public class RoleUserService(IRoleUserRepository userRepository) : IRoleUserServ
         return await userRepository.Get();
     }
 
-    public async Task<List<string>> GetUserRole(string emailId)
+    public async Task<string> GetUserRole(string emailId)
     {
         return await userRepository.GetUser(emailId);
     }
 
-    public async Task<List<string>> AddRole(string[] roles)
+    public async Task<string> AddRole(string roles)
     {
         return await userRepository.Add(roles);
     }
 
-    public async Task<bool> AddRoleToUser(string emailId, string[] roles)
+    public async Task<bool> AddRoleToUser(string emailId, string roles)
     {
         return await userRepository.AddUser(emailId, roles);
+    }
+
+    public async Task<string> DeleteRole(string role)
+    {
+       return await userRepository.Delete(role);
     }
 }

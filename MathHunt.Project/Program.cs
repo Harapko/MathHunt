@@ -1,7 +1,7 @@
+using System.Text.Json.Serialization;
 using MathHunt.Application;
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Abstraction.IServices;
-using MathHunt.Core.Models;
 using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using MathHunt.DataAccess.Repositories;
@@ -31,13 +31,17 @@ builder.Services
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
 builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
 
+builder.Services.AddScoped<IUserSkillService, UserSkillService>();
+builder.Services.AddScoped<IUserSkillRepository, UserSkillRepository>();
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/account/login"; // Путь перенаправления при неудачной аутентификации
 });
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);;
 
 var app = builder.Build();
 
@@ -50,7 +54,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapIdentityApi<AppUserEntity>();
 app.UseAuthentication();
 app.UseAuthorization();
 
