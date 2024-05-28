@@ -11,62 +11,70 @@ public class RoleUserRepository(
     UserManager<AppUserEntity> userManager)
     : IRoleUserRepository
 {
-    public async Task<List<Core.Models.RoleModel>> Get()
+    public async Task<List<RoleModel>> Get()
     {
         var roleList = await roleManager.Roles
             .Select(r => new RoleModel {Id = Guid.Parse(r.Id), NameRole = r.Name }).ToListAsync();
         return roleList;
     }
 
-    public async Task<List<string>> GetUser(string emailId)
+    public async Task<string> GetUser(string emailId)
     {
         var user = await userManager.FindByEmailAsync(emailId);
         var userRole = await userManager.GetRolesAsync(user);
-        return userRole.ToList();
+        var role = userRole.ToList().FirstOrDefault();
+        return role;
     }
 
-    public async Task<List<string>> Add(string[] roles)
+    public async Task<string> Add(string roles)
     {
-        List<string> roleList = new List<string>();
-        foreach (var role in roles)
-        {
-            if (!await roleManager.RoleExistsAsync(role))
+        string role = string.Empty;
+        
+            if (!await roleManager.RoleExistsAsync(roles))
             {
-                await roleManager.CreateAsync(new IdentityRole(role));
-                roleList.Add(role);
+                await roleManager.CreateAsync(new IdentityRole(roles));
+                role = roles;
             }
-        }
+        
 
-        return roleList;
+        return role;
     }
 
-    public async Task<bool> AddUser(string emailId, string[] roles)
+    public async Task<bool> AddUser(string emailId, string roles)
     {
         var user = await userManager.FindByEmailAsync(emailId);
-        var existRole = await ExistingRole(roles);
-        if (user != null && existRole.Count == roles.Length)
+        var existRole = await roleManager.RoleExistsAsync(roles);
+        if (user != null && existRole)
         {
-            var assignRole = await userManager.AddToRolesAsync(user, existRole);
+            var assignRole = await userManager.AddToRoleAsync(user, roles);
             return assignRole.Succeeded;
         }
 
         return false;
     }
 
-    
-    private async Task<List<string>> ExistingRole(string[] roles)
+    public async Task<string> Delete(string role)
     {
-        var roleList = new List<string>();
-        foreach (var role in roles)
-        {
-            var roleExist = await roleManager.RoleExistsAsync(role);
-            if (roleExist)
-            {
-                roleList.Add(role);
-            }
-        }
-
-        return roleList;
-
+        await roleManager.Roles
+            .Where(r => r.Name == role)
+            .ExecuteDeleteAsync();
+        return role;
     }
+
+    
+    // private async Task<List<string>> ExistingRole(string[] roles)
+    // {
+    //     var roleList = new List<string>();
+    //     foreach (var role in roles)
+    //     {
+    //         var roleExist = await roleManager.RoleExistsAsync(role);
+    //         if (roleExist)
+    //         {
+    //             roleList.Add(role);
+    //         }
+    //     }
+    //
+    //     return roleList;
+    //
+    // }
 }

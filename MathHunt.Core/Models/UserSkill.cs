@@ -16,7 +16,7 @@ public class UserSkill
     
     public Guid Id { get;  }
     public string SkillName { get; } = string.Empty;
-    public List<AppUser> IdentityUsers { get;  }
+    public List<AppUser> IdentityUsers { get; } = [];
 
     public static (UserSkill userSkill, string Error) Create(Guid id, string skillName)
     {
