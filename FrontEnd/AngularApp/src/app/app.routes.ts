@@ -6,6 +6,7 @@ import {HomePageComponent} from "./home-page/home-page.component";
 
 
 export const routes: Routes = [
+  {path: '' , component: RegisterComponent },
   {path: 'register' , component: RegisterComponent },
   {path: 'login' , component: LogInComponent},
   {path: 'home-page' , component: HomePageComponent}
