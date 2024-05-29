@@ -3,11 +3,10 @@
   height: 100px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-
-  &__logo {
+  align-items: center; }
+  .header__logo {
     font-size: 50px;
     color: #0758b7;
-    margin: 20px 0 0 50px;
-  }
-}
+    margin: 20px 0 0 50px; }
+
+/*# sourceMappingURL=header.component.css.map */

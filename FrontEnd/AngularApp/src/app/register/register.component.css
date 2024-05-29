@@ -1,3 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center; }
+
 .register__box {
   display: flex;
   flex-direction: column;
@@ -38,10 +44,21 @@
       background-color: white;
       color: #000000;
       border: solid 1px #cecece;
-      width: 90%;
+      width: 95%;
+      height: 63px;
+      font-size: 24px; }
+    .register__box .input select {
+      margin: 10px 0;
+      border-radius: 25px;
+      background-color: white;
+      color: #000000;
+      border: solid 1px #cecece;
+      width: 95%;
       height: 63px;
       font-size: 24px;
-      padding-left: 30px; }
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none; }
     .register__box .input label {
       position: absolute;
       top: 50%;
@@ -57,7 +74,7 @@
     border-radius: 25px;
     background-color: #AF4425; }
   .register__box__submit-button {
-    width: 100%;
+    width: 400px;
     height: 65px;
     border-radius: 25px;
     background: #AF4425;
