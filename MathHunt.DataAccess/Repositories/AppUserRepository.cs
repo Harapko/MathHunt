@@ -11,15 +11,14 @@ namespace MathHunt.DataAccess.Repositories;
 public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
     SignInManager<AppUserEntity> signInManager,
-    IRoleUserService roleService,
-    AppDbContext context
-    ) : IAppUserRepository
+    IRoleUserService roleService
+) : IAppUserRepository
 {
     public async Task<List<AppUserEntity>> Get()
     {
         var userEntity = await userManager.Users
             .AsNoTracking()
-            .Include(u=>u.UserSkillsEntities)
+            .Include(u => u.UserSkillsEntities)
             .ToListAsync();
 
         return userEntity;
@@ -47,6 +46,7 @@ public class AppUserRepository(
             var errors = string.Join(", ", createResult.Errors.Select(e => e.Description));
             throw new Exception($"Failed to create user: {errors}");
         }
+
         return newUser.Id;
     }
 
@@ -62,10 +62,10 @@ public class AppUserRepository(
             throw new Exception($"Failed to create user: {result.IsNotAllowed}");
         }
     }
-    
+
     public Task Logout()
     {
-        var result =  signInManager.SignOutAsync();
+        var result = signInManager.SignOutAsync();
         if (result.IsCompleted)
         {
             return result;

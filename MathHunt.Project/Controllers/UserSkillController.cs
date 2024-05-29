@@ -16,10 +16,10 @@ public class UserSkillController(
     [HttpGet("/getSkill")]
     public async Task<ActionResult<List<UserSkill>>> GetSkills()
     {
-        var skillList =  await service.GetUserSkill();
+        var skillList = await service.GetUserSkill();
         return Ok(skillList);
     }
-    
+
     [HttpGet("/getUsersSkill")]
     public async Task<ActionResult> GetUserBySkill(string skillName)
     {
@@ -27,7 +27,7 @@ public class UserSkillController(
             .Where(s => s.SkillName == skillName)
             .Include(s => s.AppUserEntities)
             .ToListAsync();
-        
+
         return Ok(result);
     }
 
@@ -42,11 +42,14 @@ public class UserSkillController(
         {
             return BadRequest(error);
         }
+        else
+        {
+        }
 
         var skillId = await service.CreateUserSkill(skill);
         return Ok(skillId);
     }
-    
+
     [HttpPost("/addSkillToUser")]
     public async Task<ActionResult> AddSkillToUser([FromBody] AddSkillToUserRequest skillToUserRequest)
     {
@@ -55,7 +58,7 @@ public class UserSkillController(
     }
 
     [HttpPut("/editSkill/{id:guid}")]
-    public async Task<ActionResult<Guid>> EditSkill(Guid id,string skillName)
+    public async Task<ActionResult<Guid>> EditSkill(Guid id, string skillName)
     {
         var skillId = await service.UpdateUserSkill(id, skillName);
         return Ok(skillId);
@@ -67,9 +70,4 @@ public class UserSkillController(
         var skillId = await service.DeleteUserSkill(id);
         return Ok(skillId);
     }
-    
-    
-    
-    
-    
 }

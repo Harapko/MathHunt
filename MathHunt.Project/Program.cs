@@ -26,8 +26,6 @@ builder.Services
     .AddDefaultTokenProviders();
 
 
-
-
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
 builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
 
@@ -44,7 +42,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 
 builder.Services.AddControllers().AddJsonOptions(x =>
-    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);;
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+;
 
 var app = builder.Build();
 
@@ -64,4 +63,3 @@ app.MapControllers();
 app.UseStaticFiles();
 app.UseCors();
 app.Run();
-

@@ -9,7 +9,7 @@ namespace MathHunt.DataAccess.Repositories;
 public class SkillUserRepository(
     AppDbContext context,
     UserManager<AppUserEntity> userManager
-    ) : ISkillUserRepository
+) : ISkillUserRepository
 {
     public async Task<List<UserSkill>> Get()
     {
@@ -23,7 +23,7 @@ public class SkillUserRepository(
 
         return skill;
     }
-    
+
     public async Task<List<UserSkill>> GetByName(string skillName)
     {
         var skillListEntity = await context.UserSkill
@@ -37,8 +37,8 @@ public class SkillUserRepository(
 
         return skill;
     }
-    
-    public async Task<string> AddToUser(string emailId ,string skillName)
+
+    public async Task<string> AddToUser(string emailId, string skillName)
     {
         var skillEntity = await context.UserSkill
             .AsNoTracking()
@@ -51,7 +51,7 @@ public class SkillUserRepository(
         }
 
         await context.SaveChangesAsync();
-        
+
 
         return user.Email;
     }
@@ -99,10 +99,5 @@ public class SkillUserRepository(
             .ToList();
 
         return user;
-
     }
-    
-
-    
-    
 }
