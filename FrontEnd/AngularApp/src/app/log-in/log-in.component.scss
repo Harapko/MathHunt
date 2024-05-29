@@ -1,3 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .register {
 
   &__box {
@@ -6,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     width: 450px;
-    height: 700px;
+    height: 400px;
     background-color: #ffffff;
     border: solid 3px #000000;
     border-radius: 25px;
@@ -21,7 +28,7 @@
         font-size: 36px;
         color: #AF4425;
         margin: 10px;
-
+        text-decoration: none;
       }
       &__logIn {
         font-size: 36px;
@@ -30,6 +37,7 @@
         margin: 10px;
         padding: 5px;
         border-radius: 10px;
+        text-decoration: none;
       }
     }
 

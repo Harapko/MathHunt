@@ -5,20 +5,9 @@
   flex-direction: row;
   align-items: center;
 
-  & > * {
-    margin: 0 0 0 50px;
-  }
   &__logo {
-    font-size: 36px;
+    font-size: 50px;
     color: #0758b7;
+    margin: 20px 0 0 50px;
   }
-  &__home-page {
-    font-size: 28px;
-    color: #039cfd;
-  }
-  &__your-skills {
-    font-size: 28px;
-    color: #039cfd;
-  }
-
 }
