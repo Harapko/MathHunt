@@ -6,5 +6,5 @@ public class UserSkillEntity
 {
     public Guid Id { get; set; }
     public string SkillName { get; set; } = string.Empty;
-    public List<AppUserEntity>? AppUserEntities { get; set; } = [];
+    public List<AppUserEntity> AppUserEntities { get; set; } = [];
 }

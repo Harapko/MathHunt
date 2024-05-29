@@ -2,7 +2,7 @@ using MathHunt.Core.Models;
 
 namespace MathHunt.Core.Abstraction.IServices;
 
-public interface IUserSkillService
+public interface ISkillUserService
 {
     Task<List<UserSkill>> GetUserSkill();
     Task<List<UserSkill>> GetSkillByName(string skillName);

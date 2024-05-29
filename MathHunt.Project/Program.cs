@@ -26,13 +26,14 @@ builder.Services
     .AddDefaultTokenProviders();
 
 
-
-
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
 builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
 
-builder.Services.AddScoped<IUserSkillService, UserSkillService>();
-builder.Services.AddScoped<IUserSkillRepository, UserSkillRepository>();
+builder.Services.AddScoped<ISkillUserService, SkillUserService>();
+builder.Services.AddScoped<ISkillUserRepository, SkillUserRepository>();
+
+// builder.Services.AddScoped<IAppUserService, AppUserService>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -41,7 +42,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 
 builder.Services.AddControllers().AddJsonOptions(x =>
-    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);;
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+;
 
 var app = builder.Build();
 
@@ -61,4 +63,3 @@ app.MapControllers();
 app.UseStaticFiles();
 app.UseCors();
 app.Run();
-

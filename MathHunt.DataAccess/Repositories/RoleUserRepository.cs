@@ -14,7 +14,7 @@ public class RoleUserRepository(
     public async Task<List<RoleModel>> Get()
     {
         var roleList = await roleManager.Roles
-            .Select(r => new RoleModel {Id = Guid.Parse(r.Id), NameRole = r.Name }).ToListAsync();
+            .Select(r => new RoleModel { Id = Guid.Parse(r.Id), NameRole = r.Name }).ToListAsync();
         return roleList;
     }
 
@@ -29,13 +29,13 @@ public class RoleUserRepository(
     public async Task<string> Add(string roles)
     {
         string role = string.Empty;
-        
-            if (!await roleManager.RoleExistsAsync(roles))
-            {
-                await roleManager.CreateAsync(new IdentityRole(roles));
-                role = roles;
-            }
-        
+
+        if (!await roleManager.RoleExistsAsync(roles))
+        {
+            await roleManager.CreateAsync(new IdentityRole(roles));
+            role = roles;
+        }
+
 
         return role;
     }
@@ -61,7 +61,7 @@ public class RoleUserRepository(
         return role;
     }
 
-    
+
     // private async Task<List<string>> ExistingRole(string[] roles)
     // {
     //     var roleList = new List<string>();

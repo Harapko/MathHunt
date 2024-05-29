@@ -12,6 +12,7 @@ public class UserSkill
     {
         Id = id;
         SkillName = skillName;
+        
     }
     
     public Guid Id { get;  }

@@ -1,7 +1,7 @@
 namespace MathHunt.Contracts.Identity;
 
 public record LoginCustomRequest(
-    string email,
+    string userName,
     string password,
     bool rememberMe
     );
