@@ -5,7 +5,7 @@ using MathHunt.Core.Models;
 
 namespace MathHunt.Application;
 
-public class UserSkillService(IUserSkillRepository repository) : IUserSkillService
+public class SkillUserService(ISkillUserRepository repository) : ISkillUserService
 {
     public async Task<List<UserSkill>> GetUserSkill()
     {
@@ -35,5 +35,10 @@ public class UserSkillService(IUserSkillRepository repository) : IUserSkillServi
     public async Task<string> AddSkillToUser(string emailId,string skillName)
     {
         return await repository.AddToUser(emailId ,skillName);
+    }
+    
+    public async Task<List<UserSkill>> GetUsersSkill(string skillName)
+    {
+        return await repository.GetUsers(skillName);
     }
 }

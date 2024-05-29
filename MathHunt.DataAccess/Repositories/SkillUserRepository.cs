@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MathHunt.DataAccess.Repositories;
 
-public class UserSkillRepository(
+public class SkillUserRepository(
     AppDbContext context,
     UserManager<AppUserEntity> userManager
-    ) : IUserSkillRepository
+    ) : ISkillUserRepository
 {
     public async Task<List<UserSkill>> Get()
     {
-        var skillListEntity = await context.UserSkill
-            .AsNoTracking()
+        var skillEntity = await context.UserSkill
             .Include(s => s.AppUserEntities)
             .ToListAsync();
-        var skill = skillListEntity
+
+        var skill = skillEntity
             .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
             .ToList();
 
@@ -28,7 +28,8 @@ public class UserSkillRepository(
     {
         var skillListEntity = await context.UserSkill
             .AsNoTracking()
-            .Where(s=>s.SkillName == skillName)
+            .Where(s => s.SkillName == skillName)
+            .Include(u => u.AppUserEntities)
             .ToListAsync();
         var skill = skillListEntity
             .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
@@ -84,6 +85,21 @@ public class UserSkillRepository(
             .Where(s => s.Id == id)
             .ExecuteDeleteAsync();
         return id;
+    }
+
+    public async Task<List<UserSkill>> GetUsers(string skillName)
+    {
+        var userEntity = await context.UserSkill
+            .Where(s => s.SkillName == skillName)
+            .Include(s => s.AppUserEntities)
+            .ToListAsync();
+
+        var user = userEntity
+            .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
+            .ToList();
+
+        return user;
+
     }
     
 

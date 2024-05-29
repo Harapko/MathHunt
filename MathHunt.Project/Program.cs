@@ -31,8 +31,11 @@ builder.Services
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
 builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
 
-builder.Services.AddScoped<IUserSkillService, UserSkillService>();
-builder.Services.AddScoped<IUserSkillRepository, UserSkillRepository>();
+builder.Services.AddScoped<ISkillUserService, SkillUserService>();
+builder.Services.AddScoped<ISkillUserRepository, SkillUserRepository>();
+
+// builder.Services.AddScoped<IAppUserService, AppUserService>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
