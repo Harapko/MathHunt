@@ -8,6 +8,6 @@ public interface IAppUserRepository
     Task<string> Register(AppUserEntity user, string password, string role);
     Task<bool> Login(string email, string password, bool rememberMe);
     Task<bool> Delete(string email);
-    Task<AppUserEntity?> GetSkillsUser(string email);
+    Task<List<AppUserEntity>> GetSkillsUser(string userName);
     Task Logout();
 }

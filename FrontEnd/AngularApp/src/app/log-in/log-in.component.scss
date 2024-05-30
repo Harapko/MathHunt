@@ -43,7 +43,7 @@
   button {
     width: 270px;
     padding: 10px;
-    background-color: #af4425;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -52,13 +52,13 @@
   }
 
   button:hover {
-    background-color: #662e1c;
+    background-color: #000000;
   }
   &__quick-register {
     font-size: 16px;
     font-weight: 300;
     margin-top: 20px;
-    color: #af4425;
+    color: #000000;
     cursor: pointer;
     text-decoration: none;
   }

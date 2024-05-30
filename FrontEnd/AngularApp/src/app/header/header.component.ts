@@ -1,11 +1,13 @@
 import {Component, signal} from '@angular/core';
 import {LogInComponent} from "../log-in/log-in.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    LogInComponent
+    LogInComponent,
+    RouterLink
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

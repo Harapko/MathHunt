@@ -1,4 +1,5 @@
 using MathHunt.Contracts.Identity;
+using MathHunt.Contracts.Skill;
 using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -6,33 +7,46 @@ using Microsoft.AspNetCore.Mvc;
 namespace MathHunt.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+
 public class AppUserController(IAppUserRepository userRepository) : ControllerBase
 {
-    [HttpGet("/getUser")]
+    [HttpGet]
+    [Route("/getUser")]
     public async Task<ActionResult> GetUser()
     {
         var userList = await userRepository.Get();
         return Ok(userList);
     }
     
-    
-    [HttpGet("/getSkillsUser")]
-    public async Task<ActionResult> GetSkillByUser(string email)
+    [HttpGet]
+    [Route("/getSkillsUser")]
+    public async Task<ActionResult> GetSkillByUser(string userName)
     {
-        var result = await userRepository.GetSkillsUser(email);
+        var result = await userRepository.Get();
+        var response = result.FirstOrDefault(s => s.UserName == userName);
+    
+        if (response == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        var skillNames = response.UserSkillsEntities.Select(u => u.SkillName).ToArray();
+        if (skillNames.Length == 0)
+        {
+            return NotFound("Skills not found.");
+        }
         
-        return Ok(result);
+        return Ok(new UsersSkillResponse(skillNames));
     }
     
-    
-    [HttpPost("/register")]
+    [HttpPost]
+    [Route("/register")]
     public async Task<ActionResult> Register([FromBody] RegisterCustomRequest registerRequest)
     {
         AppUserEntity user = new()
         {
-            UserName = registerRequest.userName,
-            UserSurname = registerRequest.userSurname,
+            UserName = registerRequest.name,
+            UserSurname = registerRequest.surname,
             Email = registerRequest.email,
             PhoneNumber = registerRequest.phoneNumber
         };
@@ -43,23 +57,30 @@ public class AppUserController(IAppUserRepository userRepository) : ControllerBa
     }
 
     
-    [HttpPost("/login")]
+    [HttpPost]
+    [Route("/login")]
+
     public async Task<ActionResult> Login([FromBody] LoginCustomRequest loginRequest)
     {
         var result = await userRepository.Login(loginRequest.userName, loginRequest.password,
-            loginRequest.rememberMe);
+            true);
         return Ok(result);
     }
     
-    [HttpPost("/logout")]
-    public async Task<ActionResult> Logout()
-    {
-        var result =  userRepository.Logout();
-        return Ok(result);
-    }
+    [HttpGet]
+    [Route("/logout")]
+
+public async Task<ActionResult> Logout()
+{
+    // Выполните логику выхода пользователя
+    var result =  userRepository.Logout();
+    return Ok(new { message = "Logged out successfully", result });
+}
 
     
-    [HttpDelete("/deleteUser")]
+    [HttpDelete]
+    [Route("/deleteUser")]
+
     public async Task<ActionResult> Delete(string email)
     {
         var result = await userRepository.Delete(email);

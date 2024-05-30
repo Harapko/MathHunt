@@ -1,7 +1,7 @@
 .background-photo {
   position: fixed;
-  top: 15%;
-  left: 43%;
+  right: 5%;
+  bottom: 5%;
   z-index: -1;
 }
 
@@ -17,7 +17,7 @@
   p {
     font-size: 44px;
     font-weight: 700;
-    color: #AF4425;
+    color: #000000;
   }
 }
 
@@ -51,14 +51,14 @@
   outline: none;
 
   &:focus {
-    @include box-shadow(rgb(175, 68, 37), 10px);
+    @include box-shadow(rgb(9, 3, 0), 10px);
   }
 }
 
 .search-button {
   width: 300px;
   height: 100%;
-  background-color: #af4425;
+  background-color: #000000;
   color: #fff;
   border: none;
   font-size: 18px;
@@ -68,7 +68,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #662e1c;
+    background-color: #000000;
   }
 }
 

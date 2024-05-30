@@ -1,8 +1,8 @@
 namespace MathHunt.Contracts.Identity;
 
 public record RegisterCustomRequest(
-    string userName,
-    string userSurname,
+    string name,
+    string surname,
     string email,
     string phoneNumber,
     string password,

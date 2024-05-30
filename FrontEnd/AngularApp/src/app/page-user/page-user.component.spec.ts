@@ -11,7 +11,7 @@ describe('PageUserComponent', () => {
       imports: [PageUserComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(PageUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,6 @@ describe('PageUserComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+

@@ -1,19 +1,34 @@
 .header {
-  width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: row;
-  align-items: center; }
-  .header > * {
-    margin: 0 0 0 50px; }
-  .header__logo {
-    font-size: 36px;
-    color: #0758b7; }
-  .header__home-page {
-    font-size: 28px;
-    color: #039cfd; }
-  .header__your-skills {
-    font-size: 28px;
-    color: #039cfd; }
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background: #000000;
+}
+.header__nav > * {
+  display: inline;
+  margin-left: 30px;
+  color: white;
+}
+.header__nav__logo {
+  font-size: 50px;
+  font-weight: 500;
+}
+.header__nav__your-skills {
+  font-size: 30px;
+}
+.header .login {
+  cursor: pointer;
+  right: 3%;
+  position: absolute;
+  margin-right: 50px;
+  z-index: 2;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 
 /*# sourceMappingURL=header.component.css.map */

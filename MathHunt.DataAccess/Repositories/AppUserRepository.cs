@@ -11,7 +11,8 @@ namespace MathHunt.DataAccess.Repositories;
 public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
     SignInManager<AppUserEntity> signInManager,
-    IRoleUserService roleService
+    IRoleUserService roleService,
+    AppDbContext context
 ) : IAppUserRepository
 {
     public async Task<List<AppUserEntity>> Get()
@@ -83,12 +84,22 @@ public class AppUserRepository(
         return result.Succeeded;
     }
 
-    public async Task<AppUserEntity?> GetSkillsUser(string email)
+    // public async Task<AppUserEntity?> GetSkillsUser(string userName)
+    // {
+    //     var user = await userManager.Users
+    //         .Where(u => u.UserName == userName)
+    //         .Include(u => u.UserSkillsEntities)
+    //         .FirstOrDefaultAsync();
+    //
+    //     return user;
+    // }
+    
+    public async Task<List<AppUserEntity>> GetSkillsUser(string userName)
     {
-        var user = await userManager.Users
-            .Where(u => u.Email == email)
+        var user = await context.Users
+            .Where(u => u.UserName == userName)
             .Include(u => u.UserSkillsEntities)
-            .FirstOrDefaultAsync();
+            .ToListAsync();
 
         return user;
     }

@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAQ;EACN,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,WAAW,EAAE,MAAM;EAEnB,WAAM;IACJ,MAAM,EAAE,UAAU;EAEpB,aAAQ;IACN,SAAS,EAAE,IAAI;IACf,KAAK,EAAE,OAAO;EAEhB,kBAAa;IACX,SAAS,EAAE,IAAI;IACf,KAAK,EAAE,OAAO;EAEhB,oBAAe;IACb,SAAS,EAAE,IAAI;IACf,KAAK,EAAE,OAAO",
-"sources": ["header.component.scss"],
-"names": [],
-"file": "header.component.css"
-}
+{"version":3,"sourceRoot":"","sources":["header.component.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAIE;EACE;EACA;EACA;;AAEF;EACE;EACA;;AAEF;EACE;;AAGJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"header.component.css"}
