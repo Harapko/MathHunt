@@ -1,27 +1,23 @@
-<div class="wrapper">
 
-  <img src="./assets/register/register-photo.svg" alt="register-photo" height="700px" width="auto">
+<div [style.top.px]="position?.top" [style.left.px]="position?.left" class="login">
 
-  <div class="register">
-
-    <div class="register__box">
-      <div class="register__box__title">
-        <a routerLink = '/register'><div class="register__box__title__singUp"><b>Sign Up</b></div></a>
-        <div class="register__box__title__logIn"><b> log In</b></div>
-      </div>
-      <div class="input">
-        <img src="./assets/register/email.svg" >
-        <input type="Email" id="email" placeholder="Email" required>
-      </div>
-      <div class="input">
-        <img src="./assets/register/password.svg" >
-        <input type="password" id="password" placeholder="Password" required>
-      </div>
-      <div class="register__box__line"></div>
-      <button type="submit" class="register__box__submit-button">Sign Up</button>
+    <div class="triangle"></div>
+    <div class="login__title">
+      <p>Log In</p>
     </div>
-  </div>
+    <form>
+      <input type="email" name="email" placeholder="Електронна пошта" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <a routerLink='/home-page'><button type="submit">Увійти</button></a>
+    </form>
+  <a routerLink='/register'><p class="login__quick-register">Quick register</p></a>
+
+
+
 </div>
+
+
+
 
 
 
