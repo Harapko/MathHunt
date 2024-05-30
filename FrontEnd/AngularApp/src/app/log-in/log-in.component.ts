@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Component, computed, Input} from '@angular/core';
+import {RouterLink, RouterOutlet} from "@angular/router";
 
 
 
@@ -8,9 +8,16 @@ import {RouterLink} from "@angular/router";
   selector: 'app-log-in',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    RouterOutlet
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss'
 })
-export class LogInComponent { }
+export class LogInComponent {
+
+  @Input() position!: { top: number, left: number };
+
+
+
+}

@@ -1,12 +1,29 @@
 .header {
-  width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: row;
-  align-items: center; }
-  .header__logo {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background: #AF4425FF; }
+  .header__nav > * {
+    display: inline;
+    margin-left: 30px;
+    color: white; }
+  .header__nav__logo {
     font-size: 50px;
-    color: #0758b7;
-    margin: 20px 0 0 50px; }
+    font-weight: 500; }
+  .header__nav__your-skills {
+    font-size: 30px; }
+  .header .login {
+    cursor: pointer;
+    right: 3%;
+    position: absolute;
+    margin-right: 50px;
+    z-index: 2;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none; }
 
 /*# sourceMappingURL=header.component.css.map */
