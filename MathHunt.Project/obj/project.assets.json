@@ -4824,19 +4824,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bakud\\.nuget\\packages\\": {}
+    "C:\\Users\\kishc\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
+      "projectUniqueName": "D:\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
       "projectName": "MathHunt.Project",
-      "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
-      "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\obj\\",
+      "projectPath": "D:\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
+      "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
+      "outputPath": "D:\\MathHunt\\MathHunt.Project\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4850,14 +4855,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
-              "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj"
+            "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
+              "projectPath": "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj"
             },
-            "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
-              "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
+            "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+              "projectPath": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
             },
-            "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj"
+            "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj": {
+              "projectPath": "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj"
             }
           }
         }
@@ -4924,7 +4929,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

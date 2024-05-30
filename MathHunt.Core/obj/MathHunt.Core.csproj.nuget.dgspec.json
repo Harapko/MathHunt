@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {}
+    "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+    "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
+        "projectUniqueName": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
         "projectName": "MathHunt.Core",
-        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
-        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\obj\\",
+        "projectPath": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
+        "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
+        "outputPath": "D:\\MathHunt\\MathHunt.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

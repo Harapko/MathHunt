@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MathHunt.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7c05f790328d2e707ca784a943f152beb6d0853")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b8f136faf8c16d3c8a8b952110465807f123082")]
 [assembly: System.Reflection.AssemblyProductAttribute("MathHunt.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MathHunt.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

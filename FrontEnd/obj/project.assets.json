@@ -4752,19 +4752,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bakud\\.nuget\\packages\\": {}
+    "C:\\Users\\kishc\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\FrontEnd.csproj",
+      "projectUniqueName": "D:\\MathHunt\\FrontEnd\\FrontEnd.csproj",
       "projectName": "FrontEnd",
-      "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\FrontEnd.csproj",
-      "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\FrontEnd\\obj\\",
+      "projectPath": "D:\\MathHunt\\FrontEnd\\FrontEnd.csproj",
+      "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
+      "outputPath": "D:\\MathHunt\\FrontEnd\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4839,7 +4844,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -4,9 +4,16 @@
   display: flex;
   flex-direction: row;
   align-items: center; }
+  .header > * {
+    margin: 0 0 0 50px; }
   .header__logo {
-    font-size: 50px;
-    color: #0758b7;
-    margin: 20px 0 0 50px; }
+    font-size: 36px;
+    color: #0758b7; }
+  .header__home-page {
+    font-size: 28px;
+    color: #039cfd; }
+  .header__your-skills {
+    font-size: 28px;
+    color: #039cfd; }
 
 /*# sourceMappingURL=header.component.css.map */
