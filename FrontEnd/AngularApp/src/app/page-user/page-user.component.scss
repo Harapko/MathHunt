@@ -1,133 +1,49 @@
+.page {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: rgba(255, 255, 255, 0.27);
 
 
-
-.main {
-  width: 1700px;
-  height: 800px;
-  margin: 70px auto 0 auto;
-  background-color: #ffffff;
-  border-radius: 25px;
-  z-index: -1;
-  overflow-block: scroll;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
-  0 -4px 10px rgba(0, 0, 0, 0.1),
-  4px 0 10px rgba(0, 0, 0, 0.1),
-  -4px 0 10px rgba(0, 0, 0, 0.1);
-
-
-  &__header {
-    position: absolute;
-    width: 1700px;
+  .user {
+    margin: 30px;
+    width: 30%;
     height: 200px;
-    background: #AF4425;
-    border-radius: 25px 25px 0 0;
-    z-index: 0;
-  }
-
-
-  &__user {
-    position: relative;
-    top: 5%;
-    left: 10%;
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+
     &__logo {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      border: solid 10px white;
-      color: #cecece;
-      background: #cecece;
-    }
-    &__nickname {
-      font-size: 30px;
-      font-weight: bold;
-      color: #8f361e;
+      background: #000000;
     }
 
-  }
+    &__surname, &__name {
+      font-size: 40px;
+      font-weight: 500;
+      color: #000000;
+    }
 
-  &__education {
-    left: -10%;
-    top: 40%;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    width: 500px;
-    height: 200px;
-    border-radius: 25px;
-    background: #AF4425;
-    padding: 20px;
-
-    &__title {
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    & p {
-      font-size: 20px;
-      color: white;
-    }
-    &__add-education {
-      width: 200px;
-      height: 50px;
-      background: white;
-      color: #662e1c;
-      border-radius: 25px;
-      border: none;
-    }
-  }
-
-  &__user-info {
-    left: -9%;
-    top: 40%;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    width: 500px;
-    height: 200px;
-    border-radius: 25px;
-    background: #AF4425;
-    padding: 20px;
-
-    &__title {
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    &__add-info {
-      width: 200px;
-      height: 50px;
-      background: white;
-      color: #662e1c;
-      border-radius: 25px;
-      border: none;
-    }
-    & p {
-      font-size: 20px;
-      color: white;
-    }
   }
 
   .your-skill {
     position: relative;
-    top: -45%;
-    left: 70%;
-    display: flex;
+    top: 10%;
+    left: 20%;
+    display: inline-flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
+    width: 700px;
     height: 700px;
     background: #f1f1f1;
     border: solid 3px black;
     border-radius: 25px;
     overflow: hidden;
+    margin: 40px;
 
     &__title {
       font-size: 30px;
@@ -153,7 +69,7 @@
       height: 60px;
       border: solid 1px black;
       border-radius: 25px;
-      background: #af4425;
+      background: #050000;
       color: white;
     }
 
@@ -186,9 +102,5 @@
       }
     }
   }
+
 }
-
-
-
-
-

@@ -14,6 +14,8 @@ export class HeaderComponent {
 
   showLogin = signal(false);
   loginPosition = signal({ top: 0, left: 0 });
+  isVisible: any;
+  resetTimer = signal<any | null>(null);
 
   toggleLogin(event: MouseEvent) {
     this.showLogin.set(!this.showLogin());
@@ -28,4 +30,7 @@ export class HeaderComponent {
     }
   }
 
+  startTimer() {
+
+  }
 }
