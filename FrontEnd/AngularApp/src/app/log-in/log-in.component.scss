@@ -3,28 +3,24 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
-  width: 300px;
-  height: 300px;
+
+  margin: 150px auto;
+  width: 500px;
+  height: 400px;
   background: white;
   border: solid 1px black;
   border-radius: 25px;
   z-index: 2;
 
 
-  .triangle {
-    position: absolute;
-    top: -10%;
-    right: 10%;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent; /* Регулюємо ширину та колір лівого боку трикутника */
-    border-right: 25px solid transparent; /* Регулюємо ширину та колір правого боку трикутника */
-    border-bottom: 30px solid #ffffff;
-  }
   &__title {
-    font-size: 30px;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  &__line {
+    width: 40%;
+    height: 3px;
+    background: black;
   }
   form {
     display: flex;
@@ -41,9 +37,9 @@
     box-sizing: border-box;
   }
   button {
-    width: 270px;
+    width: 300px;
     padding: 10px;
-    background-color: #af4425;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -52,13 +48,13 @@
   }
 
   button:hover {
-    background-color: #662e1c;
+    background-color: #020000;
   }
   &__quick-register {
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 20px;
+    font-weight: 400;
     margin-top: 20px;
-    color: #af4425;
+    color: #000000;
     cursor: pointer;
     text-decoration: none;
   }

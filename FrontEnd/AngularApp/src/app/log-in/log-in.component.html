@@ -1,13 +1,14 @@
-<div [style.top.px]="position?.top" [style.left.px]="position?.left" class="login">
+<div class="login">
 
     <div class="triangle"></div>
     <div class="login__title">
       <p>Log In</p>
     </div>
+  <div class="login__line"></div>
     <form>
       <input type="email" name="email" placeholder="Електронна пошта" required>
       <input type="password" name="password" placeholder="Пароль" required>
-      <a routerLink='/home-page'><button type="submit">Увійти</button></a>
+      <a routerLink='/user-page'><button type="submit">Увійти</button></a>
     </form>
   <a routerLink='/register'><p class="login__quick-register">Quick register</p></a>
 

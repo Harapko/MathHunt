@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 100px auto;
+  margin: 0 auto;
   width: 450px;
   height: 700px;
   background-color: #ffffff;
@@ -17,13 +17,13 @@
     align-items: center; }
     .register__box__title__singUp {
       font-size: 36px;
-      background-color: #AF4425;
+      background-color: #000000;
       color: white;
       margin: 10px;
       padding: 5px;
       border-radius: 10px; }
     .register__box__title__logIn {
-      color: #AF4425;
+      color: #000000;
       font-size: 36px;
       margin: 10px; }
   .register__box img {
@@ -67,18 +67,18 @@
     width: 95%;
     height: 3px;
     border-radius: 25px;
-    background-color: #AF4425; }
+    background-color: #000000; }
   .register__box__submit-button {
     width: 400px;
     height: 65px;
     border-radius: 25px;
-    background: #AF4425;
+    background: #000000;
     color: white;
     border: none;
     font-size: 24px;
     cursor: pointer;
     transition: background 0.3s; }
     .register__box__submit-button:hover {
-      background: #8f361e; }
+      background: #000000; }
 
 /*# sourceMappingURL=register.component.css.map */
