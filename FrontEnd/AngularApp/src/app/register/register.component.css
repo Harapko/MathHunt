@@ -7,7 +7,7 @@
   width: 450px;
   height: 700px;
   background-color: #ffffff;
-  border: solid 3px #000000;
+  border: solid 1px #000000;
   border-radius: 25px;
   padding: 20px; }
   .register__box__title {
@@ -16,12 +16,8 @@
     justify-content: space-between;
     align-items: center; }
     .register__box__title__singUp {
-      font-size: 36px;
-      background-color: #000000;
-      color: white;
-      margin: 10px;
-      padding: 5px;
-      border-radius: 10px; }
+      font-size: 40px;
+      font-weight: 700; }
     .register__box__title__logIn {
       color: #000000;
       font-size: 36px;
@@ -34,6 +30,7 @@
     position: relative;
     width: 100%; }
     .register__box .input input {
+      padding-left: 20px;
       margin: 10px 0;
       border-radius: 25px;
       background-color: white;
@@ -64,21 +61,20 @@
       transition: 0.5s;
       color: rgba(9, 9, 9, 0); }
   .register__box__line {
-    width: 95%;
+    width: 40%;
     height: 3px;
-    border-radius: 25px;
-    background-color: #000000; }
-  .register__box__submit-button {
-    width: 400px;
-    height: 65px;
-    border-radius: 25px;
-    background: #000000;
-    color: white;
+    background: black; }
+  .register__box button {
+    width: 350px;
+    height: 50px;
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
     border: none;
-    font-size: 24px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background 0.3s; }
-    .register__box__submit-button:hover {
-      background: #000000; }
+    transition: background-color 0.3s ease; }
+  .register__box button:hover {
+    background-color: #020000; }
 
 /*# sourceMappingURL=register.component.css.map */
