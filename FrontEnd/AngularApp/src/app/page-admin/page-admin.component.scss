@@ -24,7 +24,7 @@
     font-weight: 700;
 
     &__line {
-      width: 100%;
+      width: 150%;
       height: 5px;
       background: black;
       margin-top: 30px;
@@ -96,7 +96,7 @@
     }
   }
 
-  .skills {
+  .users {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -137,7 +137,7 @@
         border-radius: 25px;
         padding: 5px 0 5px 0;
 
-        &__skill-name {
+        &__user {
           font-weight: 500;
           font-size: 30px;
         }
@@ -157,50 +157,13 @@
       border: none;
       border-radius: 25px;
     }
-
-
   }
-
-  /* dropdown-menu.component.css */
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown-toggle {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    display: none;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-top: none;
-    max-height: 200px; /* Фіксована висота для прокрутки */
-    overflow-y: auto; /* Включення прокрутки */
-  }
-
-  .dropdown-item {
-    display: block;
-    width: 100%;
-    padding: 5px 10px;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  .dropdown-menu.open {
-    display: block;
-  }
-
-
-
-
 }
+
+
+
+
+
 
 
 
