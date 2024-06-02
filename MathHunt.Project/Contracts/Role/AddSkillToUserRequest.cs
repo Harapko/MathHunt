@@ -1,6 +1,6 @@
 namespace MathHunt.Contracts.Role;
 
 public record AddSkillToUserRequest(
-    string userName,
+    string email,
     string skillName
     );

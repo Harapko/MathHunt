@@ -1,10 +1,12 @@
-using System.Threading.Channels;
-using MathHunt.Core.Abstraction.IRepositories;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using MathHunt.Core.Abstraction.IServices;
-using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MathHunt.DataAccess.Repositories;
 
@@ -12,7 +14,8 @@ public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
     SignInManager<AppUserEntity> signInManager,
     IRoleUserService roleService,
-    AppDbContext context
+    AppDbContext context,
+    IConfiguration configuration
 ) : IAppUserRepository
 {
     public async Task<List<AppUserEntity>> Get()
@@ -24,6 +27,8 @@ public class AppUserRepository(
 
         return userEntity;
     }
+    
+    
 
     public async Task<string> Register(AppUserEntity user, string password, string role)
     {
@@ -51,12 +56,14 @@ public class AppUserRepository(
         return newUser.Id;
     }
 
-    public async Task<bool> Login(string userName, string password, bool rememberMe)
+    public async Task<string> Login(string email, string password, bool rememberMe)
     {
-        var result = await signInManager.PasswordSignInAsync(userName, password, rememberMe, false);
+        var result = await signInManager.PasswordSignInAsync(email, password, rememberMe, false);
         if (result.Succeeded)
         {
-            return result.Succeeded;
+            var user = await userManager.FindByEmailAsync(email);
+            var token = GenerateJwtToken(user);
+            return await token;
         }
         else
         {
@@ -69,6 +76,7 @@ public class AppUserRepository(
         var result = signInManager.SignOutAsync();
         if (result.IsCompleted)
         {
+            
             return result;
         }
         else
@@ -103,4 +111,38 @@ public class AppUserRepository(
 
         return user;
     }
+    
+    private async Task<string> GenerateJwtToken(AppUserEntity user)
+    {
+        // Получите роли пользователя
+        var roles = await userManager.GetRolesAsync(user);
+
+        var claims = new List<Claim>
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+
+        // Добавьте роли в утверждения
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            issuer: configuration["Jwt:Issuer"],
+            audience: configuration["Jwt:Issuer"],
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(30),
+            signingCredentials: creds);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
 }
+
+
+

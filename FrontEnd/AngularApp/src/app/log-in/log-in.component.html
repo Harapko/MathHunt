@@ -1,23 +1,16 @@
-<div [style.top.px]="position?.top" [style.left.px]="position?.left" class="login">
+<div [style.top.px]="position?.top" [style.left.px]="position.left" class="login">
   <div class="triangle"></div>
   <div class="login__title">
     <p>Log In</p>
   </div>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form  (ngSubmit)="login()">
     <div class="input">
-      <input type="email" formControlName="userName" placeholder="userName" required>
-      <div *ngIf="loginForm.get('userName')?.invalid && loginForm.get('userName')?.touched" class="error">
-        Valid email is required.
-      </div>
+      <input type="email" id="email" name="email" [(ngModel)]="credential.email"  placeholder="Email" required>
     </div>
     <div class="input">
-      <input type="password" formControlName="password" placeholder="Пароль" required>
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
-        Password is required.
-      </div>
+      <input type="password" id="password" name="password" [(ngModel)]="credential.password" placeholder="Пароль" required>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid">Увійти</button>
+    <button type="submit" >Увійти</button>
   </form>
-  <a routerLink="/register"><p class="login__quick-register">Quick register</p></a>
-  <div *ngIf="message" class="message">{{ message }}</div>
+    <a routerLink="/register"><p class="login__quick-register">Quick register</p></a>
 </div>
