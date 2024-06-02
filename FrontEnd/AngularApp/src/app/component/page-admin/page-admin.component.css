@@ -36,6 +36,14 @@
       font-size: 30px;
       font-weight: 400;
       margin-left: 20px; }
+    .wrapper .user__logout {
+      width: 100px;
+      height: 40px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      margin-left: 20px; }
     .wrapper .user__edit-profile {
       width: 100px;
       height: 40px;
@@ -43,7 +51,7 @@
       color: white;
       border: none;
       border-radius: 15px;
-      margin-left: 300px; }
+      margin-left: 30px; }
   .wrapper .your-skills {
     display: flex;
     flex-direction: column;

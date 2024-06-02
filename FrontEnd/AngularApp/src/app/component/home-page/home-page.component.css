@@ -8,6 +8,8 @@
   background: rgba(255, 255, 255, 0.4);
   margin: 0 auto;
   border-radius: 30px; }
+  .wrapper img {
+    width: clamp(50px, 30vw, 600px); }
   .wrapper__content {
     display: flex;
     flex-direction: column;
@@ -21,7 +23,7 @@
     .wrapper__content__search-form {
       position: relative; }
       .wrapper__content__search-form input {
-        width: 600px;
+        width: clamp(50px, 30vw, 600px);
         height: 100px;
         border-radius: 25px;
         padding-left: 100px;

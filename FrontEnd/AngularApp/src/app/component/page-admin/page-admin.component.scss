@@ -48,6 +48,16 @@
       margin-left: 20px;
     }
 
+    &__logout {
+      width: 100px;
+      height: 40px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      margin-left: 20px;
+    }
+
     &__edit-profile {
       width: 100px;
       height: 40px;
@@ -55,7 +65,7 @@
       color: white;
       border: none;
       border-radius: 15px;
-      margin-left: 300px;
+      margin-left: 30px;
     }
   }
 

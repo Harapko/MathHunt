@@ -1,9 +1,9 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 80%;
   height: 800px;
   background: rgba(255, 255, 255, 0.4);
   margin: 0 auto;
@@ -48,6 +48,16 @@
       margin-left: 20px;
     }
 
+    &__logout {
+      width: 100px;
+      height: 40px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      margin-left: 20px;
+    }
+
     &__edit-profile {
       width: 100px;
       height: 40px;
@@ -55,7 +65,7 @@
       color: white;
       border: none;
       border-radius: 15px;
-      margin-left: 300px;
+      margin-left: 30px;
     }
   }
 
@@ -64,7 +74,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    width: 700px;
+    width: clamp(200px , 30vw , 700px);
     height: 200px;
     background: white;
     border-radius: 25px;
@@ -101,7 +111,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 500px;
+    width: 400px;
     height: 700px;
     background: white;
     border-radius: 25px;
@@ -199,9 +209,24 @@
     display: block;
   }
 
+}
 
 
+.skill-select {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+}
 
+.add-skill {
+  display: block;
+  margin: 20px 0 0 0;
+  width: 300px;
+  height: 50px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 25px;
 }
 
 
