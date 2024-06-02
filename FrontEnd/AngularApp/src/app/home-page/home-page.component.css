@@ -7,46 +7,35 @@
   height: 800px;
   background: rgba(255, 255, 255, 0.4);
   margin: 0 auto;
-  border-radius: 30px;
-
-  &__content {
+  border-radius: 30px; }
+  .wrapper__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-
-    & > * {
-      margin-bottom: 30px;
-    }
-
-    &__title {
+    align-items: flex-end; }
+    .wrapper__content > * {
+      margin-bottom: 30px; }
+    .wrapper__content__title {
       font-size: 40px;
-      font-weight: 700;
-    }
-    &__search-form {
-      position: relative;
-
-      input {
+      font-weight: 700; }
+    .wrapper__content__search-form {
+      position: relative; }
+      .wrapper__content__search-form input {
         width: 600px;
         height: 100px;
         border-radius: 25px;
         padding-left: 100px;
-        font-size: 24px;
-
-      }
-      svg {
+        font-size: 24px; }
+      .wrapper__content__search-form svg {
         position: absolute;
         left: 5%;
-        top: 30%;
-      }
-    }
-    &__view-skills {
+        top: 30%; }
+    .wrapper__content__view-skills {
       width: 200px;
       height: 70px;
       background: black;
       color: white;
       border: none;
-      border-radius: 25px;
-    }
-  }
-}
+      border-radius: 25px; }
+
+/*# sourceMappingURL=home-page.component.css.map */

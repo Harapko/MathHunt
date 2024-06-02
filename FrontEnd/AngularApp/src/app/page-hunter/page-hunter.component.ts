@@ -12,4 +12,10 @@ import {RouterLink} from "@angular/router";
 })
 export class PageHunterComponent {
 
+  isBlockVisible: boolean = false;
+
+  toggleBlock() {
+    this.isBlockVisible = !this.isBlockVisible;
+  }
+
 }
