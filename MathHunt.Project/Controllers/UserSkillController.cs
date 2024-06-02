@@ -3,6 +3,7 @@ using MathHunt.Contracts.Skill;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
 using MathHunt.DataAccess;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -55,10 +56,11 @@ public class UserSkillController(
         return Ok(skillId);
     }
 
+    [Authorize]
     [HttpPost("/addSkillToUser")]
     public async Task<ActionResult> AddSkillToUser([FromBody] AddSkillToUserRequest skillToUserRequest)
     {
-        var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName);
+        var result = await service.AddSkillToUser(skillToUserRequest.email, skillToUserRequest.skillName);
         return Ok(result);
     }
 

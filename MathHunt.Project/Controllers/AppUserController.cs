@@ -40,7 +40,7 @@ public class AppUserController(IAppUserRepository userRepository) : ControllerBa
     }
     
     [HttpPost]
-    [Route("/register")]
+    [Route("/registerUser")]
     public async Task<ActionResult> Register([FromBody] RegisterCustomRequest registerRequest)
     {
         AppUserEntity user = new()
@@ -56,16 +56,6 @@ public class AppUserController(IAppUserRepository userRepository) : ControllerBa
         
     }
 
-    
-    [HttpPost]
-    [Route("/login")]
-
-    public async Task<ActionResult> Login([FromBody] LoginCustomRequest loginRequest)
-    {
-        var result = await userRepository.Login(loginRequest.userName, loginRequest.password,
-            true);
-        return Ok(result);
-    }
     
     [HttpGet]
     [Route("/logout")]

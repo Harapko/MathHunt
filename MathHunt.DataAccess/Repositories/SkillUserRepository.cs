@@ -38,13 +38,13 @@ public class SkillUserRepository(
         return skill;
     }
 
-    public async Task<string> AddToUser(string userName, string skillName)
+    public async Task<string> AddToUser(string email, string skillName)
     {
         var skillEntity = await context.UserSkill
             .AsNoTracking()
             .Where(s => s.SkillName == skillName)
             .FirstOrDefaultAsync();
-        var user = await userManager.FindByNameAsync(userName);
+        var user = await userManager.FindByEmailAsync(email);
         if (user != null && skillEntity != null)
         {
             user.UserSkillsEntities?.Add(skillEntity);

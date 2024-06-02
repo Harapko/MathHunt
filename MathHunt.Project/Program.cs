@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json.Serialization;
 using MathHunt.Application;
 using MathHunt.Core.Abstraction.IRepositories;
@@ -5,25 +6,60 @@ using MathHunt.Core.Abstraction.IServices;
 using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using MathHunt.DataAccess.Repositories;
+using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(o =>
+{
+    o.AddSecurityDefinition("BearerAuth", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Enter proper JWT token",
+        Name = "Authorization",
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        Type = SecuritySchemeType.Http
+    });
+    o.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "BearerAuth"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+    
+    
+});
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(AppDbContext)));
 });
 
+builder.Services.ConfigureAll<BearerTokenOptions>(option =>
+{
+    option.BearerTokenExpiration = TimeSpan.FromMinutes(1);
+});
+
 
 builder.Services
     .AddIdentityApiEndpoints<AppUserEntity>()
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<AppDbContext>();
 
 
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
@@ -46,15 +82,38 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 
 
-builder.Services.AddCors(options =>
+builder.Services.AddCors(opt =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins("http://localhost:4200") // Замените на URL вашего Angular приложения
+    opt.AddPolicy("CorsPolicy", policyBilder =>
+    {
+        policyBilder
             .AllowAnyHeader()
-            .AllowAnyMethod());
+            .AllowAnyMethod()
+            .WithOrigins("http://localhost:4200");
+    });
 });
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Issuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException()))
+        };
+    });
 
 var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.
@@ -68,12 +127,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-
-
+app.MapIdentityApi<AppUserEntity>();
 app.MapControllers();
 app.UseStaticFiles();
-app.UseCors("AllowSpecificOrigin");
+app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 app.Run();

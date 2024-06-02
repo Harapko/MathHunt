@@ -3,6 +3,7 @@ import {UserService} from "../service/authorize/user.service";
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../service/authorize/auth.service";
 
 @Component({
   selector: 'app-page-user',
@@ -22,13 +23,15 @@ export class PageUserComponent implements OnInit {
   addSkillForm!: FormGroup;
   isLoading: boolean = false;
   message: string = '';
+  email: string = '';
 
-  constructor(private http: HttpClient, private userService: UserService, private router: Router) {
+  constructor(private http: HttpClient, private userService: UserService, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.userService.getUserName().subscribe(userName => {
       this.userName = userName;
+      this.email = this.authService.email;
       // Используйте значение userName здесь
       this.getAllSkill();
       this.getSkillNames();
@@ -99,11 +102,11 @@ export class PageUserComponent implements OnInit {
     });
   }
 
+  // add skill to user
   onSubmit(): void {
     if (this.addSkillForm.valid) {
       this.isLoading = true;
       const formData = this.addSkillForm.value;
-      this.getSkillNames();
 
       this.http.post('http://localhost:5117/addSkillToUser', formData).subscribe(
         response => {
@@ -113,7 +116,6 @@ export class PageUserComponent implements OnInit {
           console.log('User registered', response);
         },
         error => {
-          this.getSkillNames();
 
           this.isLoading = false;
           this.message = 'Registration failed. Please try again.';
@@ -121,7 +123,6 @@ export class PageUserComponent implements OnInit {
         }
       );
     } else {
-      this.getSkillNames();
 
       this.message = 'Please fill out all fields correctly.';
     }
@@ -147,17 +148,5 @@ export class PageUserComponent implements OnInit {
       );
   }
 
-  logOut() {
-    this.http.get<any>('http://localhost:5117/logout')
-      .subscribe(
-        (response) => {
-          console.log(response.message); // Должно вывести "Logged out successfully"
-          // Дополнительная логика после успешного логаута
-          this.router.navigate(['/profile']); // Перенаправление на страницу логина или другую страницу
-        },
-        error => {
-          console.log("Error during logout", error);
-        }
-      );
-  }
+
 }
