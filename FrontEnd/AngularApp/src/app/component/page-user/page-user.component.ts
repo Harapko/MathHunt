@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../service/authorize/user.service";
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../service/authorize/auth.service";
+import {UserService} from "../../service/authorize/user.service";
+import {AuthService} from "../../service/authorize/auth.service";
 
 @Component({
   selector: 'app-page-user',

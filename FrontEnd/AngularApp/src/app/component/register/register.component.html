@@ -1,0 +1,44 @@
+
+
+<div class="register">
+  <div class="register__box">
+    <div class="register__box__title">
+      <div class="register__box__title__singUp"><b>Sign Up</b></div>
+    </div>
+    <div class="register__box__line"></div>
+    <div class="input">
+      <img src="./assets/register/user.svg">
+      <input type="text" id="name" placeholder="Name" required>
+    </div>
+    <div class="input">
+      <img src="./assets/register/surname.svg">
+      <input type="text" id="surname" placeholder="Surname" required>
+    </div>
+    <div class="input">
+      <img src="./assets/photo/telegram.svg">
+      <input type="email" id="telegram" placeholder="Telegram" required>
+    </div>
+    <div class="input">
+      <img src="./assets/register/email.svg">
+      <input type="email" id="email" placeholder="Email" required>
+    </div>
+    <div class="input">
+      <img src="./assets/register/password.svg">
+      <input type="password" id="password" placeholder="Password" required>
+    </div>
+    <div class="input">
+      <img src="./assets/register/password.svg">
+      <input type="password" id="repeat-password" placeholder="Repeat Password" required>
+    </div>
+
+    <div class="input">
+      <select id="role" required>
+        <option value="" disabled selected>Select your role</option>
+        <option value="employer">Hunter</option>
+        <option value="employee">User</option>
+      </select>
+    </div>
+
+    <a routerLink='/home-page'><button type="submit" class="register__box__submit-button">Sign Up</button></a>
+  </div>
+</div>

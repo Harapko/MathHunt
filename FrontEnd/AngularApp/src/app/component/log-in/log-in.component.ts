@@ -3,9 +3,8 @@ import { debounceTime, Subject } from "rxjs";
 import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Route, Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
-import {AuthService} from "../service/authorize/auth.service";
-import {LoginRequest} from "../models/login/login-request";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {AuthService} from "../../service/authorize/auth.service";
+import {LoginRequest} from "../../models/login/login-request";
 
 @Component({
   selector: 'app-log-in',
