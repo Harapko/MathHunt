@@ -25,11 +25,24 @@ public class AppUserRepository(
             .Include(u => u.UserSkillsEntities)
             .ToListAsync();
 
+        foreach (var user in userEntity)
+        {
+            user.Role = await roleService.GetUserRole(user.Email);
+        }
+
         return userEntity;
     }
-    
-    
 
+    public async Task<AppUserEntity?> GetByName(string name)
+    {
+        var user = await userManager.Users
+            .Where(u => u.UserName == name)
+            .AsNoTracking()
+            .FirstOrDefaultAsync();
+        user.Role = await roleService.GetUserRole(user.Email);
+        return user;
+    }
+    
     public async Task<string> Register(AppUserEntity user, string password, string role)
     {
         var newUser = new AppUserEntity()
@@ -55,21 +68,7 @@ public class AppUserRepository(
 
         return newUser.Id;
     }
-
-    public async Task<string> Login(string email, string password, bool rememberMe)
-    {
-        var result = await signInManager.PasswordSignInAsync(email, password, rememberMe, false);
-        if (result.Succeeded)
-        {
-            var user = await userManager.FindByEmailAsync(email);
-            var token = GenerateJwtToken(user);
-            return await token;
-        }
-        else
-        {
-            throw new Exception($"Failed to create user: {result.IsNotAllowed}");
-        }
-    }
+    
 
     public Task Logout()
     {
@@ -87,20 +86,10 @@ public class AppUserRepository(
 
     public async Task<bool> Delete(string email)
     {
-        var user = await userManager.FindByEmailAsync(email);
+        var user = await userManager.FindByIdAsync(email);
         var result = await userManager.DeleteAsync(user);
         return result.Succeeded;
     }
-
-    // public async Task<AppUserEntity?> GetSkillsUser(string userName)
-    // {
-    //     var user = await userManager.Users
-    //         .Where(u => u.UserName == userName)
-    //         .Include(u => u.UserSkillsEntities)
-    //         .FirstOrDefaultAsync();
-    //
-    //     return user;
-    // }
     
     public async Task<List<AppUserEntity>> GetSkillsUser(string userName)
     {
@@ -112,35 +101,7 @@ public class AppUserRepository(
         return user;
     }
     
-    private async Task<string> GenerateJwtToken(AppUserEntity user)
-    {
-        // Получите роли пользователя
-        var roles = await userManager.GetRolesAsync(user);
-
-        var claims = new List<Claim>
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
-
-        // Добавьте роли в утверждения
-        foreach (var role in roles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, role));
-        }
-
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            issuer: configuration["Jwt:Issuer"],
-            audience: configuration["Jwt:Issuer"],
-            claims: claims,
-            expires: DateTime.Now.AddMinutes(30),
-            signingCredentials: creds);
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+    
 
 }
 

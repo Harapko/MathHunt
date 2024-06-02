@@ -150,7 +150,9 @@
     }
 
     &__add-skill {
-      width: 90%;
+      display: block;
+      margin: 20px 0 0 0;
+      width: 350px;
       height: 70px;
       background: black;
       color: white;

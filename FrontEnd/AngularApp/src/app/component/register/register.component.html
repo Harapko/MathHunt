@@ -1,5 +1,5 @@
 
-
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 <div class="register">
   <div class="register__box">
     <div class="register__box__title">
@@ -8,37 +8,37 @@
     <div class="register__box__line"></div>
     <div class="input">
       <img src="./assets/register/user.svg">
-      <input type="text" id="name" placeholder="Name" required>
+      <input type="text" id="name" placeholder="Name" formControlName="name" required>
     </div>
     <div class="input">
       <img src="./assets/register/surname.svg">
-      <input type="text" id="surname" placeholder="Surname" required>
-    </div>
-    <div class="input">
-      <img src="./assets/photo/telegram.svg">
-      <input type="email" id="telegram" placeholder="Telegram" required>
+      <input type="text" id="surname" placeholder="Surname" formControlName="surname" required>
     </div>
     <div class="input">
       <img src="./assets/register/email.svg">
-      <input type="email" id="email" placeholder="Email" required>
+      <input type="email" id="email" placeholder="Email" formControlName="email" required>
+    </div>
+    <div class="input">
+      <img src="./assets/photo/telegram.svg">
+      <input type="text" id="phoneNumber" placeholder="Phone Number" formControlName="phoneNumber" required>
     </div>
     <div class="input">
       <img src="./assets/register/password.svg">
-      <input type="password" id="password" placeholder="Password" required>
-    </div>
-    <div class="input">
-      <img src="./assets/register/password.svg">
-      <input type="password" id="repeat-password" placeholder="Repeat Password" required>
+      <input type="password" id="password" placeholder="Password" formControlName="password" required>
     </div>
 
     <div class="input">
-      <select id="role" required>
+      <select id="role" formControlName="role" required>
         <option value="" disabled selected>Select your role</option>
-        <option value="employer">Hunter</option>
-        <option value="employee">User</option>
+        <option value="user">User</option>
+        <option value="hunter">Hunter</option>
+        <option value="admin">Admin</option>
       </select>
     </div>
 
-    <a routerLink='/home-page'><button type="submit" class="register__box__submit-button">Sign Up</button></a>
+    @if (registerForm.valid){
+      <button type="submit" class="register__box__submit-button">Sign Up</button>
+    }
   </div>
 </div>
+</form>

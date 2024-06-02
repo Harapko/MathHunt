@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserService} from "../../service/authorize/user.service";
 import {AuthService} from "../../service/authorize/auth.service";
+import {UserService} from "../../service/userService/user.service";
+import {UserResponse} from "../../models/user/user-response";
 
 @Component({
   selector: 'app-page-user',
@@ -19,66 +20,63 @@ import {AuthService} from "../../service/authorize/auth.service";
 export class PageUserComponent implements OnInit {
   skillNames: string[] = [];
   skillAllList: string[] = [];
-  userName: string = '';
+  user!: UserResponse;
   addSkillForm!: FormGroup;
   isLoading: boolean = false;
   message: string = '';
-  email: string = '';
 
-  constructor(private http: HttpClient, private userService: UserService, private router: Router, private authService: AuthService) {
+  constructor(private http: HttpClient, private userService: UserService, public authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.userService.getUserName().subscribe(userName => {
-      this.userName = userName;
-      this.email = this.authService.email;
-      // Используйте значение userName здесь
+    this.user = this.userService;
+
       this.getAllSkill();
       this.getSkillNames();
       this.initForm();
 
-      const trigger = document.getElementById("trigger");
-      const list = document.getElementById("list");
-      const option1 = document.getElementById("option1") as HTMLInputElement;
-      const option2 = document.getElementById("option2") as HTMLInputElement;
 
-      if (trigger) {
-        trigger.addEventListener("click", () => {
-          if (list) {
-            list.style.display = (list.style.display === "none") ? "block" : "none";
-          }
-        });
-      }
+    const trigger = document.getElementById("trigger");
+    const list = document.getElementById("list");
+    const option1 = document.getElementById("option1") as HTMLInputElement;
+    const option2 = document.getElementById("option2") as HTMLInputElement;
 
-      if (option1) {
-        option1.addEventListener("change", () => {
-          if (option1.checked) {
-            console.log("Опція 1 обрана");
-            // Додайте код, який потрібно виконати, коли опція 1 обрана
-          } else {
-            console.log("Опція 1 скасована");
-            // Додайте код, який потрібно виконати, коли опція 1 скасована
-          }
-        });
-      }
+    if (trigger) {
+      trigger.addEventListener("click", () => {
+        if (list) {
+          list.style.display = (list.style.display === "none") ? "block" : "none";
+        }
+      });
+    }
 
-      if (option2) {
-        option2.addEventListener("change", () => {
-          if (option2.checked) {
-            console.log("Опція 2 обрана");
-            // Додайте код, який потрібно виконати, коли опція 2 обрана
-          } else {
-            console.log("Опція 2 скасована");
-            // Додайте код, який потрібно виконати, коли опція 2 скасована
-          }
-        });
-      }
-    });
+    if (option1) {
+      option1.addEventListener("change", () => {
+        if (option1.checked) {
+          console.log("Опція 1 обрана");
+          // Додайте код, який потрібно виконати, коли опція 1 обрана
+        } else {
+          console.log("Опція 1 скасована");
+          // Додайте код, який потрібно виконати, коли опція 1 скасована
+        }
+      });
+    }
+
+    if (option2) {
+      option2.addEventListener("change", () => {
+        if (option2.checked) {
+          console.log("Опція 2 обрана");
+          // Додайте код, який потрібно виконати, коли опція 2 обрана
+        } else {
+          console.log("Опція 2 скасована");
+          // Додайте код, який потрібно виконати, коли опція 2 скасована
+        }
+      });
+    }
   }
 
   getSkillNames(): void {
     // Передаем параметр userName в URL запроса
-    this.http.get<any>('http://localhost:5117/getSkillsUser', {params: {userName: this.userName}})
+    this.http.get<any>('http://localhost:5117/getSkillsUser', {params: {userName: this.user.name}})
       .subscribe(
         (response: any) => {
           // Проверяем, что ответ содержит массив значений
@@ -97,7 +95,7 @@ export class PageUserComponent implements OnInit {
 
   private initForm() {
     this.addSkillForm = new FormGroup({
-      userName: new FormControl(`${this.userName}`, Validators.required),
+      userName: new FormControl(`${this.user.email}`, Validators.required),
       skillName: new FormControl('', Validators.required),
     });
   }
@@ -156,15 +154,5 @@ export class PageUserComponent implements OnInit {
   }
 
 
-  // isDropdownOpen: boolean = false;
-  //  options: string[] = ['Опція 1', 'Опція 2', 'Опція 3', 'Опція 4', 'Опція 5', 'Опція 6', 'Опція 7', 'Опція 8', 'Опція 9', 'Опція 10', 'Опція 11', 'Опція 12', 'Опція 13', 'Опція 14', 'Опція 15', 'Опція 16', 'Опція 17', 'Опція 18', 'Опція 19', 'Опція 20']; // Додайте більше опцій, якщо потрібно
-  //
-  // toggleDropdown() {
-  //   this.isDropdownOpen = !this.isDropdownOpen;
-  // }
-  //
-  // selectOption(option: string) {
-  //   console.log('Вибрано опцію:', option);
-  //   // Додайте тут ваші дії при виборі опції
-  // }
+
 }

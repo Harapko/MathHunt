@@ -56,11 +56,10 @@ public class UserSkillController(
         return Ok(skillId);
     }
 
-    [Authorize]
     [HttpPost("/addSkillToUser")]
     public async Task<ActionResult> AddSkillToUser([FromBody] AddSkillToUserRequest skillToUserRequest)
     {
-        var result = await service.AddSkillToUser(skillToUserRequest.email, skillToUserRequest.skillName);
+        var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName);
         return Ok(result);
     }
 
