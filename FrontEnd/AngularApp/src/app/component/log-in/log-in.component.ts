@@ -5,6 +5,8 @@ import {Route, Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {AuthService} from "../../service/authorize/auth.service";
 import {LoginRequest} from "../../models/login/login-request";
+import {UserService} from "../../service/userService/user.service";
+import {UserResponse} from "../../models/user/user-response";
 
 @Component({
   selector: 'app-log-in',
@@ -20,6 +22,7 @@ import {LoginRequest} from "../../models/login/login-request";
 })
 export class LogInComponent implements OnInit{
   message: string = '';
+  user!: UserResponse;
 
   @Input() position!: { top: number, left: number };
 
@@ -29,7 +32,8 @@ export class LogInComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
               ) {
     this.userActivity.pipe(
       debounceTime(1000)
@@ -56,9 +60,9 @@ export class LogInComponent implements OnInit{
   login(){
     this.authService.login(this.credential)
       .subscribe(() => {
-
+        this.userService.getUserInfo(this.credential.email)
         console.log("Login successfully");
-          this.router.navigate(['/profile'])
+        this.router.navigate(['/home-page'])
 
       },
       error => {
@@ -68,6 +72,7 @@ export class LogInComponent implements OnInit{
       })
 
   }
+
 
 
 

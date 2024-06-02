@@ -3,22 +3,22 @@ import {HttpClient} from "@angular/common/http";
 import {LoginRequest} from "../../models/login/login-request";
 import {map, Observable} from "rxjs";
 import {LoginResponse} from "../../models/login/login-response";
+import {UserService} from "../userService/user.service";
+import {Router} from "@angular/router";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public email: string = '';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router, private userService: UserService) { }
 
   login(credential: LoginRequest) : Observable<LoginResponse>{
     return this.httpClient.post<LoginResponse>("http://localhost:5117/login", credential)
       .pipe(map(response => {
         localStorage.setItem('accessToken', response.accessToken);
         document.cookie = `refreshToken=${response.refreshToken};`;
-        this.email = credential.email;
         return response;
       }));
   }
@@ -48,6 +48,8 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('accessToken')
+    this.userService.logoutUser();
+    this.router.navigate(['/home-page'])
   }
   isLoggedIn() : boolean{
     return localStorage.getItem('accessToken') !== null;

@@ -27,6 +27,8 @@
 
     <ItemGroup>
       <Folder Include="AngularApp\src\app\component\" />
+      <Folder Include="AngularApp\src\app\directive\" />
+      <Folder Include="AngularApp\src\app\service\userService\" />
     </ItemGroup>
 
 </Project>

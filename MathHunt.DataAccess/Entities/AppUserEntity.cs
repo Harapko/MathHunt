@@ -6,6 +6,6 @@ namespace MathHunt.DataAccess.Entities;
 public class AppUserEntity : IdentityUser
 {
     public string? UserSurname { get; set; }
-
+    public string? Role { get; set; }
     public List<UserSkillEntity>? UserSkillsEntities { get; set; } = [];
 }

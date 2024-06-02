@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import {Route, Router, RouterLink, RouterOutlet} from "@angular/router";
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import {NgIf} from "@angular/common";
+import {RegisterService} from "../../service/authorize/register.service";
+import {AuthService} from "../../service/authorize/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -21,7 +23,10 @@ export class RegisterComponent {
   isLoading: boolean = false;
   message: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private registerService: RegisterService,
+    private router: Router
+    ) {
     this.initForm();
   }
 
@@ -40,11 +45,12 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.isLoading = true;
       const formData = this.registerForm.value;
-      this.http.post('http://localhost:5117/register', formData).subscribe(
+      this.registerService.registerUser(formData).subscribe(
           response => {
             this.isLoading = false;
             this.message = 'User registered successfully!';
             console.log('User registered', response);
+            this.router.navigate(['/login'])
           },
           error => {
             this.isLoading = false;
