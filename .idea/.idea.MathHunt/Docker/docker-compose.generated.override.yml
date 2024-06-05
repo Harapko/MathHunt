@@ -1,0 +1,22 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  mathhunt:
+    build:
+      context: "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project"
+      dockerfile: "Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MathHunt.Project.dll"
+    environment:
+      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/MathHunt.Project.staticwebassets.runtime.CT.json"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "mathhunt:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\bakud\\.nuget\\packages:/home/app/.nuget/packages"
+    - "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project:/app:rw"
+    - "C:\\Users\\bakud\\RiderProjects\\MathHunt:/src:rw"
+    working_dir: "/app"

@@ -1,4 +1,3 @@
-using System.Text;
 using System.Text.Json.Serialization;
 using MathHunt.Application;
 using MathHunt.Core.Abstraction.IRepositories;
@@ -7,10 +6,8 @@ using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using MathHunt.DataAccess.Repositories;
 using Microsoft.AspNetCore.Authentication.BearerToken;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,7 +44,7 @@ builder.Services.AddSwaggerGen(o =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(AppDbContext)));
+    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(AppDbContext)));
 });
 
 builder.Services.ConfigureAll<BearerTokenOptions>(option =>
@@ -60,6 +57,7 @@ builder.Services
     .AddIdentityApiEndpoints<AppUserEntity>()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
+
 
 
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
@@ -107,7 +105,6 @@ if (app.Environment.IsDevelopment())
 
 
 
-app.UseHttpsRedirection();
 
 app.MapIdentityApi<AppUserEntity>();
 app.MapControllers();
