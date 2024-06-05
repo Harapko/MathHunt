@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj": {}
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj": {}
   },
   "projects": {
-    "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj",
         "projectName": "MathHunt.Application",
-        "projectPath": "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj",
-        "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
-        "outputPath": "D:\\MathHunt\\MathHunt.Application\\obj\\",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
-                "projectPath": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
               }
             }
           }
@@ -62,15 +58,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.5, )"
             },
@@ -83,6 +75,10 @@
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[7.6.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -109,25 +105,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
         "projectName": "MathHunt.Core",
-        "projectPath": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
-        "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
-        "outputPath": "D:\\MathHunt\\MathHunt.Core\\obj\\",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -167,15 +159,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.5, )"
             },
@@ -188,6 +176,10 @@
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[7.6.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -214,25 +206,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj",
         "projectName": "MathHunt.DataAccess",
-        "projectPath": "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
-        "outputPath": "D:\\MathHunt\\MathHunt.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -246,11 +234,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
-                "projectPath": "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj"
               },
-              "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
-                "projectPath": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
               }
             }
           }
@@ -279,15 +267,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.5, )"
             },
@@ -300,6 +284,10 @@
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[7.6.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -326,25 +314,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
         "projectName": "MathHunt.Project",
-        "projectPath": "D:\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
-        "packagesPath": "C:\\Users\\kishc\\.nuget\\packages\\",
-        "outputPath": "D:\\MathHunt\\MathHunt.Project\\obj\\",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\MathHunt.Project.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kishc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -358,14 +342,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
-                "projectPath": "D:\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj"
               },
-              "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
-                "projectPath": "D:\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
               },
-              "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj": {
-                "projectPath": "D:\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.DataAccess\\MathHunt.DataAccess.csproj"
               }
             }
           }
@@ -394,15 +378,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.5, )"
             },
@@ -415,6 +395,10 @@
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[7.6.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -444,7 +428,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\kishc\\.dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
