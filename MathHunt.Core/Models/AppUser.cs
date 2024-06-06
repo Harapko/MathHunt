@@ -9,19 +9,26 @@ public sealed class AppUser : IdentityUser
     {
         
     }
-    private AppUser(string id ,string  userName, string userSurname, string email, string phoneNumber)
+    private AppUser(string userName, string? userSurname, string? email, string? phoneNumber, string role, List<UserSkill> userSkills)
     {
-        Id = id;
+        
         UserName = userName;
         UserSurname = userSurname;
         Email = email;
         PhoneNumber = phoneNumber;
+        Role = role;
+        UserSkills = userSkills;
     }
-    
-    public string? UserSurname { get; set; }
-    public List<UserSkill>? UserSkills { get; set; } = [];
 
-    public static (AppUser appUser, string Error) Create(string id ,string  userName, string userSurname, string email, string phoneNumber)
+    
+    public string UserName { get; }
+    public string? UserSurname { get; }
+    public string? Email { get; }
+    public string? PhoneNumber { get; }
+    public string Role { get; }
+    public List<UserSkill>? UserSkills { get; } = [];
+
+    public static (AppUser appUser, string Error) Create(string userName, string userSurname, string email, string phoneNumber, string role, List<UserSkill> userSkills)
     {
         var error = string.Empty;
         if (!string.IsNullOrWhiteSpace(email))
@@ -29,7 +36,7 @@ public sealed class AppUser : IdentityUser
             error = "Email is empty";
         }
 
-        var appUser = new AppUser(id, userName, userSurname, email, phoneNumber);
+        var appUser = new AppUser(userName, userSurname, email, phoneNumber, role, userSkills);
         return  (appUser, error);
     }
 }

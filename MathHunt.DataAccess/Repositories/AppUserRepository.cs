@@ -1,12 +1,8 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using MathHunt.Core.Abstraction.IServices;
+using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
 namespace MathHunt.DataAccess.Repositories;
 
@@ -14,11 +10,10 @@ public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
     SignInManager<AppUserEntity> signInManager,
     IRoleUserService roleService,
-    AppDbContext context,
-    IConfiguration configuration
+    AppDbContext context
 ) : IAppUserRepository
 {
-    public async Task<List<AppUserEntity>> Get()
+    public async Task<List<AppUser>> Get()
     {
         var userEntity = await userManager.Users
             .AsNoTracking()
@@ -27,23 +22,53 @@ public class AppUserRepository(
 
         foreach (var user in userEntity)
         {
-            user.Role = await roleService.GetUserRole(user.Email);
+            user.Role = await roleService.GetUserRole(user.UserName);
         }
 
-        return userEntity;
+        var userList = userEntity
+            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.Role, u.UserSkillsEntities
+                .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
+            .ToList();
+
+        return userList;
     }
 
-    public async Task<AppUserEntity?> GetByName(string name)
+    public async Task<AppUser> GetByName(string name)
     {
-        var user = await userManager.Users
-            .Where(u => u.UserName == name)
+        var userEntity = await userManager.Users
             .AsNoTracking()
-            .FirstOrDefaultAsync();
-        user.Role = await roleService.GetUserRole(user.Email);
+            .Where(u => u.UserName == name)
+            .Include(u=>u.UserSkillsEntities)
+            .ToListAsync();
+        
+        foreach (var users in userEntity)
+        {
+            users.Role = await roleService.GetUserRole(users.UserName);
+        }
+
+        var user = userEntity
+            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.Role, u.UserSkillsEntities
+                .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
+            .FirstOrDefault();
         return user;
     }
     
-    public async Task<string> Register(AppUserEntity user, string password, string role)
+    public async Task<List<string>> GetUserSkills(string userName)
+    {
+        var userEntity = await context.Users
+            .AsNoTracking()
+            .Where(u => u.UserName == userName)
+            .Include(u => u.UserSkillsEntities)
+            .FirstOrDefaultAsync();
+
+        var userSkill = userEntity.UserSkillsEntities
+            .Select(s => s.SkillName)
+            .ToList();
+    
+        return userSkill;
+    }
+    
+    public async Task<string> Register(AppUser user, string password, string role)
     {
         var newUser = new AppUserEntity()
         {
@@ -53,53 +78,43 @@ public class AppUserRepository(
             PhoneNumber = user.PhoneNumber,
             Email = user.Email,
         };
-
+    
         var createResult = await userManager.CreateAsync(newUser, password);
         if (createResult.Succeeded)
         {
             await roleService.AddRoleToUser(newUser.Email, role);
-            await signInManager.SignInAsync(newUser, false);
         }
         else
         {
             var errors = string.Join(", ", createResult.Errors.Select(e => e.Description));
             throw new Exception($"Failed to create user: {errors}");
         }
-
+    
         return newUser.Id;
     }
     
-
-    public Task Logout()
+    // public Task Logout()
+    // {
+    //     var result = signInManager.SignOutAsync();
+    //     if (result.IsCompleted)
+    //     {
+    //         
+    //         return result;
+    //     }
+    //     else
+    //     {
+    //         throw new Exception($"Failed to create user: {result.Exception}");
+    //     }
+    // }
+    
+    public async Task<bool> Delete(string userName)
     {
-        var result = signInManager.SignOutAsync();
-        if (result.IsCompleted)
-        {
-            
-            return result;
-        }
-        else
-        {
-            throw new Exception($"Failed to create user: {result.Exception}");
-        }
-    }
-
-    public async Task<bool> Delete(string email)
-    {
-        var user = await userManager.FindByIdAsync(email);
+        var user = await userManager.FindByNameAsync(userName);
         var result = await userManager.DeleteAsync(user);
         return result.Succeeded;
     }
     
-    public async Task<List<AppUserEntity>> GetSkillsUser(string userName)
-    {
-        var user = await context.Users
-            .Where(u => u.UserName == userName)
-            .Include(u => u.UserSkillsEntities)
-            .ToListAsync();
-
-        return user;
-    }
+    
     
     
 

@@ -11,9 +11,9 @@ public class RoleUserService(IRoleUserRepository userRepository) : IRoleUserServ
         return await userRepository.Get();
     }
 
-    public async Task<string> GetUserRole(string emailId)
+    public async Task<string> GetUserRole(string userName)
     {
-        return await userRepository.GetUser(emailId);
+        return await userRepository.GetUser(userName);
     }
 
     public async Task<string> AddRole(string roles)

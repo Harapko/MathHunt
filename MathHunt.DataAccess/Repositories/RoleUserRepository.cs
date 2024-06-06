@@ -18,9 +18,9 @@ public class RoleUserRepository(
         return roleList;
     }
 
-    public async Task<string> GetUser(string emailId)
+    public async Task<string> GetUser(string userName)
     {
-        var user = await userManager.FindByEmailAsync(emailId);
+        var user = await userManager.FindByNameAsync(userName);
         var userRole = await userManager.GetRolesAsync(user);
         var role = userRole.ToList().FirstOrDefault();
         return role;
