@@ -20,7 +20,7 @@ public class UserSkillController(
     public async Task<ActionResult<List<UserSkill>>> GetSkills()
     {
         var skillList = await service.GetUserSkill();
-        var response = skillList.Select(s => new AllSkillResponse(s.Id, s.SkillName)).ToList();
+        var response = skillList.Select(s => new GETAllSkillResponse(s.Id, s.SkillName)).ToList();
         return Ok(response);
     }
 
@@ -57,7 +57,7 @@ public class UserSkillController(
     }
 
     [HttpPost("/addSkillToUser")]
-    public async Task<ActionResult> AddSkillToUser([FromBody] AddSkillToUserRequest skillToUserRequest)
+    public async Task<ActionResult> AddSkillToUser([FromBody] POSTAddSkillToUserRequest skillToUserRequest)
     {
         var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName);
         return Ok(result);

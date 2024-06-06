@@ -20,6 +20,11 @@ public class AppUserService(IAppUserRepository repository) : IAppUserService
     {
         return await repository.Register(user, password, role);
     }
+
+    public async Task<string> UpdateUser(string userName, AppUser user)
+    {
+        return await repository.Update(userName, user);
+    }
     
     public async Task<bool> DeleteUser(string userName)
     {

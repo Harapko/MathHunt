@@ -12,11 +12,11 @@ public class AppUserController(IAppUserService userService) : ControllerBase
 {
     [HttpGet]
     [Route("/getUser")]
-    public async Task<ActionResult<List<AllUserResponse>>> GetUser()
+    public async Task<ActionResult<List<GETAllUserResponse>>> GetUser()
     {
         var userList = await userService.GetAllUser();
         var response = userList
-            .Select(u => new AllUserResponse(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.Role, u.UserSkills
+            .Select(u => new GETAllUserResponse(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkills
                 .Select(s=>s.SkillName)
                 .ToArray()));
 
@@ -35,12 +35,12 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     
     [HttpGet]
     [Route("/getUserByName")]
-    public async Task<ActionResult> GetUserByName(string name)
+    public async Task<ActionResult<AppUser>> GetUserByName(string name)
     {
         if (name.Length >= 3)
         {
             var user = await userService.GetUserByName(name);
-            var result = new UserByNameResponse(user.UserName, user.UserSurname, user.Email, user.PhoneNumber, user.Role, user.UserSkills
+            var result = new GETUserByNameResponse(user.UserName, user.UserSurname, user.Email, user.PhoneNumber, user.EnglishLevel, user.DescriptionSkill, user.Role, user.UserSkills
                 .Select(s=>s.SkillName).ToArray());
             return Ok(result);
         }
@@ -52,22 +52,43 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     
     [HttpPost]
     [Route("/registerUser")]
-    public async Task<ActionResult> Register([FromBody] RegisterCustomRequest registerRequest)
+    public async Task<ActionResult> Register([FromBody] POSTRegisterCustomRequest postRegisterRequest)
     {
 
         var (user, error) = AppUser.Create(
-            registerRequest.name,
-            registerRequest.surname,
-            registerRequest.email,
-            registerRequest.phoneNumber,
-            registerRequest.englishLevel,
-            registerRequest.role,
+            postRegisterRequest.name,
+            postRegisterRequest.surname,
+            postRegisterRequest.email,
+            postRegisterRequest.phoneNumber,
+            postRegisterRequest.englishLevel,
+            "",
+            postRegisterRequest.role,
             []
         );
     
-        var result = await userService.RegisterUser(user, registerRequest.password, registerRequest.role);
+        var result = await userService.RegisterUser(user, postRegisterRequest.password, postRegisterRequest.role);
         return Ok(new { message = "User registered successfully!" });
         
+    }
+
+    [HttpPut]
+    [Route("/updateUser")]
+    public async Task<ActionResult> UpdateUser([FromBody] PUTUpdateUserRequest request)
+    {
+        var updateUser = AppUser.Create(
+            request.userName,
+            request.userSurname,
+            request.email,
+            request.phoneNumber,
+            request.englishLevel,
+            request.descriptionSkill,
+            "",
+            []
+        ).appUser;
+        
+        
+        var userId = await userService.UpdateUser(request.userName, updateUser);
+        return Ok(userId);
     }
     
     // [HttpGet]

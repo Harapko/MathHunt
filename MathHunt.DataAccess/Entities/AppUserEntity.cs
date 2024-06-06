@@ -8,5 +8,6 @@ public class AppUserEntity : IdentityUser
     public string? UserSurname { get; set; }
     public string? Role { get; set; }
     public string EnglishLevel { get; set; }
+    public string DescriptionSkill { get; set; }
     public List<UserSkillEntity>? UserSkillsEntities { get; set; } = [];
 }

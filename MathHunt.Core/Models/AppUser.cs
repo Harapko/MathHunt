@@ -9,7 +9,7 @@ public sealed class AppUser : IdentityUser
     {
         
     }
-    private AppUser(string userName, string? userSurname, string? email, string? phoneNumber, string englishLevel, string role, List<UserSkill> userSkills)
+    private AppUser(string userName, string? userSurname, string? email, string? phoneNumber, string englishLevel, string descriptionSkill, string role, List<UserSkill> userSkills)
     {
         
         UserName = userName;
@@ -17,6 +17,7 @@ public sealed class AppUser : IdentityUser
         Email = email;
         PhoneNumber = phoneNumber;
         EnglishLevel = englishLevel;
+        DescriptionSkill = descriptionSkill;
         Role = role;
         UserSkills = userSkills;
     }
@@ -27,10 +28,11 @@ public sealed class AppUser : IdentityUser
     public string? Email { get; }
     public string? PhoneNumber { get; }
     public string EnglishLevel { get; }
+    public string DescriptionSkill { get; }
     public string Role { get; }
     public List<UserSkill>? UserSkills { get; } = [];
 
-    public static (AppUser appUser, string Error) Create(string userName, string userSurname, string email, string phoneNumber, string englishLevel, string role, List<UserSkill> userSkills)
+    public static (AppUser appUser, string Error) Create(string userName, string userSurname, string email, string phoneNumber, string englishLevel, string descriptionSkill, string? role, List<UserSkill>? userSkills)
     {
         var error = string.Empty;
         if (!string.IsNullOrWhiteSpace(email))
@@ -38,7 +40,7 @@ public sealed class AppUser : IdentityUser
             error = "Email is empty";
         }
 
-        var appUser = new AppUser(userName, userSurname, email, phoneNumber, englishLevel, role, userSkills);
+        var appUser = new AppUser(userName, userSurname, email, phoneNumber, englishLevel, descriptionSkill, role, userSkills);
         return  (appUser, error);
     }
 }
