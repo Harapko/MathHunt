@@ -5,6 +5,7 @@ public record AllUserResponse(
     string surname,
     string email,
     string phoneNumber,
+    string englishLevel,
     string role,
     string[] skillName
     );

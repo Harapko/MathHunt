@@ -8,7 +8,6 @@ namespace MathHunt.DataAccess.Repositories;
 
 public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
-    SignInManager<AppUserEntity> signInManager,
     IRoleUserService roleService,
     AppDbContext context
 ) : IAppUserRepository
@@ -26,7 +25,7 @@ public class AppUserRepository(
         }
 
         var userList = userEntity
-            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.Role, u.UserSkillsEntities
+            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.Role, u.UserSkillsEntities
                 .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
             .ToList();
 
@@ -47,7 +46,7 @@ public class AppUserRepository(
         }
 
         var user = userEntity
-            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.Role, u.UserSkillsEntities
+            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.Role, u.UserSkillsEntities
                 .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
             .FirstOrDefault();
         return user;
@@ -76,6 +75,7 @@ public class AppUserRepository(
             UserName = user.UserName,
             UserSurname = user.UserSurname,
             PhoneNumber = user.PhoneNumber,
+            EnglishLevel = user.EnglishLevel,
             Email = user.Email,
         };
     

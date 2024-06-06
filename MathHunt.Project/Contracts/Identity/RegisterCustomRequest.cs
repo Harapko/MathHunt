@@ -5,6 +5,7 @@ public record RegisterCustomRequest(
     string surname,
     string email,
     string phoneNumber,
+    string englishLevel,
     string password,
     string role
 );

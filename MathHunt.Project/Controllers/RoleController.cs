@@ -21,9 +21,9 @@ public class RoleController(IRoleUserService userRoleService) : ControllerBase
 
     // [Authorize(Roles = "admin")]
     [HttpGet("/getUserRole")]
-    public async Task<ActionResult<List<string>>> GetUserRole(string userEmail)
+    public async Task<ActionResult<List<string>>> GetUserRole(string userName)
     {
-        var userClaims = await userRoleService.GetUserRole(userEmail);
+        var userClaims = await userRoleService.GetUserRole(userName);
         return Ok(userClaims);
     }
 

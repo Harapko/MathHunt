@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MathHunt.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6db3e4cb43a9d9d886bce096c84430c5497e982b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c6d025cf93193fd0f51dab97fdf4b596472598d")]
 [assembly: System.Reflection.AssemblyProductAttribute("MathHunt.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MathHunt.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

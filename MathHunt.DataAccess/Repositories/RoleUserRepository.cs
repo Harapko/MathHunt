@@ -7,15 +7,22 @@ using Microsoft.EntityFrameworkCore;
 namespace MathHunt.DataAccess.Repositories;
 
 public class RoleUserRepository(
+    // RoleManager<RoleModel> roleManager,
     RoleManager<IdentityRole> roleManager,
     UserManager<AppUserEntity> userManager)
     : IRoleUserRepository
 {
     public async Task<List<RoleModel>> Get()
     {
-        var roleList = await roleManager.Roles
-            .Select(r => new RoleModel { Id = Guid.Parse(r.Id), NameRole = r.Name }).ToListAsync();
-        return roleList;
+        var roleEntity = await roleManager.Roles
+            .AsNoTracking()
+            .ToListAsync();
+
+        var role = roleEntity
+            .Select(r => RoleModel.Create(r.Name).roleModel)
+            .ToList();
+        return role;
+        
     }
 
     public async Task<string> GetUser(string userName)
@@ -60,21 +67,5 @@ public class RoleUserRepository(
             .ExecuteDeleteAsync();
         return role;
     }
-
-
-    // private async Task<List<string>> ExistingRole(string[] roles)
-    // {
-    //     var roleList = new List<string>();
-    //     foreach (var role in roles)
-    //     {
-    //         var roleExist = await roleManager.RoleExistsAsync(role);
-    //         if (roleExist)
-    //         {
-    //             roleList.Add(role);
-    //         }
-    //     }
-    //
-    //     return roleList;
-    //
-    // }
+    
 }

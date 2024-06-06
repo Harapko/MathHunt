@@ -16,7 +16,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     {
         var userList = await userService.GetAllUser();
         var response = userList
-            .Select(u => new AllUserResponse(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.Role, u.UserSkills
+            .Select(u => new AllUserResponse(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.Role, u.UserSkills
                 .Select(s=>s.SkillName)
                 .ToArray()));
 
@@ -60,6 +60,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             registerRequest.surname,
             registerRequest.email,
             registerRequest.phoneNumber,
+            registerRequest.englishLevel,
             registerRequest.role,
             []
         );
