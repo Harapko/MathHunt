@@ -2,6 +2,6 @@ using MathHunt.DataAccess.Entities;
 
 namespace MathHunt.Contracts.Skill;
 
-public record UsersSkillResponse(
+public record GETUsersSkillResponse(
     string[] values
     );

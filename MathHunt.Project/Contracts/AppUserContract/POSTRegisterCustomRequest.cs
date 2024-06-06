@@ -1,6 +1,6 @@
 namespace MathHunt.Contracts.Identity;
 
-public record RegisterCustomRequest(
+public record POSTRegisterCustomRequest(
     string name,
     string surname,
     string email,

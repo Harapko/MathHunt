@@ -25,7 +25,7 @@ public class AppUserRepository(
         }
 
         var userList = userEntity
-            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.Role, u.UserSkillsEntities
+            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
                 .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
             .ToList();
 
@@ -46,7 +46,7 @@ public class AppUserRepository(
         }
 
         var user = userEntity
-            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.Role, u.UserSkillsEntities
+            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
                 .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
             .FirstOrDefault();
         return user;
@@ -76,6 +76,7 @@ public class AppUserRepository(
             UserSurname = user.UserSurname,
             PhoneNumber = user.PhoneNumber,
             EnglishLevel = user.EnglishLevel,
+            DescriptionSkill = user.DescriptionSkill,
             Email = user.Email,
         };
     
@@ -92,7 +93,22 @@ public class AppUserRepository(
     
         return newUser.Id;
     }
-    
+
+    public async Task<string> Update(string userName, AppUser user)
+    {
+        await userManager.Users
+            .Where(u => u.UserName == userName)
+            .ExecuteUpdateAsync(set => set
+                .SetProperty(u => u.UserName, user.UserName)
+                .SetProperty(u => u.UserSurname, user.UserSurname)
+                .SetProperty(u => u.Email, user.Email)
+                .SetProperty(u => u.PhoneNumber, user.PhoneNumber)
+                .SetProperty(u => u.EnglishLevel, user.EnglishLevel)
+                .SetProperty(u => u.DescriptionSkill, user.DescriptionSkill));
+        
+        return user.Id;
+    }
+
     // public Task Logout()
     // {
     //     var result = signInManager.SignOutAsync();

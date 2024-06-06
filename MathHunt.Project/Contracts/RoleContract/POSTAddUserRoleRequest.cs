@@ -1,6 +1,6 @@
 namespace MathHunt.Contracts.Identity;
 
-public record AddUserRoleRequest(
+public record POSTAddUserRoleRequest(
     string email,
     string roles
     );

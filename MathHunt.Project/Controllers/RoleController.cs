@@ -42,7 +42,7 @@ public class RoleController(IRoleUserService userRoleService) : ControllerBase
 
     // [Authorize(Roles = "admin")]
     [HttpPost("/addRoleToUser")]
-    public async Task<ActionResult<bool>> AddRoleToUser([FromBody] AddUserRoleRequest request)
+    public async Task<ActionResult<bool>> AddRoleToUser([FromBody] POSTAddUserRoleRequest request)
     {
         var result = await userRoleService.AddRoleToUser(request.email, request.roles);
         if (!result)

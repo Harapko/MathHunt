@@ -1,6 +1,6 @@
 namespace MathHunt.Contracts.Skill;
 
-public record AllSkillResponse(
+public record GETAllSkillResponse(
     Guid id,
     string skillName
     );
