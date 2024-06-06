@@ -7,7 +7,4 @@ public record RegisterCustomRequest(
     string phoneNumber,
     string password,
     string role
-    )
-{
-    
-}
+);

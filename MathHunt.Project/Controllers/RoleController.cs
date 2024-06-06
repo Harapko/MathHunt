@@ -11,7 +11,7 @@ namespace MathHunt.Controllers;
 [ApiController]
 public class RoleController(IRoleUserService userRoleService) : ControllerBase
 {
-    [Authorize(Roles = "admin")]
+    // [Authorize(Roles = "admin")]
     [HttpGet("/getRoles")]
     public async Task<ActionResult<List<RoleModel>>> GetAllRoles()
     {
@@ -19,7 +19,7 @@ public class RoleController(IRoleUserService userRoleService) : ControllerBase
         return Ok(roleList);
     }
 
-    [Authorize(Roles = "admin")]
+    // [Authorize(Roles = "admin")]
     [HttpGet("/getUserRole")]
     public async Task<ActionResult<List<string>>> GetUserRole(string userEmail)
     {
@@ -27,7 +27,7 @@ public class RoleController(IRoleUserService userRoleService) : ControllerBase
         return Ok(userClaims);
     }
 
-    [Authorize(Roles = "admin")]
+    // [Authorize(Roles = "admin")]
     [HttpPost("/addRoles")]
     public async Task<ActionResult<List<string>>> AddRoles(string roles)
     {
@@ -40,7 +40,7 @@ public class RoleController(IRoleUserService userRoleService) : ControllerBase
         return Ok(userRoles);
     }
 
-    [Authorize(Roles = "admin")]
+    // [Authorize(Roles = "admin")]
     [HttpPost("/addRoleToUser")]
     public async Task<ActionResult<bool>> AddRoleToUser([FromBody] AddUserRoleRequest request)
     {
