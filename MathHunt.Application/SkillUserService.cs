@@ -32,9 +32,9 @@ public class SkillUserService(ISkillUserRepository repository) : ISkillUserServi
         return await repository.Delete(id);
     }
 
-    public async Task<string> AddSkillToUser(string emailId,string skillName)
+    public async Task<string> AddSkillToUser(string userName,string skillName)
     {
-        return await repository.AddToUser(emailId ,skillName);
+        return await repository.AddToUser(userName ,skillName);
     }
     
     public async Task<List<UserSkill>> GetUsersSkill(string skillName)

@@ -1,9 +1,10 @@
 namespace MathHunt.Contracts.Identity;
 
-public record UserByEmailResponse(
+public record UserByNameResponse(
     string name,
     string surname,
     string email,
     string phoneNumber,
-    string role
+    string role,
+    string[] skillName
     );

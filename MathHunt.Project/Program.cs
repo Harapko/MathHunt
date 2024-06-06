@@ -66,7 +66,7 @@ builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
 builder.Services.AddScoped<ISkillUserService, SkillUserService>();
 builder.Services.AddScoped<ISkillUserRepository, SkillUserRepository>();
 
-// builder.Services.AddScoped<IAppUserService, AppUserService>();
+builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -75,8 +75,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 
-builder.Services.AddControllers().AddJsonOptions(x =>
-    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+builder.Services.AddControllers();
 
 
 

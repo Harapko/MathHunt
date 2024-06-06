@@ -5,8 +5,8 @@ namespace MathHunt.Core.Abstraction.IServices;
 public interface IAppUserService
 {
     Task<List<AppUser>> GetAllUser();
+    Task<AppUser?> GetUserByName(string name);
     Task<string> RegisterUser(AppUser user, string password, string role);
-    Task<bool> LoginUser(string email, string password, bool rememberMe, bool lockOnFail);
-    Task<bool> DeleteUser(string email);
-    Task<AppUser?> GetUsersSkill(string email);
+    Task<bool> DeleteUser(string userName);
+    Task<List<string>> GetUsersSkill(string userName);
 }
