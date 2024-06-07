@@ -71,9 +71,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         
     }
 
-    [HttpPut]
-    [Route("/updateUser")]
-    public async Task<ActionResult> UpdateUser([FromBody] PUTUpdateUserRequest request)
+    [HttpPut("updateUser/{userName}")]
+    public async Task<ActionResult> UpdateUser([FromBody] PUTUpdateUserRequest request, string userName)
     {
         var updateUser = AppUser.Create(
             request.userName,
@@ -87,7 +86,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         ).appUser;
         
         
-        var userId = await userService.UpdateUser(request.userName, updateUser);
+        var userId = await userService.UpdateUser(userName, updateUser);
         return Ok(userId);
     }
     

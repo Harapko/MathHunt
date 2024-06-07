@@ -20,8 +20,7 @@
           "Microsoft.IdentityModel.JsonWebTokens": "7.6.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
           "Swashbuckle.AspNetCore": "6.6.2",
-          "System.IdentityModel.Tokens.Jwt": "7.6.0",
-          "System.Configuration.ConfigurationManager": "6.0.0.0"
+          "System.IdentityModel.Tokens.Jwt": "7.6.0"
         },
         "runtime": {
           "MathHunt.Project.dll": {}
@@ -759,22 +758,6 @@
         "runtime": {
           "MathHunt.DataAccess.dll": {}
         }
-      },
-      "System.Configuration.ConfigurationManager/6.0.0.0": {
-        "runtime": {
-          "System.Configuration.ConfigurationManager.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.922.41905"
-          }
-        }
-      },
-      "System.Security.Cryptography.ProtectedData/6.0.0.0": {
-        "runtime": {
-          "System.Security.Cryptography.ProtectedData.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
-          }
-        }
       }
     }
   },
@@ -1223,16 +1206,6 @@
     },
     "MathHunt.DataAccess/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Configuration.ConfigurationManager/6.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Security.Cryptography.ProtectedData/6.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
