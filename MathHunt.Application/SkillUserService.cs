@@ -12,9 +12,9 @@ public class SkillUserService(ISkillUserRepository repository) : ISkillUserServi
         return await repository.Get();
     }
 
-    public async Task<List<UserSkill>> GetSkillByName(string skillName)
+    public async Task<List<UserSkill>> GetUsersBySkillName(string skillName)
     {
-        return await repository.GetByName(skillName);
+        return await repository.GetUsersBySkillName(skillName);
     }
     
     public async Task<Guid> CreateUserSkill(UserSkill userSkill)
@@ -32,13 +32,4 @@ public class SkillUserService(ISkillUserRepository repository) : ISkillUserServi
         return await repository.Delete(id);
     }
 
-    public async Task<string> AddSkillToUser(string userName,string skillName)
-    {
-        return await repository.AddToUser(userName ,skillName);
-    }
-    
-    public async Task<List<UserSkill>> GetUsersSkill(string skillName)
-    {
-        return await repository.GetUsers(skillName);
-    }
 }

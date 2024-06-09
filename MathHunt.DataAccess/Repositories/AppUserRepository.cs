@@ -8,8 +8,7 @@ namespace MathHunt.DataAccess.Repositories;
 
 public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
-    IRoleUserService roleService,
-    AppDbContext context
+    IRoleUserService roleService
 ) : IAppUserRepository
 {
     public async Task<List<AppUser>> Get()
@@ -26,7 +25,7 @@ public class AppUserRepository(
 
         var userList = userEntity
             .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
-                .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill)
+                .Select(s=> UserSkill.Create(s.Id, s.SkillName, []).userSkill)
                 .ToList(), u.CompaniesEntity
                 .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
                 .ToList()).appUser)
@@ -50,27 +49,12 @@ public class AppUserRepository(
 
         var user = userEntity
             .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
-                .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill)
+                .Select(s=> UserSkill.Create(s.Id, s.SkillName, []).userSkill)
                 .ToList(), u.CompaniesEntity
                 .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
                 .ToList()).appUser)
             .FirstOrDefault();
         return user;
-    }
-    
-    public async Task<List<string>> GetUserSkills(string userName)
-    {
-        var userEntity = await context.Users
-            .AsNoTracking()
-            .Where(u => u.UserName == userName)
-            .Include(u => u.UserSkillsEntities)
-            .FirstOrDefaultAsync();
-
-        var userSkill = userEntity.UserSkillsEntities
-            .Select(s => s.SkillName)
-            .ToList();
-    
-        return userSkill;
     }
     
     public async Task<string> Register(AppUser user, string password, string role)

@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 namespace MathHunt.DataAccess.Repositories;
 
 public class RoleUserRepository(
-    // RoleManager<RoleModel> roleManager,
     RoleManager<IdentityRole> roleManager,
     UserManager<AppUserEntity> userManager)
     : IRoleUserRepository

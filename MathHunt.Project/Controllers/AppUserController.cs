@@ -32,13 +32,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     }
 
     
-    [HttpGet]
-    [Route("/getSkillsUser")]
-    public async Task<ActionResult> GetSkillByUser(string userName)
-    {
-        var user = await userService.GetUsersSkill(userName);
-        return  Ok(user);
-    }
+
     
     
     [HttpGet]
