@@ -1,15 +1,11 @@
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace MathHunt.DataAccess.Repositories;
 
-public class SkillUserRepository(
-    AppDbContext context,
-    UserManager<AppUserEntity> userManager
-) : ISkillUserRepository
+public class SkillUserRepository(AppDbContext context) : ISkillUserRepository
 {
     public async Task<List<UserSkill>> Get()
     {
@@ -18,13 +14,13 @@ public class SkillUserRepository(
             .ToListAsync();
 
         var skill = skillEntity
-            .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
+            .Select(s => UserSkill.Create(s.Id, s.SkillName, []).userSkill)
             .ToList();
 
         return skill;
     }
 
-    public async Task<List<UserSkill>> GetByName(string skillName)
+    public async Task<List<UserSkill>> GetUsersBySkillName(string skillName)
     {
         var skillListEntity = await context.UserSkill
             .AsNoTracking()
@@ -32,42 +28,12 @@ public class SkillUserRepository(
             .Include(u => u.AppUserEntities)
             .ToListAsync();
         var skill = skillListEntity
-            .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
+            .Select(s => UserSkill.Create(s.Id, s.SkillName, s.AppUserEntities
+                .Select(u=> AppUser.Create(u.Id, u.UserName, u.UserSurname, u.Email, u.PhoneNumber,
+                    u.EnglishLevel, u.DescriptionSkill, u.Role, [], []).appUser).ToList()).userSkill)
             .ToList();
 
         return skill;
-    }
-    
-    public async Task<List<UserSkill>> GetUsers(string skillName)
-    {
-        var userEntity = await context.UserSkill
-            .Where(s => s.SkillName == skillName)
-            .Include(s => s.AppUserEntities)
-            .ToListAsync();
-
-        var user = userEntity
-            .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
-            .ToList();
-
-        return user;
-    }
-
-    public async Task<string> AddToUser(string userName, string skillName)
-    {
-        var skillEntity = await context.UserSkill
-            .AsNoTracking()
-            .Where(s => s.SkillName == skillName)
-            .FirstOrDefaultAsync();
-        var user = await userManager.FindByNameAsync(userName);
-        if (user != null && skillEntity != null)
-        {
-            user.UserSkillsEntities?.Add(skillEntity);
-        }
-
-        await context.SaveChangesAsync();
-
-
-        return user.Email;
     }
 
     public async Task<Guid> Create(UserSkill userSkill)

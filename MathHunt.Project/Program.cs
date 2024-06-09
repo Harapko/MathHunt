@@ -72,6 +72,9 @@ builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 
+builder.Services.AddScoped<IUserManagerService, UserManagerService>();
+builder.Services.AddScoped<IUserManagerRepository, UserManagerRepository>();
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/account/login"; // Путь перенаправления при неудачной аутентификации

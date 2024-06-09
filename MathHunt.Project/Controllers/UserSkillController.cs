@@ -12,8 +12,7 @@ namespace MathHunt.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class UserSkillController(
-    ISkillUserService service,
-    AppDbContext context) : ControllerBase
+    ISkillUserService service) : ControllerBase
 {
     [HttpGet]
     [Route("/getSkill")]
@@ -24,16 +23,11 @@ public class UserSkillController(
         return Ok(response);
     }
 
-    [HttpGet("/getUsersSkill")]
+    [HttpGet("/getUsersBySkill")]
     public async Task<ActionResult> GetUserBySkill(string skillName)
     {
-        var skill = await context.UserSkill
-            .Where(s => s.SkillName == skillName)
-            .Include(s => s.AppUserEntities)
-            .ToListAsync();
+        var skill = await service.GetUsersBySkillName(skillName);
         
-        
-
         return Ok(skill);
     }
 
@@ -42,7 +36,8 @@ public class UserSkillController(
     {
         var (skill, error) = UserSkill.Create(
             Guid.NewGuid(),
-            skillName);
+            skillName,
+            []);
 
         if (!string.IsNullOrWhiteSpace(error))
         {
@@ -52,13 +47,7 @@ public class UserSkillController(
         var skillId = await service.CreateUserSkill(skill);
         return Ok(skillId);
     }
-
-    [HttpPost("/addSkillToUser")]
-    public async Task<ActionResult> AddSkillToUser([FromBody] POSTAddSkillToUserRequest skillToUserRequest)
-    {
-        var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName);
-        return Ok(result);
-    }
+    
 
     [HttpPut("/editSkill/{id:guid}")]
     public async Task<ActionResult<Guid>> EditSkill(Guid id, string skillName)

@@ -8,18 +8,19 @@ public class UserSkill
     {
         
     }
-    private UserSkill(Guid id, string skillName)
+    private UserSkill(Guid id, string skillName, List<AppUser> identityUsers)
     {
         Id = id;
         SkillName = skillName;
-        
+        IdentityUsers = identityUsers;
+
     }
     
     public Guid Id { get;  }
     public string SkillName { get; } = string.Empty;
     public List<AppUser> IdentityUsers { get; } = [];
 
-    public static (UserSkill userSkill, string Error) Create(Guid id, string skillName)
+    public static (UserSkill userSkill, string Error) Create(Guid id, string skillName, List<AppUser> identityUsers)
     {
         var error = string.Empty;
 
@@ -28,7 +29,7 @@ public class UserSkill
             error = "Skill must have a name";
         }
 
-        var userSkill = new UserSkill(id, skillName);
+        var userSkill = new UserSkill(id, skillName, identityUsers);
         return (userSkill, error);
     }
 }

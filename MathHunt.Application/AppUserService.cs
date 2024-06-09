@@ -31,8 +31,4 @@ public class AppUserService(IAppUserRepository repository) : IAppUserService
         return await repository.Delete(userName);
     }
     
-    public async Task<List<string>> GetUsersSkill(string userName)
-    {
-        return await repository.GetUserSkills(userName);
-    }
 }
