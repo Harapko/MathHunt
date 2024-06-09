@@ -17,11 +17,16 @@ public class IdentityUserConfiguration : IEntityTypeConfiguration<AppUserEntity>
             .HasMany(u => u.UserSkillsEntities)
             .WithMany(s => s.AppUserEntities);
 
-        // builder
-        //     .Property(u => u.UserName)
-        //     .IsRequired()
-        //     .HasMaxLength(15);
-        //
+        builder
+            .HasMany(u => u.CompaniesEntity)
+            .WithOne(c => c.AppUser)
+            .HasForeignKey(c => c.AppUserId);
+
+        builder
+            .Property(u => u.UserName)
+            .IsRequired()
+            .HasMaxLength(15);
+        
         // builder
         //     .Property(u => u.UserSurname)
         //     .IsRequired()

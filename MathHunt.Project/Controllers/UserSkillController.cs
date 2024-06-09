@@ -48,9 +48,6 @@ public class UserSkillController(
         {
             return BadRequest(error);
         }
-        else
-        {
-        }
 
         var skillId = await service.CreateUserSkill(skill);
         return Ok(skillId);

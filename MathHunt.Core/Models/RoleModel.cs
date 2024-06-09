@@ -13,8 +13,8 @@ public class RoleModel : IdentityRole
     {
         NameRole = nameRole;
     }
-    
-    public string NameRole { get; }
+
+    public string NameRole { get; } = string.Empty;
 
     
     public static (RoleModel roleModel, string Error) Create(string nameRole)
