@@ -50,7 +50,6 @@ namespace MathHunt.DataAccess.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("DescriptionSkill")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
@@ -61,7 +60,6 @@ namespace MathHunt.DataAccess.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("EnglishLevel")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
@@ -97,6 +95,7 @@ namespace MathHunt.DataAccess.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
@@ -113,6 +112,40 @@ namespace MathHunt.DataAccess.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.CompanyEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateOnly?>("DataEnd")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly?>("DataStart")
+                        .HasColumnType("date");
+
+                    b.Property<string>("DescriptionUsersWork")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PositionUser")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TradeName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("MathHunt.DataAccess.Entities.UserSkillEntity", b =>
@@ -278,6 +311,17 @@ namespace MathHunt.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.CompanyEntity", b =>
+                {
+                    b.HasOne("MathHunt.DataAccess.Entities.AppUserEntity", "AppUser")
+                        .WithMany("CompaniesEntity")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -327,6 +371,11 @@ namespace MathHunt.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.AppUserEntity", b =>
+                {
+                    b.Navigation("CompaniesEntity");
                 });
 #pragma warning restore 612, 618
         }

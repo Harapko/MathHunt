@@ -37,6 +37,20 @@ public class SkillUserRepository(
 
         return skill;
     }
+    
+    public async Task<List<UserSkill>> GetUsers(string skillName)
+    {
+        var userEntity = await context.UserSkill
+            .Where(s => s.SkillName == skillName)
+            .Include(s => s.AppUserEntities)
+            .ToListAsync();
+
+        var user = userEntity
+            .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
+            .ToList();
+
+        return user;
+    }
 
     public async Task<string> AddToUser(string userName, string skillName)
     {
@@ -87,17 +101,5 @@ public class SkillUserRepository(
         return id;
     }
 
-    public async Task<List<UserSkill>> GetUsers(string skillName)
-    {
-        var userEntity = await context.UserSkill
-            .Where(s => s.SkillName == skillName)
-            .Include(s => s.AppUserEntities)
-            .ToListAsync();
-
-        var user = userEntity
-            .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill)
-            .ToList();
-
-        return user;
-    }
+    
 }

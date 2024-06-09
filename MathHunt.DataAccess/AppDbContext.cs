@@ -16,11 +16,14 @@ public class AppDbContext : IdentityDbContext<AppUserEntity>
     
     public DbSet<AppUserEntity> AppUsers { get; set; }
     public DbSet<UserSkillEntity> UserSkill { get; set; }
+    
+    public DbSet<CompanyEntity> Company { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new IdentityUserConfiguration());
         modelBuilder.ApplyConfiguration(new UserSkillConfiguration());
+        modelBuilder.ApplyConfiguration(new CompanyConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 }

@@ -1,7 +1,6 @@
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
-using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MathHunt.Controllers;
@@ -16,9 +15,18 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     {
         var userList = await userService.GetAllUser();
         var response = userList
-            .Select(u => new GETAllUserResponse(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkills
-                .Select(s=>s.SkillName)
-                .ToArray()));
+            .Select(u => new GETAllUserResponse(
+                u.Id,
+                u.UserName,
+                u.UserSurname,
+                u.Email,
+                u.PhoneNumber,
+                u.EnglishLevel,
+                u.DescriptionSkill,
+                u.Role,
+                u.UserSkills
+                .Select(s=>s.SkillName).ToArray()
+                ));
 
         return Ok(response);
     }
@@ -56,6 +64,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     {
 
         var (user, error) = AppUser.Create(
+            Guid.NewGuid().ToString(),
             postRegisterRequest.name,
             postRegisterRequest.surname,
             postRegisterRequest.email,
@@ -63,6 +72,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             postRegisterRequest.englishLevel,
             "",
             postRegisterRequest.role,
+            [],
             []
         );
     
@@ -75,6 +85,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     public async Task<ActionResult> UpdateUser([FromBody] PUTUpdateUserRequest request, string userName)
     {
         var updateUser = AppUser.Create(
+            Guid.NewGuid().ToString(),
             request.userName,
             request.userSurname,
             request.email,
@@ -82,6 +93,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             request.englishLevel,
             request.descriptionSkill,
             "",
+            [],
             []
         ).appUser;
         

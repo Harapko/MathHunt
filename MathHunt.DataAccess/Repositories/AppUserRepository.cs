@@ -25,8 +25,11 @@ public class AppUserRepository(
         }
 
         var userList = userEntity
-            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
-                .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
+            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
+                .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill)
+                .ToList(), u.CompaniesEntity
+                .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
+                .ToList()).appUser)
             .ToList();
 
         return userList;
@@ -46,8 +49,11 @@ public class AppUserRepository(
         }
 
         var user = userEntity
-            .Select(u => AppUser.Create(u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
-                .Select(s => UserSkill.Create(s.Id, s.SkillName).userSkill).ToList()).appUser)
+            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
+                .Select(s=> UserSkill.Create(s.Id, s.SkillName).userSkill)
+                .ToList(), u.CompaniesEntity
+                .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
+                .ToList()).appUser)
             .FirstOrDefault();
         return user;
     }
