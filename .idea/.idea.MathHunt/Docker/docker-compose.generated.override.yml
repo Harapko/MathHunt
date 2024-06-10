@@ -2,7 +2,7 @@
 services:
   mathhunt:
     build:
-      context: "/Users/maks/RiderProjects/MathHunt/MathHunt.Project"
+      context: "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project"
       dockerfile: "Dockerfile"
       target: "base"
     command: []
@@ -10,12 +10,11 @@ services:
     - "dotnet"
     - "/app/bin/Debug/net8.0/MathHunt.Project.dll"
     environment:
-      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/MathHunt.Project.staticwebassets.runtime.CT.json"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "mathhunt:dev"
     ports: []
     volumes:
-    - "/Users/maks/.nuget/packages:/home/app/.nuget/packages"
-    - "/Users/maks/RiderProjects/MathHunt/MathHunt.Project:/app:rw"
-    - "/Users/maks/RiderProjects/MathHunt:/src:rw"
+    - "C:\\Users\\bakud\\.nuget\\packages:/home/app/.nuget/packages"
+    - "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project:/app:rw"
+    - "C:\\Users\\bakud\\RiderProjects\\MathHunt:/src:rw"
     working_dir: "/app"

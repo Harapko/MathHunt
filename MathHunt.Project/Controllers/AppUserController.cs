@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MathHunt.Controllers;
@@ -9,6 +11,7 @@ namespace MathHunt.Controllers;
 
 public class AppUserController(IAppUserService userService) : ControllerBase
 {
+    [Authorize]
     [HttpGet]
     [Route("/getUser")]
     public async Task<ActionResult<List<GETAllUserResponse>>> GetUser()
@@ -30,9 +33,6 @@ public class AppUserController(IAppUserService userService) : ControllerBase
 
         return Ok(response);
     }
-
-    
-
     
     
     [HttpGet]
@@ -50,6 +50,15 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         {
             return BadRequest(new { message = "Email is null!" });
         }
+    }
+
+    [HttpGet]
+    [Route("/getCurrentUser")]
+    public async Task<ActionResult<AppUser>> GetCurrentUser()
+    {
+        var currentUserName =  User.FindFirstValue(ClaimTypes.Name);
+        var user = await userService.GetUserByName(currentUserName);
+        return Ok(user);
     }
     
     [HttpPost]
@@ -73,6 +82,13 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         var result = await userService.RegisterUser(user, postRegisterRequest.password, postRegisterRequest.role);
         return Ok(new { message = "User registered successfully!" });
         
+    }
+    
+    [HttpPost]
+    [Route("/banUser")]
+    public async Task<ActionResult> BanUser(string userName)
+    {
+        return Ok(await userService.BanUser(userName));
     }
 
     [HttpPut("updateUser/{userName}")]
@@ -113,5 +129,6 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         var result = await userService.DeleteUser(userName);
         return Ok(result);
     }
-    
+
+
 }

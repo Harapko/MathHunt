@@ -119,7 +119,22 @@ public class AppUserRepository(
         var result = await userManager.DeleteAsync(user);
         return result.Succeeded;
     }
-    
+
+    public async Task<string> Ban(string userName)
+    {
+        var user = await userManager.FindByNameAsync(userName);
+        if (user.LockoutEnd <= DateTimeOffset.Now)
+        {
+            await userManager.SetLockoutEndDateAsync(user, DateTimeOffset.Now.AddDays(10).ToOffset(default));
+            return $"User {user.UserName} is block";
+        }
+        else
+        {
+            await userManager.SetLockoutEndDateAsync(user, DateTimeOffset.Now.ToOffset(default));
+            return $"User {user.UserName} is unblock";
+        }
+        
+    }
     
     
     

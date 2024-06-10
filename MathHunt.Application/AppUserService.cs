@@ -30,5 +30,11 @@ public class AppUserService(IAppUserRepository repository) : IAppUserService
     {
         return await repository.Delete(userName);
     }
+
+    public async Task<string> BanUser(string userName)
+    {
+        return await repository.Ban(userName);
+    }
+    
     
 }
