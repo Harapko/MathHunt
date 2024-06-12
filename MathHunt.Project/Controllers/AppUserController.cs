@@ -1,7 +1,9 @@
+using System.Net;
 using System.Security.Claims;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +30,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 u.DescriptionSkill,
                 u.Role,
                 u.UserSkills
-                .Select(s=>s.SkillName).ToArray()
+                .Select(s=>s.SkillName).ToArray(),
+                u.PhotoUsers.Select(p=>p.Path).FirstOrDefault()
                 ));
 
         return Ok(response);
@@ -37,12 +40,12 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     
     [HttpGet]
     [Route("/getUserByName")]
-    public async Task<ActionResult<AppUser>> GetUserByName(string name)
+    public async Task<ActionResult<GETUserByNameResponse>> GetUserById(string id)
     {
-        if (name.Length >= 3)
+        if (id.Length >= 3)
         {
-            var user = await userService.GetUserByName(name);
-            var result = new GETUserByNameResponse(user.UserName, user.UserSurname, user.Email, user.PhoneNumber, user.EnglishLevel, user.DescriptionSkill, user.Role, user.UserSkills
+            var user = await userService.GetUserById(id);
+            var result = new GETUserByNameResponse(user.Id, user.UserName, user.UserSurname, user.Email, user.PhoneNumber, user.EnglishLevel, user.DescriptionSkill, user.Role, user.UserSkills
                 .Select(s=>s.SkillName).ToArray());
             return Ok(result);
         }
@@ -54,10 +57,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
 
     [HttpGet]
     [Route("/getCurrentUser")]
-    public async Task<ActionResult<AppUser>> GetCurrentUser()
+    public async Task<ActionResult<GETUserByNameResponse>> GetCurrentUser()
     {
-        var currentUserName =  User.FindFirstValue(ClaimTypes.Name);
-        var user = await userService.GetUserByName(currentUserName);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await userService.GetUserById(userId);
         return Ok(user);
     }
     
@@ -74,7 +77,9 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             postRegisterRequest.phoneNumber,
             postRegisterRequest.englishLevel,
             "",
+            "",
             postRegisterRequest.role,
+            [],
             [],
             []
         );
@@ -103,6 +108,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             request.englishLevel,
             request.descriptionSkill,
             "",
+            "",
+            [],
             [],
             []
         ).appUser;

@@ -62,6 +62,10 @@ namespace MathHunt.DataAccess.Migrations
                     b.Property<string>("EnglishLevel")
                         .HasColumnType("text");
 
+                    b.Property<string>("GitHubLink")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
@@ -146,6 +150,27 @@ namespace MathHunt.DataAccess.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Company");
+                });
+
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.PhotoUserEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AppUserEntityId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserEntityId");
+
+                    b.ToTable("PhotoUser");
                 });
 
             modelBuilder.Entity("MathHunt.DataAccess.Entities.UserSkillEntity", b =>
@@ -322,6 +347,17 @@ namespace MathHunt.DataAccess.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.PhotoUserEntity", b =>
+                {
+                    b.HasOne("MathHunt.DataAccess.Entities.AppUserEntity", "AppUserEntity")
+                        .WithMany("PhotoUserEntities")
+                        .HasForeignKey("AppUserEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUserEntity");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -376,6 +412,8 @@ namespace MathHunt.DataAccess.Migrations
             modelBuilder.Entity("MathHunt.DataAccess.Entities.AppUserEntity", b =>
                 {
                     b.Navigation("CompaniesEntity");
+
+                    b.Navigation("PhotoUserEntities");
                 });
 #pragma warning restore 612, 618
         }

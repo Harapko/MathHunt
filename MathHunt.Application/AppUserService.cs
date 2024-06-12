@@ -11,9 +11,9 @@ public class AppUserService(IAppUserRepository repository) : IAppUserService
         return await repository.Get();
     }
 
-    public async Task<AppUser?> GetUserByName(string name)
+    public async Task<AppUser?> GetUserById(string id)
     {
-        return await repository.GetByName(name);
+        return await repository.GetById(id);
     }
     
     public async Task<string> RegisterUser(AppUser user, string password, string role)

@@ -30,7 +30,7 @@ public class SkillUserRepository(AppDbContext context) : ISkillUserRepository
         var skill = skillListEntity
             .Select(s => UserSkill.Create(s.Id, s.SkillName, s.AppUserEntities
                 .Select(u=> AppUser.Create(u.Id, u.UserName, u.UserSurname, u.Email, u.PhoneNumber,
-                    u.EnglishLevel, u.DescriptionSkill, u.Role, [], []).appUser).ToList()).userSkill)
+                    u.EnglishLevel, u.DescriptionSkill, u.GitHubLink, u.Role, [], [], []).appUser).ToList()).userSkill)
             .ToList();
 
         return skill;

@@ -1,6 +1,8 @@
+using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,7 @@ public class AppUserRepository(
         var userEntity = await userManager.Users
             .AsNoTracking()
             .Include(u => u.UserSkillsEntities)
+            .Include(u=>u.PhotoUserEntities)
             .ToListAsync();
 
         foreach (var user in userEntity)
@@ -24,21 +27,23 @@ public class AppUserRepository(
         }
 
         var userList = userEntity
-            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
+            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.GitHubLink, u.Role, u.UserSkillsEntities
                 .Select(s=> UserSkill.Create(s.Id, s.SkillName, []).userSkill)
                 .ToList(), u.CompaniesEntity
                 .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
+                .ToList(), u.PhotoUserEntities
+                .Select(p=>PhotoUser.Create(p.Id, p.Path, p.AppUserEntityId).photoUser)
                 .ToList()).appUser)
             .ToList();
 
         return userList;
     }
 
-    public async Task<AppUser> GetByName(string name)
+    public async Task<AppUser> GetById(string id)
     {
         var userEntity = await userManager.Users
             .AsNoTracking()
-            .Where(u => u.UserName == name)
+            .Where(u => u.Id == id)
             .Include(u=>u.UserSkillsEntities)
             .ToListAsync();
         
@@ -48,11 +53,11 @@ public class AppUserRepository(
         }
 
         var user = userEntity
-            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.Role, u.UserSkillsEntities
+            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.GitHubLink, u.Role, u.UserSkillsEntities
                 .Select(s=> UserSkill.Create(s.Id, s.SkillName, []).userSkill)
                 .ToList(), u.CompaniesEntity
                 .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
-                .ToList()).appUser)
+                .ToList(), []).appUser)
             .FirstOrDefault();
         return user;
     }

@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "DCHOf2jYWKU3WBLMs0KHmwLaEq5tTw/+Egb75wuVWrw=",
+  "Hash": "FjKnEse+Hg+JEIZnKmmu5kGdCWawJBvAIAYPdqisgzI=",
   "Source": "MathHunt.Project",
   "BasePath": "_content/MathHunt.Project",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "MathHunt.Project\\wwwroot",
+      "Source": "MathHunt.Project",
+      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "BasePath": "_content/MathHunt.Project",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-03-06 203340.png",
+      "SourceId": "MathHunt.Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "BasePath": "_content/MathHunt.Project",
+      "RelativePath": "PhotoUser/Снимок экрана 2023-03-06 203340.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-03-06 203340.png"
+    }
+  ]
 }

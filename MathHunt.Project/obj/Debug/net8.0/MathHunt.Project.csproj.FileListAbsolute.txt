@@ -250,3 +250,4 @@ C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\refint\M
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\MathHunt.Project.pdb
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\MathHunt.Project.genruntimeconfig.cache
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\ref\MathHunt.Project.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\MathHunt.Project.staticwebassets.runtime.json

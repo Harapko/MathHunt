@@ -10,7 +10,7 @@ public sealed class AppUser
         
     }
     private AppUser(string id, string userName, string? userSurname, string email, string? phoneNumber,
-        string? englishLevel, string? descriptionSkill, string role, List<UserSkill>? userSkills, List<Company> companies)
+        string? englishLevel, string? descriptionSkill, string gitHubLink, string role, List<UserSkill>? userSkills, List<Company> companies, List<PhotoUser> photoUsers)
     {
         Id = id;
         UserName = userName;
@@ -19,9 +19,11 @@ public sealed class AppUser
         PhoneNumber = phoneNumber;
         EnglishLevel = englishLevel;
         DescriptionSkill = descriptionSkill;
+        GitHubLink = gitHubLink;
         Role = role;
         UserSkills = userSkills;
         Companies = companies;
+        PhotoUsers = photoUsers;
     }
 
     public string Id { get; }
@@ -31,12 +33,14 @@ public sealed class AppUser
     public string? PhoneNumber { get; } = string.Empty;
     public string? EnglishLevel { get; } = string.Empty;
     public string? DescriptionSkill { get; } = string.Empty;
+    public string GitHubLink { get; } = string.Empty;
     public string Role { get; } = string.Empty;
     public List<UserSkill>? UserSkills { get; } = [];
     public List<Company> Companies { get; } = [];
+    public List<PhotoUser> PhotoUsers { get; } = [];
 
     public static (AppUser appUser, string Error) Create(string id, string userName, string? userSurname, string email, string phoneNumber,
-        string? englishLevel, string? descriptionSkill, string role, List<UserSkill>? userSkills, List<Company> companies)
+        string? englishLevel, string? descriptionSkill, string gitHubLink, string role, List<UserSkill>? userSkills, List<Company> companies, List<PhotoUser> photoUsers)
     {
         var error = string.Empty;
         if (string.IsNullOrWhiteSpace(userName))
@@ -54,7 +58,7 @@ public sealed class AppUser
             error = "Role is null";
         }
 
-        var appUser = new AppUser(id, userName, userSurname, email, phoneNumber, englishLevel, descriptionSkill, role, userSkills, companies);
+        var appUser = new AppUser(id, userName, userSurname, email, phoneNumber, englishLevel, descriptionSkill, gitHubLink, role, userSkills, companies, photoUsers);
         return  (appUser, error);
     }
 }
