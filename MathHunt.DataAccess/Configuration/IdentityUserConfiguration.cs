@@ -23,6 +23,11 @@ public class IdentityUserConfiguration : IEntityTypeConfiguration<AppUserEntity>
             .HasForeignKey(c => c.AppUserId);
 
         builder
+            .HasMany(u => u.PhotoUserEntities)
+            .WithOne(p => p.AppUserEntity)
+            .HasForeignKey(p => p.AppUserEntityId);
+
+        builder
             .Property(u => u.UserName)
             .IsRequired()
             .HasMaxLength(15);

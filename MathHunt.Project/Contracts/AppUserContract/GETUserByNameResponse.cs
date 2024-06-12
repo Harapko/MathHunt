@@ -1,6 +1,7 @@
 namespace MathHunt.Contracts.Identity;
 
 public record GETUserByNameResponse(
+    string id,
     string name,
     string surname,
     string email,

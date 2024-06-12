@@ -9,7 +9,10 @@ public class AppUserEntity : IdentityUser
     public string? Role { get; set; } = string.Empty;
     public string? EnglishLevel { get; set; } = string.Empty;
     public string? DescriptionSkill { get; set; } = string.Empty;
+    public string GitHubLink { get; set; } = string.Empty;
     public List<UserSkillEntity>? UserSkillsEntities { get; set; } = [];
 
     public List<CompanyEntity>? CompaniesEntity { get; set; } = [];
+
+    public List<PhotoUserEntity> PhotoUserEntities { get; set; } = [];
 }

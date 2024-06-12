@@ -1,11 +1,7 @@
-using MathHunt.Contracts.Role;
 using MathHunt.Contracts.Skill;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
-using MathHunt.DataAccess;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MathHunt.Controllers;
 

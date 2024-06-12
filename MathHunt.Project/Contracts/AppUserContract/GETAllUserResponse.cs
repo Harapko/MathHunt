@@ -11,5 +11,6 @@ public record GETAllUserResponse(
     string englishLevel,
     string descriptionSkill,
     string role,
-    string[] skillName
+    string[] skillName,
+    string photoPath
     );
