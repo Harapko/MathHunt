@@ -2,6 +2,7 @@ using MathHunt.Contracts.Identity;
 using MathHunt.Contracts.Role;
 using MathHunt.Contracts.Skill;
 using MathHunt.Core.Abstraction.IServices;
+using MathHunt.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MathHunt.Controllers;
@@ -24,6 +25,20 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
         return Ok(result);
     }
 
+    [HttpPut("/updateUsersSkill/")]
+    public async Task<ActionResult> UpdateUsersSkill([FromBody] PUTUpdateUsersSkillRequest request)
+    {
+        var res = await service.UpdateUsersSkill(request.userId, request.oldSkillId, request.newSkillId, request.proficiencyLevel);
+        return Ok(res);
+    }
+
+    [HttpDelete("/deleteUsersSkill/{userId}/{skillId:guid}")]
+    public async Task<ActionResult> DeleteUserSkills(string userId, Guid skillId)
+    {
+        var result = await service.DeleteSkill(userId, skillId);
+        return Ok(result);
+    } 
+    
     [HttpPost]
     [Route("/createUsersPhoto")]
     public async Task<ActionResult> CreateUsersPhoto(IFormFile file, string appUserId)
@@ -39,12 +54,6 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("/deleteUsersSkill/{userId}/{skillId:guid}")]
-    public async Task<ActionResult> DeleteUserSkills(string userId, Guid skillId)
-    {
-        var result = await service.DeleteSkill(userId, skillId);
-        return Ok(result);
-    }
     
     [HttpDelete("/deleteUserPhotos/{id:guid}")]
     public async Task<ActionResult> DeleteUserPhotos(Guid id)

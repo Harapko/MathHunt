@@ -3,6 +3,7 @@ using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -54,6 +55,17 @@ public class UserManagerRepository(
 
 
         return user.Email;
+    }
+
+    public async Task<string> UpdateSkill(string userId, Guid oldSkillId, Guid newSkillId, string proficiencyLevel)
+    {
+            await context.UserSkill
+                .Where(us => us.AppUserId == userId)
+                .Where(us => us.SkillId == oldSkillId)
+                .ExecuteUpdateAsync(set => set
+                    .SetProperty(us=>us.SkillId, newSkillId)
+                    .SetProperty(us => us.ProficiencyLevel, proficiencyLevel));
+            return userId;
     }
 
     public async Task<string> DeleteSkill(string userId, Guid skillId)
