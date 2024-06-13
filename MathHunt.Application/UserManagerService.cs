@@ -17,6 +17,11 @@ public class UserManagerService(IUserManagerRepository repository) : IUserManage
         return await repository.AddToUser(userName ,skillName, proficiencyLevel);
     }
 
+    public async Task<string> UpdateUsersSkill(string userId, Guid oldSkillId, Guid newSkillId, string proficiencyLevel)
+    {
+        return await repository.UpdateSkill(userId, oldSkillId, newSkillId, proficiencyLevel);
+    }
+
     public async Task<string> DeleteSkill(string userId, Guid skillId)
     {
         return await repository.DeleteSkill(userId, skillId);

@@ -7,6 +7,7 @@ public interface IUserManagerService
 {
     Task<List<UserSkill>> GetSkillByUser(string userName);
     Task<string> AddSkillToUser(string userName, string skillName, string proficiencyLevel);
+    Task<string> UpdateUsersSkill(string userId, Guid oldSkillId, Guid newSkillId, string proficiencyLevel);
     Task<string> DeleteSkill(string userId, Guid skillId);
     Task<PhotoUser> CreateUsersPhoto(IFormFile titlePhoto, string appUserId);
     Task<Guid> UpdatePhoto(Guid id, IFormFile path, string appUserId);
