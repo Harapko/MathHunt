@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2023-03-06 203340.png"
     },
     {
+      "Id": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2024-03-18 143619.png",
+      "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2024-03-18 143619.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MathHunt.Project.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
