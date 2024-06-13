@@ -75,8 +75,8 @@ builder.Services.AddSingleton<IHttpContextAccessor,
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
 builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
 
-builder.Services.AddScoped<ISkillUserService, SkillUserService>();
-builder.Services.AddScoped<ISkillUserRepository, SkillUserRepository>();
+builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 
 builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();

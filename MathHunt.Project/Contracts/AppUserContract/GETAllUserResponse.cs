@@ -2,6 +2,7 @@ using MathHunt.Core.Models;
 
 namespace MathHunt.Contracts.Identity;
 
+
 public record GETAllUserResponse(
     string id,
     string name,
@@ -12,6 +13,9 @@ public record GETAllUserResponse(
     string descriptionSkill,
     string role,
     string photoPath,
-    string[] skillName,
-    Company[] companyList
+    Company[] companyList,
+    GETUserSkillResponse[] userSkill
     );
+
+
+

@@ -12,6 +12,6 @@ public record GETCurrentUserResponse(
     string descriptionSkill,
     string role,
     string photoPath,
-    string[] skillName,
-    Company[] companyList
+    Company[] companyList,
+    GETUserSkillResponse[] skillName
     );

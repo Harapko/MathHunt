@@ -7,19 +7,19 @@ namespace MathHunt.Application;
 
 public class UserManagerService(IUserManagerRepository repository) : IUserManagerService
 {
-    public async Task<List<string>> GetSkillByUser(string userName)
+    public async Task<List<UserSkill>> GetSkillByUser(string userName)
     {
         return await repository.GetUserSkills(userName);
     }
 
-    public async Task<string> AddSkillToUser(string userName, string skillName)
+    public async Task<string> AddSkillToUser(string userName, string skillName, string proficiencyLevel)
     {
-        return await repository.AddToUser(userName ,skillName);
+        return await repository.AddToUser(userName ,skillName, proficiencyLevel);
     }
 
-    public async Task<bool> DeleteSkill(string userName, string skillName)
+    public async Task<string> DeleteSkill(string userId, Guid skillId)
     {
-        return await repository.DeleteSkill(userName, skillName);
+        return await repository.DeleteSkill(userId, skillId);
     }
 
     public async Task<PhotoUser> CreateUsersPhoto(IFormFile titlePhoto, string appUserId)

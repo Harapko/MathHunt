@@ -1,10 +1,7 @@
-using System.Net;
 using System.Security.Claims;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MathHunt.Controllers;
@@ -13,7 +10,6 @@ namespace MathHunt.Controllers;
 
 public class AppUserController(IAppUserService userService) : ControllerBase
 {
-    [Authorize]
     [HttpGet]
     [Route("/getUser")]
     public async Task<ActionResult<List<GETAllUserResponse>>> GetUser()
@@ -30,9 +26,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 u.DescriptionSkill,
                 u.Role,
                 u.PhotoUsers.Select(p=>p.Path).FirstOrDefault(),
+                u.Companies.ToArray(),
                 u.UserSkills
-                .Select(s=>s.SkillName).ToArray(),
-                u.Companies.ToArray()
+                    .Select(us=> new GETUserSkillResponse(us.Skill.SkillName, us.ProficiencyLevel))
+                    .ToArray()
                 )).ToList();
 
         return Ok(response);
@@ -71,9 +68,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             user.DescriptionSkill,
             user.Role,
             user.PhotoUsers.Select(p => p.Path).FirstOrDefault(),
+            user.Companies.ToArray(),
             user.UserSkills
-                .Select(s => s.SkillName).ToArray(),
-            user.Companies.ToArray()
+                .Select(us=> new GETUserSkillResponse(us.Skill.SkillName, us.ProficiencyLevel))
+                .ToArray()
         );
         return Ok(result);
     }

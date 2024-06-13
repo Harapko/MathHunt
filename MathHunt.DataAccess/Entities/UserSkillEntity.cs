@@ -1,10 +1,12 @@
-using MathHunt.Core.Models;
-
 namespace MathHunt.DataAccess.Entities;
 
 public class UserSkillEntity
 {
-    public Guid Id { get; set; }
-    public string SkillName { get; set; } = string.Empty;
-    public List<AppUserEntity> AppUserEntities { get; set; } = [];
+    public string AppUserId { get; set; }
+    public AppUserEntity AppUserEntity { get; set; }
+
+    public Guid SkillId { get; set; }
+    public SkillEntity SkillEntity { get; set; }
+
+    public string? ProficiencyLevel  { get; set; }
 }

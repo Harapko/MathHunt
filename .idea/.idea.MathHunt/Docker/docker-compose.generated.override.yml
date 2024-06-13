@@ -10,6 +10,7 @@ services:
     - "dotnet"
     - "/app/bin/Debug/net8.0/MathHunt.Project.dll"
     environment:
+      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/MathHunt.Project.staticwebassets.runtime.CT.json"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "mathhunt:dev"
     ports: []

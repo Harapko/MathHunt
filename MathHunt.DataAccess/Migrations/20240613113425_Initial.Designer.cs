@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MathHunt.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240610153916_addPhotoUser")]
-    partial class addPhotoUser
+    [Migration("20240613113425_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace MathHunt.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("AppUserEntityUserSkillEntity", b =>
-                {
-                    b.Property<string>("AppUserEntitiesId")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("UserSkillsEntitiesId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("AppUserEntitiesId", "UserSkillsEntitiesId");
-
-                    b.HasIndex("UserSkillsEntitiesId");
-
-                    b.ToTable("AppUserEntityUserSkillEntity");
-                });
 
             modelBuilder.Entity("MathHunt.DataAccess.Entities.AppUserEntity", b =>
                 {
@@ -63,6 +48,10 @@ namespace MathHunt.DataAccess.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("EnglishLevel")
+                        .HasColumnType("text");
+
+                    b.Property<string>("GitHubLink")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
@@ -169,10 +158,10 @@ namespace MathHunt.DataAccess.Migrations
 
                     b.HasIndex("AppUserEntityId");
 
-                    b.ToTable("PhotoUserEntity");
+                    b.ToTable("PhotoUser");
                 });
 
-            modelBuilder.Entity("MathHunt.DataAccess.Entities.UserSkillEntity", b =>
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.SkillEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -184,6 +173,24 @@ namespace MathHunt.DataAccess.Migrations
                         .HasColumnType("character varying(30)");
 
                     b.HasKey("Id");
+
+                    b.ToTable("Skill");
+                });
+
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.UserSkillEntity", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("SkillId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ProficiencyLevel")
+                        .HasColumnType("text");
+
+                    b.HasKey("AppUserId", "SkillId");
+
+                    b.HasIndex("SkillId");
 
                     b.ToTable("UserSkill");
                 });
@@ -320,21 +327,6 @@ namespace MathHunt.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AppUserEntityUserSkillEntity", b =>
-                {
-                    b.HasOne("MathHunt.DataAccess.Entities.AppUserEntity", null)
-                        .WithMany()
-                        .HasForeignKey("AppUserEntitiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MathHunt.DataAccess.Entities.UserSkillEntity", null)
-                        .WithMany()
-                        .HasForeignKey("UserSkillsEntitiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("MathHunt.DataAccess.Entities.CompanyEntity", b =>
                 {
                     b.HasOne("MathHunt.DataAccess.Entities.AppUserEntity", "AppUser")
@@ -355,6 +347,25 @@ namespace MathHunt.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUserEntity");
+                });
+
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.UserSkillEntity", b =>
+                {
+                    b.HasOne("MathHunt.DataAccess.Entities.AppUserEntity", "AppUserEntity")
+                        .WithMany("UserSkillsEntities")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MathHunt.DataAccess.Entities.SkillEntity", "SkillEntity")
+                        .WithMany("UserSkillEntities")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUserEntity");
+
+                    b.Navigation("SkillEntity");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -413,6 +424,13 @@ namespace MathHunt.DataAccess.Migrations
                     b.Navigation("CompaniesEntity");
 
                     b.Navigation("PhotoUserEntities");
+
+                    b.Navigation("UserSkillsEntities");
+                });
+
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.SkillEntity", b =>
+                {
+                    b.Navigation("UserSkillEntities");
                 });
 #pragma warning restore 612, 618
         }
