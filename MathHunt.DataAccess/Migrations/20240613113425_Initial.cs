@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MathHunt.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addPostgres : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,10 @@ namespace MathHunt.DataAccess.Migrations
                     Id = table.Column<string>(type: "text", nullable: false),
                     UserSurname = table.Column<string>(type: "text", nullable: true),
                     Role = table.Column<string>(type: "text", nullable: true),
-                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    EnglishLevel = table.Column<string>(type: "text", nullable: true),
+                    DescriptionSkill = table.Column<string>(type: "text", nullable: true),
+                    GitHubLink = table.Column<string>(type: "text", nullable: false),
+                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -54,7 +57,7 @@ namespace MathHunt.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserSkill",
+                name: "Skill",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -62,7 +65,7 @@ namespace MathHunt.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserSkill", x => x.Id);
+                    table.PrimaryKey("PK_Skill", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,33 +175,71 @@ namespace MathHunt.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppUserEntityUserSkillEntity",
+                name: "Company",
                 columns: table => new
                 {
-                    AppUserEntitiesId = table.Column<string>(type: "text", nullable: false),
-                    UserSkillsEntitiesId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    TradeName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    DataStart = table.Column<DateOnly>(type: "date", nullable: true),
+                    DataEnd = table.Column<DateOnly>(type: "date", nullable: true),
+                    PositionUser = table.Column<string>(type: "text", nullable: true),
+                    DescriptionUsersWork = table.Column<string>(type: "text", nullable: true),
+                    AppUserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppUserEntityUserSkillEntity", x => new { x.AppUserEntitiesId, x.UserSkillsEntitiesId });
+                    table.PrimaryKey("PK_Company", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AppUserEntityUserSkillEntity_AspNetUsers_AppUserEntitiesId",
-                        column: x => x.AppUserEntitiesId,
+                        name: "FK_Company_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AppUserEntityUserSkillEntity_UserSkill_UserSkillsEntitiesId",
-                        column: x => x.UserSkillsEntitiesId,
-                        principalTable: "UserSkill",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_AppUserEntityUserSkillEntity_UserSkillsEntitiesId",
-                table: "AppUserEntityUserSkillEntity",
-                column: "UserSkillsEntitiesId");
+            migrationBuilder.CreateTable(
+                name: "PhotoUser",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Path = table.Column<string>(type: "text", nullable: false),
+                    AppUserEntityId = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhotoUser", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PhotoUser_AspNetUsers_AppUserEntityId",
+                        column: x => x.AppUserEntityId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserSkill",
+                columns: table => new
+                {
+                    AppUserId = table.Column<string>(type: "text", nullable: false),
+                    SkillId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProficiencyLevel = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserSkill", x => new { x.AppUserId, x.SkillId });
+                    table.ForeignKey(
+                        name: "FK_UserSkill_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserSkill_Skill_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skill",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -236,14 +277,26 @@ namespace MathHunt.DataAccess.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Company_AppUserId",
+                table: "Company",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PhotoUser_AppUserEntityId",
+                table: "PhotoUser",
+                column: "AppUserEntityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserSkill_SkillId",
+                table: "UserSkill",
+                column: "SkillId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "AppUserEntityUserSkillEntity");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -260,6 +313,12 @@ namespace MathHunt.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Company");
+
+            migrationBuilder.DropTable(
+                name: "PhotoUser");
+
+            migrationBuilder.DropTable(
                 name: "UserSkill");
 
             migrationBuilder.DropTable(
@@ -267,6 +326,9 @@ namespace MathHunt.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Skill");
         }
     }
 }

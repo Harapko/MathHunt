@@ -1,4 +1,6 @@
+using MathHunt.Contracts.Identity;
 using MathHunt.Contracts.Role;
+using MathHunt.Contracts.Skill;
 using MathHunt.Core.Abstraction.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,16 +10,17 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
 {
     [HttpGet]
     [Route("/getSkillByUser/{userName}")]
-    public async Task<ActionResult> GetSkillByUser(string userName)
+    public async Task<ActionResult<GETUserSkillResponse>> GetSkillByUser(string userName)
     {
         var user = await service.GetSkillByUser(userName);
-        return  Ok(user);
+        var resp = user.Select(us => new GETUserSkillResponse(us.Skill.SkillName, us.ProficiencyLevel)).ToList();
+        return Ok(resp);
     }
     
     [HttpPost("/addSkillToUser")]
     public async Task<ActionResult> AddSkillToUser([FromBody] POSTAddSkillToUserRequest skillToUserRequest)
     {
-        var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName);
+        var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName, skillToUserRequest.proficiencyLevel);
         return Ok(result);
     }
 
@@ -36,10 +39,10 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("/deleteUsersSkill/{userName}/{skillName}")]
-    public async Task<ActionResult> DeleteUserSkills(string userName, string skillName)
+    [HttpDelete("/deleteUsersSkill/{userId}/{skillId:guid}")]
+    public async Task<ActionResult> DeleteUserSkills(string userId, Guid skillId)
     {
-        var result = await service.DeleteSkill(userName, skillName);
+        var result = await service.DeleteSkill(userId, skillId);
         return Ok(result);
     }
     

@@ -7,12 +7,12 @@ namespace MathHunt.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserSkillController(
-    ISkillUserService service) : ControllerBase
+public class SkillController(
+    ISkillService service) : ControllerBase
 {
     [HttpGet]
     [Route("/getSkill")]
-    public async Task<ActionResult<List<UserSkill>>> GetSkills()
+    public async Task<ActionResult<List<Skill>>> GetSkills()
     {
         var skillList = await service.GetUserSkill();
         var response = skillList.Select(s => new GETAllSkillResponse(s.Id, s.SkillName)).ToList();
@@ -30,7 +30,7 @@ public class UserSkillController(
     [HttpPost("/createSkill")]
     public async Task<ActionResult<Guid>> CreateSkill(string skillName)
     {
-        var (skill, error) = UserSkill.Create(
+        var (skill, error) = Skill.Create(
             Guid.NewGuid(),
             skillName,
             []);

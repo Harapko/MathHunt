@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MathHunt.DataAccess.Configuration;
 
-public class IdentityUserConfiguration : IEntityTypeConfiguration<AppUserEntity>
+public class AppUserConfiguration : IEntityTypeConfiguration<AppUserEntity>
 {
     public void Configure(EntityTypeBuilder<AppUserEntity> builder)
     {
@@ -15,7 +15,8 @@ public class IdentityUserConfiguration : IEntityTypeConfiguration<AppUserEntity>
 
         builder
             .HasMany(u => u.UserSkillsEntities)
-            .WithMany(s => s.AppUserEntities);
+            .WithOne(us => us.AppUserEntity)
+            .HasForeignKey(us=>us.AppUserId);
 
         builder
             .HasMany(u => u.CompaniesEntity)

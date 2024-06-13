@@ -9,15 +9,16 @@ public class UserSkillConfiguration : IEntityTypeConfiguration<UserSkillEntity>
     public void Configure(EntityTypeBuilder<UserSkillEntity> builder)
     {
         builder
-            .HasKey(s => s.Id);
+            .HasKey(us => new { us.AppUserId, us.SkillId });
+        
+        builder
+            .HasOne(us => us.AppUserEntity)
+            .WithMany(u => u.UserSkillsEntities)
+            .HasForeignKey(us => us.AppUserId);
 
         builder
-            .HasMany(s => s.AppUserEntities)
-            .WithMany(u => u.UserSkillsEntities);
-
-        builder
-            .Property(s => s.SkillName)
-            .IsRequired()
-            .HasMaxLength(30);
+            .HasOne(us => us.SkillEntity)
+            .WithMany(s => s.UserSkillEntities)
+            .HasForeignKey(us => us.SkillId);
     }
 }

@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-
 namespace MathHunt.Core.Models;
 
 public class UserSkill
@@ -8,28 +6,39 @@ public class UserSkill
     {
         
     }
-    private UserSkill(Guid id, string skillName, List<AppUser> identityUsers)
+    
+    private UserSkill(string appUserId, Guid skillId, string proficiencyLevel, AppUser appUser, Skill skill)
     {
-        Id = id;
-        SkillName = skillName;
-        IdentityUsers = identityUsers;
-
+        AppUserId = appUserId;
+        SkillId = skillId;
+        ProficiencyLevel = proficiencyLevel;
+        AppUser = appUser;
+        Skill = skill;
     }
     
-    public Guid Id { get;  }
-    public string SkillName { get; } = string.Empty;
-    public List<AppUser> IdentityUsers { get; } = [];
+    public string AppUserId { get; }
+    public AppUser AppUser { get; }
 
-    public static (UserSkill userSkill, string Error) Create(Guid id, string skillName, List<AppUser> identityUsers)
+    public Guid SkillId { get; }
+    public Skill Skill { get; }
+
+    public string? ProficiencyLevel  { get; }
+
+    public static (UserSkill userSkill, string Error) Create(string appUserId, Guid skillId, string proficiencyLevel, AppUser appUser, Skill skill)
     {
         var error = string.Empty;
-
-        if (string.IsNullOrWhiteSpace(skillName))
+        if (string.IsNullOrWhiteSpace(appUserId))
         {
-            error = "Skill must have a name";
+            error = "AppUserId is null";
+        }
+        
+        if (string.IsNullOrWhiteSpace(skillId.ToString()))
+        {
+            error = "AppUserId is null";
         }
 
-        var userSkill = new UserSkill(id, skillName, identityUsers);
+        var userSkill = new UserSkill(appUserId, skillId, proficiencyLevel, appUser, skill);
+
         return (userSkill, error);
     }
 }

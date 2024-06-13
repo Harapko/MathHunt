@@ -15,18 +15,18 @@ public class AppDbContext : IdentityDbContext<AppUserEntity>
     }
     
     public DbSet<AppUserEntity> AppUsers { get; set; }
-    public DbSet<UserSkillEntity> UserSkill { get; set; }
-    
+    public DbSet<SkillEntity> Skill { get; set; }
     public DbSet<CompanyEntity> Company { get; set; }
-
     public DbSet<PhotoUserEntity> PhotoUser { get; set; }
+    public DbSet<UserSkillEntity> UserSkill { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new IdentityUserConfiguration());
-        modelBuilder.ApplyConfiguration(new UserSkillConfiguration());
+        modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+        modelBuilder.ApplyConfiguration(new SkillConfiguration());
         modelBuilder.ApplyConfiguration(new CompanyConfiguration());
         modelBuilder.ApplyConfiguration(new PhotoUserConfiguration());
+        modelBuilder.ApplyConfiguration(new UserSkillConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 }

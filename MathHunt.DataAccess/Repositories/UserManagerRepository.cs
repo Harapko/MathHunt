@@ -13,31 +13,41 @@ public class UserManagerRepository(
     UserManager<AppUserEntity> userManager,
     IWebHostEnvironment environment) : IUserManagerRepository
 {
-    public async Task<List<string>> GetUserSkills(string userName)
+    public async Task<List<UserSkill>> GetUserSkills(string userName)
     {
         var userEntity = await context.Users
             .AsNoTracking()
             .Where(u => u.UserName == userName)
             .Include(u => u.UserSkillsEntities)
+            .ThenInclude(us => us.SkillEntity)
             .FirstOrDefaultAsync();
 
         var userSkill = userEntity.UserSkillsEntities
-            .Select(s => s.SkillName)
+            .Select(us => UserSkill
+                .Create(us.AppUserId, us.SkillId, us.ProficiencyLevel, null, Skill
+                    .Create(us.SkillId, us.SkillEntity.SkillName, []).userSkill).userSkill)
             .ToList();
+            
     
         return userSkill;
     }
 
-    public async Task<string> AddToUser(string userName, string skillName)
+    public async Task<string> AddToUser(string userName, string skillName, string proficiencyLevel)
     {
-        var skillEntity = await context.UserSkill
+        var skillEntity = await context.Skill
             .AsNoTracking()
             .Where(s => s.SkillName == skillName)
             .FirstOrDefaultAsync();
         var user = await userManager.FindByNameAsync(userName);
         if (user != null && skillEntity != null)
         {
-            user.UserSkillsEntities?.Add(skillEntity);
+            var userSkill = new UserSkillEntity
+            {
+                AppUserId = user.Id,
+                SkillId = skillEntity.Id,
+                ProficiencyLevel = proficiencyLevel
+            };
+            await context.UserSkill.AddAsync(userSkill);
         }
 
         await context.SaveChangesAsync();
@@ -46,17 +56,13 @@ public class UserManagerRepository(
         return user.Email;
     }
 
-    public async Task<bool> DeleteSkill(string userName, string skillName)
+    public async Task<string> DeleteSkill(string userId, Guid skillId)
     {
-        var skill = await context.UserSkill
-            .Include(s=>s.AppUserEntities)
-            .FirstOrDefaultAsync(s => s.SkillName == skillName);
-
-        var user = await userManager.FindByNameAsync(userName);
-
-        var resp = skill.AppUserEntities.Remove(user);
-        await context.SaveChangesAsync();
-        return resp;
+        await context.UserSkill
+            .Where(us => us.AppUserId == userId)
+            .Where(us => us.SkillId == skillId)
+            .ExecuteDeleteAsync();
+        return (userId);
     }
     
     public async Task<PhotoUser> CreatePhoto(IFormFile titlePhoto, string appUserId)
