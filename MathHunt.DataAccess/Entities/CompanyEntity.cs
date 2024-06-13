@@ -10,6 +10,9 @@ public class CompanyEntity
     public DateOnly? DataEnd { get; set; }
     public string? PositionUser { get; set; } = string.Empty;
     public string? DescriptionUsersWork { get; set; } = string.Empty;
+    public string? Link { get; set; } = string.Empty;
     public string AppUserId { get; set; }
     public AppUserEntity AppUser { get; set; }
+
+    public List<CompanySkillEntity> CompanySkill { get; set; } = [];
 }

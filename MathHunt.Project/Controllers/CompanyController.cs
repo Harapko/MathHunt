@@ -16,6 +16,17 @@ public class CompanyController(ICompanyService service) : ControllerBase
         return companyList;
     }
 
+    [HttpGet]
+    [Route("/getCompanyByUser")]
+    public async Task<ActionResult<List<GETCompanyByUserResponse>>> GetCompanyByUser(string userId)
+    {
+        var company = await service.GetCompanyByUser(userId);
+        var res = company.Select(c => new GETCompanyByUserResponse(c.Id, c.TradeName, c.DataStart, c.DataEnd,
+            c.PositionUser, c.DescriptionUsersWork,
+            c.Link, c.AppUserId, c.CompanySkills.Select(cs => cs.Skill.SkillName).ToArray())).ToList();
+        return Ok(res);
+    }
+
     [HttpPost]
     [Route("/createCompany")]
     public async Task<ActionResult<Guid>> CreateCompany([FromBody] POSTCreateCompanyRequest request)
@@ -26,8 +37,10 @@ public class CompanyController(ICompanyService service) : ControllerBase
             request.dataStart,
             request.dataEnd,
             request.positionUser,
-            request.DescriptionUsersWork,
-            request.appUserId
+            request.descriptionUsersWork,
+            request.link,
+            request.appUserId,
+            []
         );
 
         if (!string.IsNullOrWhiteSpace(error))
@@ -37,6 +50,14 @@ public class CompanyController(ICompanyService service) : ControllerBase
 
         var companyId = await service.CreateCompany(company);
         return companyId;
+    }
+    
+    [HttpPost]
+    [Route("/addSkillToCompany")]
+    public async Task<ActionResult<Guid>> AddSkillToCompany([FromBody] POSTAddSkillToCompanyRequest request)
+    {
+        var res = await service.AddSkillToCompany(request.companyId, request.skillId);
+        return Ok(res);
     }
 
     [HttpPut("/updateCompany/{companyId:guid}")]
@@ -48,8 +69,10 @@ public class CompanyController(ICompanyService service) : ControllerBase
             request.dataStart,
             request.dataEnd,
             request.positionUser,
-            request.DescriptionUsersWork,
-            request.appUserId
+            request.descriptionUsersWork,
+            request.link,
+            request.appUserId,
+            []
         );
 
         if (!string.IsNullOrWhiteSpace(error))
@@ -59,6 +82,14 @@ public class CompanyController(ICompanyService service) : ControllerBase
         
         var result = await service.UpdateCompany(company, companyId);
         return companyId;
+    }
+
+    [HttpPut]
+    [Route("/updateCompanySkills")]
+    public async Task<ActionResult<Guid>> UpdateCompanySkills(Guid companyId, Guid oldSkillId, Guid newSkillId)
+    {
+        var res = await service.UpdateCompanySkills(companyId, oldSkillId, newSkillId);
+        return Ok(res);
     }
 
     [HttpDelete("/deleteCompany/{companyId:guid}")]

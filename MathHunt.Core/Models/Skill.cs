@@ -20,6 +20,8 @@ public class Skill
     public string SkillName { get; } = string.Empty;
     public List<UserSkill> UserSkills { get; } = [];
 
+    public List<CompanySkill> CompanySkills { get; }
+
     public static (Skill userSkill, string Error) Create(Guid id, string skillName, List<UserSkill> identityUsers)
     {
         var error = string.Empty;

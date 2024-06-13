@@ -17,6 +17,11 @@ public class CompanyConfiguration : IEntityTypeConfiguration<CompanyEntity>
             .HasForeignKey(c=>c.AppUserId);
 
         builder
+            .HasMany(c => c.CompanySkill)
+            .WithOne(cs => cs.Company)
+            .HasForeignKey(cs => cs.CompanyId);
+
+        builder
             .Property(c => c.TradeName)
             .HasMaxLength(20)
             .IsRequired();

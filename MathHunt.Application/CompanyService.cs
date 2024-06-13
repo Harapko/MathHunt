@@ -21,9 +21,19 @@ public class CompanyService(ICompanyRepository repository) : ICompanyService
         return await repository.Create(company);
     }
 
+    public async Task<Guid> AddSkillToCompany(Guid companyId, Guid skillId)
+    {
+        return await repository.AddSkillToCompany(companyId, skillId);
+    }
+
     public async Task<Guid> UpdateCompany(Company company, Guid companyId)
     {
         return await repository.Update(company, companyId);
+    }
+
+    public async Task<Guid> UpdateCompanySkills(Guid companyId, Guid oldSkillId, Guid newSkillId)
+    {
+        return await repository.UpdateSkill(companyId, oldSkillId, newSkillId);
     }
 
     public async Task<Guid> DeleteCompany(Guid companyId)

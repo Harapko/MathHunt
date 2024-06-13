@@ -11,10 +11,14 @@ public class CompanyRepository(AppDbContext context) : ICompanyRepository
     {
         var companyEntity = await context.Company
             .AsNoTracking()
+            .Include(c=>c.CompanySkill)
+            .ThenInclude(cs=>cs.Skill)
             .ToListAsync();
 
         var company = companyEntity
-            .Select(c => Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId)
+            .Select(c => Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.Link, c.AppUserId, c.CompanySkill
+                    .Select(cs => CompanySkill.Create(cs.CompanyId, null, cs.SkillId, Skill.Create(cs.Skill.Id, cs.Skill.SkillName, []).userSkill).companySkill)
+                    .ToList())
                 .company)
             .ToList();
 
@@ -23,16 +27,11 @@ public class CompanyRepository(AppDbContext context) : ICompanyRepository
 
     public async Task<List<Company>> GetByUser(string userId)
     {
-        var companyEntityByUserId = await context.Company
-            .AsNoTracking()
+        var company = await Get();
+        var userCompany = company
             .Where(c => c.AppUserId == userId)
-            .ToListAsync();
-
-        var companyByUserId = companyEntityByUserId
-            .Select(c => Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId)
-                .company)
             .ToList();
-        return companyByUserId;
+        return userCompany;
     }
 
     public async Task<Guid> Create(Company company)
@@ -53,6 +52,19 @@ public class CompanyRepository(AppDbContext context) : ICompanyRepository
         return companyEntity.Id;
     }
 
+    public async Task<Guid> AddSkillToCompany(Guid companyId, Guid skillId)
+    {
+        var companySkill = new CompanySkillEntity
+        {
+            CompanyId = companyId,
+            SkillId = skillId
+        };
+        await context.CompanySkill.AddAsync(companySkill);
+        await context.SaveChangesAsync();
+
+        return companyId;
+    }
+
     public async Task<Guid> Update(Company company, Guid companyId)
     {
         await context.Company
@@ -62,6 +74,17 @@ public class CompanyRepository(AppDbContext context) : ICompanyRepository
                 .SetProperty(c=>c.DataEnd, company.DataEnd)
                 .SetProperty(c=>c.PositionUser, company.PositionUser)
                 .SetProperty(c=>c.DescriptionUsersWork, company.DescriptionUsersWork));
+
+        return companyId;
+    }
+
+    public async Task<Guid> UpdateSkill(Guid companyId, Guid oldSkillId, Guid newSkillId)
+    {
+        await context.CompanySkill
+            .Where(cs => cs.CompanyId == companyId)
+            .Where(cs => cs.SkillId == oldSkillId)
+            .ExecuteUpdateAsync(set => set
+                .SetProperty(cs => cs.SkillId, newSkillId));
 
         return companyId;
     }

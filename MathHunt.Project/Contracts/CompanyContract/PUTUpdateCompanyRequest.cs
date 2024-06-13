@@ -1,10 +1,11 @@
 namespace MathHunt.Contracts.CompanyContract;
 
 public record PUTUpdateCompanyRequest(
-        string tradeName,
+    string tradeName,
     DateOnly dataStart,
     DateOnly dataEnd,
     string positionUser,
-    string DescriptionUsersWork,
+    string descriptionUsersWork,
+    string link,
     string appUserId
     );

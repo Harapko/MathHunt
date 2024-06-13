@@ -5,6 +5,7 @@ public record POSTCreateCompanyRequest(
     DateOnly dataStart,
     DateOnly dataEnd,
     string positionUser,
-    string DescriptionUsersWork,
+    string descriptionUsersWork,
+    string link,
     string appUserId
 );

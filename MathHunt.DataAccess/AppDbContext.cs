@@ -19,6 +19,7 @@ public class AppDbContext : IdentityDbContext<AppUserEntity>
     public DbSet<CompanyEntity> Company { get; set; }
     public DbSet<PhotoUserEntity> PhotoUser { get; set; }
     public DbSet<UserSkillEntity> UserSkill { get; set; }
+    public DbSet<CompanySkillEntity> CompanySkill { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,6 +28,7 @@ public class AppDbContext : IdentityDbContext<AppUserEntity>
         modelBuilder.ApplyConfiguration(new CompanyConfiguration());
         modelBuilder.ApplyConfiguration(new PhotoUserConfiguration());
         modelBuilder.ApplyConfiguration(new UserSkillConfiguration());
+        modelBuilder.ApplyConfiguration(new CompanySkillConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nTSuqUN5neki6bBKWLIbNhnNSUFtvatiKE9ZCb55EGU=",
+  "Hash": "Bm5qctAI+trlt5+UHykbd/Rks7sUt5FfdxcTUZQhYvg=",
   "Source": "MathHunt.Project",
   "BasePath": "_content/MathHunt.Project",
   "Mode": "Default",
@@ -34,6 +34,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-03-06 203340.png"
+    },
+    {
+      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-05-21 170059.png",
+      "SourceId": "MathHunt.Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "BasePath": "_content/MathHunt.Project",
+      "RelativePath": "PhotoUser/Снимок экрана 2023-05-21 170059.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-05-21 170059.png"
     },
     {
       "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2024-03-18 143619.png",

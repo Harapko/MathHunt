@@ -17,6 +17,11 @@ public class SkillConfiguration : IEntityTypeConfiguration<SkillEntity>
             .HasForeignKey(us=>us.SkillId);
 
         builder
+            .HasMany(s => s.CompanySkill)
+            .WithOne(cs => cs.Skill)
+            .HasForeignKey(cs => cs.SkillId);
+
+        builder
             .Property(s => s.SkillName)
             .IsRequired()
             .HasMaxLength(30);

@@ -17,10 +17,7 @@ public class AppUserRepository(
     {
         var userEntity = await userManager.Users
             .AsNoTracking()
-            .Include(u => u.UserSkillsEntities)
-            .ThenInclude(s=>s.SkillEntity)
             .Include(u=>u.PhotoUserEntities)
-            .Include(u=> u.CompaniesEntity)
             .ToListAsync();
 
         foreach (var user in userEntity)
@@ -29,15 +26,11 @@ public class AppUserRepository(
         }
 
         var userList = userEntity
-            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.GitHubLink, u.Role, u.UserSkillsEntities
-                .Select(us=> UserSkill.Create(us.AppUserId, us.SkillId, us.ProficiencyLevel, AppUser
-                    .Create(us.AppUserEntity.Id, us.AppUserEntity.UserName,null,null,null,null,null,null,null,null,null,null).appUser,
-                    Skill.Create(us.SkillEntity.Id, us.SkillEntity.SkillName, []).userSkill).userSkill)
-                .ToList(), u.CompaniesEntity
-                .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
-                .ToList(), u.PhotoUserEntities
-                .Select(p=>PhotoUser.Create(p.Id, p.Path, p.AppUserEntityId).photoUser)
-                .ToList()).appUser)
+            .Select(u => AppUser.Create(u.Id, u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel,
+                u.DescriptionSkill, u.GitHubLink, u.Role, [], [], u.PhotoUserEntities
+                    .Select(p=> PhotoUser
+                        .Create(p.Id, p.Path, p.AppUserEntityId).photoUser)
+                    .ToList()).appUser)
             .ToList();
 
         return userList;    

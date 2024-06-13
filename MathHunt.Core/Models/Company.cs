@@ -7,7 +7,7 @@ public class Company
         
     }
 
-    private Company(Guid id, string tradeName, DateOnly? dataStart, DateOnly? dataEnd, string? positionUser, string? descriptionUsersWork, string appUserId)
+    private Company(Guid id, string tradeName, DateOnly? dataStart, DateOnly? dataEnd, string? positionUser, string? descriptionUsersWork, string? link, string appUserId, List<CompanySkill> companySkills)
     {
         Id = id;
         TradeName = tradeName;
@@ -15,7 +15,9 @@ public class Company
         DataEnd = dataEnd;
         PositionUser = positionUser;
         DescriptionUsersWork = descriptionUsersWork;
+        Link = link;
         AppUserId = appUserId;
+        CompanySkills = companySkills;
     }
 
     public Guid Id { get; }
@@ -24,11 +26,13 @@ public class Company
     public DateOnly? DataEnd { get; }
     public string? PositionUser { get; } = string.Empty;
     public string? DescriptionUsersWork { get; } = string.Empty;
+    public string? Link { get; } = string.Empty;
     public string AppUserId { get; }
     public AppUser AppUser { get; }
+    public List<CompanySkill> CompanySkills { get; }
 
     public static (Company company, string Error) Create(Guid id, string tradeName, DateOnly? dataStart,
-        DateOnly? dataEnd, string? positionUser, string? descriptionUsersWork, string appUserId)
+        DateOnly? dataEnd, string? positionUser, string? descriptionUsersWork, string? link, string appUserId, List<CompanySkill> companySkills)
     {
         var error = string.Empty;
 
@@ -47,7 +51,7 @@ public class Company
             error = "Company must have a User";
         }
 
-        var company = new Company(id, tradeName, dataStart, dataEnd, positionUser, descriptionUsersWork, appUserId);
+        var company = new Company(id, tradeName, dataStart, dataEnd, positionUser, descriptionUsersWork, link, appUserId, companySkills);
         return (company, error);
         
     }

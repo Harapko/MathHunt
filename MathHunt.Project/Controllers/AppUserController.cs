@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using MathHunt.Contracts.CompanyContract;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
@@ -25,12 +26,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 u.EnglishLevel,
                 u.DescriptionSkill,
                 u.Role,
-                u.PhotoUsers.Select(p=>p.Path).FirstOrDefault(),
-                u.Companies.ToArray(),
-                u.UserSkills
-                    .Select(us=> new GETUserSkillResponse(us.Skill.SkillName, us.ProficiencyLevel))
-                    .ToArray()
-                )).ToList();
+                u.PhotoUsers
+                    .Select(p => p.Path).FirstOrDefault()))
+            .ToList();
+                
 
         return Ok(response);
     }
