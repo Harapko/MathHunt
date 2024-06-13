@@ -19,6 +19,7 @@ public class AppUserRepository(
             .AsNoTracking()
             .Include(u => u.UserSkillsEntities)
             .Include(u=>u.PhotoUserEntities)
+            .Include(u=> u.CompaniesEntity)
             .ToListAsync();
 
         foreach (var user in userEntity)
@@ -41,24 +42,8 @@ public class AppUserRepository(
 
     public async Task<AppUser> GetById(string id)
     {
-        var userEntity = await userManager.Users
-            .AsNoTracking()
-            .Where(u => u.Id == id)
-            .Include(u=>u.UserSkillsEntities)
-            .ToListAsync();
-        
-        foreach (var users in userEntity)
-        {
-            users.Role = await roleService.GetUserRole(users.UserName);
-        }
-
-        var user = userEntity
-            .Select(u => AppUser.Create(u.Id ,u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel, u.DescriptionSkill, u.GitHubLink, u.Role, u.UserSkillsEntities
-                .Select(s=> UserSkill.Create(s.Id, s.SkillName, []).userSkill)
-                .ToList(), u.CompaniesEntity
-                .Select(c=> Company.Create(c.Id, c.TradeName, c.DataStart, c.DataEnd, c.PositionUser, c.DescriptionUsersWork, c.AppUserId).company)
-                .ToList(), []).appUser)
-            .FirstOrDefault();
+        var userList = await Get();
+        var user = userList.FirstOrDefault(u => u.Id == id);
         return user;
     }
     

@@ -11,6 +11,7 @@ public record GETAllUserResponse(
     string englishLevel,
     string descriptionSkill,
     string role,
+    string photoPath,
     string[] skillName,
-    string photoPath
+    Company[] companyList
     );

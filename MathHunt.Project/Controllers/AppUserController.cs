@@ -29,39 +29,53 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 u.EnglishLevel,
                 u.DescriptionSkill,
                 u.Role,
+                u.PhotoUsers.Select(p=>p.Path).FirstOrDefault(),
                 u.UserSkills
                 .Select(s=>s.SkillName).ToArray(),
-                u.PhotoUsers.Select(p=>p.Path).FirstOrDefault()
-                ));
+                u.Companies.ToArray()
+                )).ToList();
 
         return Ok(response);
     }
     
     
     [HttpGet]
-    [Route("/getUserByName")]
-    public async Task<ActionResult<GETUserByNameResponse>> GetUserById(string id)
+    [Route("/getUserById")]
+    public async Task<ActionResult<AppUser>> GetUserById(string id)
     {
         if (id.Length >= 3)
         {
             var user = await userService.GetUserById(id);
-            var result = new GETUserByNameResponse(user.Id, user.UserName, user.UserSurname, user.Email, user.PhoneNumber, user.EnglishLevel, user.DescriptionSkill, user.Role, user.UserSkills
-                .Select(s=>s.SkillName).ToArray());
-            return Ok(result);
+            return Ok(user);
         }
         else
         {
             return BadRequest(new { message = "Email is null!" });
         }
+
     }
 
     [HttpGet]
     [Route("/getCurrentUser")]
-    public async Task<ActionResult<GETUserByNameResponse>> GetCurrentUser()
+    public async Task<ActionResult<GETCurrentUserResponse>> GetCurrentUser()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await userService.GetUserById(userId);
-        return Ok(user);
+        var result = new GETCurrentUserResponse(
+            user.Id,
+            user.UserName,
+            user.UserSurname,
+            user.Email,
+            user.PhoneNumber,
+            user.EnglishLevel,
+            user.DescriptionSkill,
+            user.Role,
+            user.PhotoUsers.Select(p => p.Path).FirstOrDefault(),
+            user.UserSkills
+                .Select(s => s.SkillName).ToArray(),
+            user.Companies.ToArray()
+        );
+        return Ok(result);
     }
     
     [HttpPost]

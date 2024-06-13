@@ -7,7 +7,7 @@ namespace MathHunt.Controllers;
 public class UserManagerController(IUserManagerService service) : ControllerBase
 {
     [HttpGet]
-    [Route("/getSkillByUser")]
+    [Route("/getSkillByUser/{userName}")]
     public async Task<ActionResult> GetSkillByUser(string userName)
     {
         var user = await service.GetSkillByUser(userName);
