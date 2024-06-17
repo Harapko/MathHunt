@@ -22,9 +22,9 @@ public class UserManagerService(IUserManagerRepository repository) : IUserManage
         return await repository.UpdateSkill(userId, oldSkillId, newSkillId, proficiencyLevel);
     }
 
-    public async Task<string> DeleteSkill(string userId, Guid skillId)
+    public async Task<string> DeleteSkill(string userId, string skillName)
     {
-        return await repository.DeleteSkill(userId, skillId);
+        return await repository.DeleteSkill(userId, skillName);
     }
 
     public async Task<PhotoUser> CreateUsersPhoto(IFormFile titlePhoto, string appUserId)

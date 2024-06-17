@@ -14,15 +14,16 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
     public async Task<ActionResult<GETUserSkillResponse>> GetSkillByUser(string userName)
     {
         var user = await service.GetSkillByUser(userName);
-        var resp = user.Select(us => new GETUserSkillResponse(us.Skill.SkillName, us.ProficiencyLevel)).ToList();
-        return Ok(resp);
+        var response = user.Select(us => new GETUserSkillResponse(us.SkillId, us.Skill.SkillName, us.ProficiencyLevel)).ToList();
+        return Ok(response);
     }
     
     [HttpPost("/addSkillToUser")]
-    public async Task<ActionResult> AddSkillToUser([FromBody] POSTAddSkillToUserRequest skillToUserRequest)
+    public async Task<ActionResult<string>> AddSkillToUser([FromBody] POSTAddSkillToUserRequest skillToUserRequest)
     {
         var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName, skillToUserRequest.proficiencyLevel);
-        return Ok(result);
+        var response = new POSTAddSkillToUserResponse(result);
+        return Ok(response);
     }
 
     [HttpPut("/updateUsersSkill/")]
@@ -32,11 +33,12 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
         return Ok(res);
     }
 
-    [HttpDelete("/deleteUsersSkill/{userId}/{skillId:guid}")]
-    public async Task<ActionResult> DeleteUserSkills(string userId, Guid skillId)
+    [HttpDelete("/deleteUsersSkill/{userId}/{skillName}")]
+    public async Task<ActionResult<DELETEUsersSkillResponse>> DeleteUserSkills([FromRoute] DELETEUserSkillRequest request)
     {
-        var result = await service.DeleteSkill(userId, skillId);
-        return Ok(result);
+        var result = await service.DeleteSkill(request.userId, request.skillName);
+        var response = new DELETEUsersSkillResponse(result);
+        return Ok(response);
     } 
     
     [HttpPost]

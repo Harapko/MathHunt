@@ -36,13 +36,16 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     
     
     [HttpGet]
-    [Route("/getUserById")]
-    public async Task<ActionResult<AppUser>> GetUserById(string id)
+    [Route("/getUserById/{id}")]
+    public async Task<ActionResult<GETUserByIdResponse>> GetUserById(string id)
     {
         if (id.Length >= 3)
         {
             var user = await userService.GetUserById(id);
-            return Ok(user);
+            var response = new GETUserByIdResponse(user.Id, user.UserName, user.UserSurname, user.Email,
+                user.PhoneNumber, user.EnglishLevel, user.DescriptionSkill, user.Role,
+                user.PhotoUsers.Select(p => p.Path).FirstOrDefault());
+            return Ok(response);
         }
         else
         {
@@ -69,7 +72,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             user.PhotoUsers.Select(p => p.Path).FirstOrDefault(),
             user.Companies.ToArray(),
             user.UserSkills
-                .Select(us=> new GETUserSkillResponse(us.Skill.SkillName, us.ProficiencyLevel))
+                .Select(us=> new GETUserSkillResponse(us.SkillId, us.Skill.SkillName, us.ProficiencyLevel))
                 .ToArray()
         );
         return Ok(result);

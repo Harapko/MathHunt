@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MathHunt.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2b68fd5f18f4feff67dc271dbbbb9d200cf872c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07b808520b17cb8abd0efecd31250b4c6612738f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MathHunt.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MathHunt.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

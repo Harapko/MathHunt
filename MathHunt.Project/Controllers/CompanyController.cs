@@ -17,14 +17,14 @@ public class CompanyController(ICompanyService service) : ControllerBase
     }
 
     [HttpGet]
-    [Route("/getCompanyByUser")]
+    [Route("/getCompanyByUser/{userId}")]
     public async Task<ActionResult<List<GETCompanyByUserResponse>>> GetCompanyByUser(string userId)
     {
         var company = await service.GetCompanyByUser(userId);
-        var res = company.Select(c => new GETCompanyByUserResponse(c.Id, c.TradeName, c.DataStart, c.DataEnd,
+        var response = company.Select(c => new GETCompanyByUserResponse(c.Id, c.TradeName, c.DataStart, c.DataEnd,
             c.PositionUser, c.DescriptionUsersWork,
             c.Link, c.AppUserId, c.CompanySkills.Select(cs => cs.Skill.SkillName).ToArray())).ToList();
-        return Ok(res);
+        return Ok(response);
     }
 
     [HttpPost]

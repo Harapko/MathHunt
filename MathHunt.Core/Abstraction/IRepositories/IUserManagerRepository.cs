@@ -8,7 +8,7 @@ public interface IUserManagerRepository
     Task<List<UserSkill>> GetUserSkills(string userName);
     Task<string> AddToUser(string userName, string skillName, string proficiencyLevel);
     Task<string> UpdateSkill(string userId, Guid oldSkillId, Guid newSkillId, string proficiencyLevel);
-    Task<string> DeleteSkill(string userId, Guid skillId);
+    Task<string> DeleteSkill(string userId, string skillName);
     Task<PhotoUser> CreatePhoto(IFormFile titlePhoto, string appUserId);
     Task<Guid> UpdatePhoto(Guid id, IFormFile path, string appUserId);
     Task<Guid> DeletePhoto(Guid id);

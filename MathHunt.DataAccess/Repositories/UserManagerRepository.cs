@@ -54,7 +54,7 @@ public class UserManagerRepository(
         await context.SaveChangesAsync();
 
 
-        return user.Email;
+        return user.UserName;
     }
 
     public async Task<string> UpdateSkill(string userId, Guid oldSkillId, Guid newSkillId, string proficiencyLevel)
@@ -68,11 +68,11 @@ public class UserManagerRepository(
             return userId;
     }
 
-    public async Task<string> DeleteSkill(string userId, Guid skillId)
+    public async Task<string> DeleteSkill(string userId, string skillName)
     {
         await context.UserSkill
             .Where(us => us.AppUserId == userId)
-            .Where(us => us.SkillId == skillId)
+            .Where(us => us.SkillEntity.SkillName == skillName)
             .ExecuteDeleteAsync();
         return (userId);
     }

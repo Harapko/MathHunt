@@ -23,5 +23,4 @@ RUN dotnet publish "MathHunt.Project.csproj" -c $BUILD_CONFIGURATION -o /app/pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV ASPNETCORE_ENVIRONMENT=Development
 ENTRYPOINT ["dotnet", "MathHunt.Project.dll"]
