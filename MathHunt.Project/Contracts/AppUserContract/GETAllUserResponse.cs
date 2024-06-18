@@ -11,6 +11,7 @@ public record GETAllUserResponse(
     string email,
     string phoneNumber,
     string englishLevel,
+    string gitHubLink,
     string descriptionSkill,
     string role,
     string? photoPath

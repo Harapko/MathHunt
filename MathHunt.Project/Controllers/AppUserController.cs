@@ -24,6 +24,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 u.Email,
                 u.PhoneNumber,
                 u.EnglishLevel,
+                u.GitHubLink,
                 u.DescriptionSkill,
                 u.Role,
                 u.PhotoUsers
@@ -42,8 +43,15 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         if (id.Length >= 3)
         {
             var user = await userService.GetUserById(id);
-            var response = new GETUserByIdResponse(user.Id, user.UserName, user.UserSurname, user.Email,
-                user.PhoneNumber, user.EnglishLevel, user.DescriptionSkill, user.Role,
+            var response = new GETUserByIdResponse(user.Id,
+                user.UserName,
+                user.UserSurname,
+                user.Email,
+                user.PhoneNumber,
+                user.EnglishLevel,
+                user.GitHubLink,
+                user.DescriptionSkill,
+                user.Role,
                 user.PhotoUsers.Select(p => p.Path).FirstOrDefault());
             return Ok(response);
         }
@@ -67,6 +75,7 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             user.Email,
             user.PhoneNumber,
             user.EnglishLevel,
+            user.GitHubLink,
             user.DescriptionSkill,
             user.Role,
             user.PhotoUsers.Select(p => p.Path).FirstOrDefault(),
