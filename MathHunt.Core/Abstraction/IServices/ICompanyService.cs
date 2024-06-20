@@ -11,4 +11,5 @@ public interface ICompanyService
     Task<Guid> UpdateCompany(Company company, Guid companyId);
     Task<Guid> UpdateCompanySkills(Guid companyId, Guid oldSkillId, Guid newSkillId);
     Task<Guid> DeleteCompany(Guid companyId);
+    Task<Guid> DeleteCompanySkill(Guid companyId, string skillName);
 }

@@ -21,9 +21,16 @@ public class CompanyController(ICompanyService service) : ControllerBase
     public async Task<ActionResult<List<GETCompanyByUserResponse>>> GetCompanyByUser(string userId)
     {
         var company = await service.GetCompanyByUser(userId);
-        var response = company.Select(c => new GETCompanyByUserResponse(c.Id, c.TradeName, c.DataStart, c.DataEnd,
-            c.PositionUser, c.DescriptionUsersWork,
-            c.Link, c.AppUserId, c.CompanySkills.Select(cs => cs.Skill.SkillName).ToArray())).ToList();
+        var response = company.Select(c => new GETCompanyByUserResponse(
+            c.Id,
+            c.TradeName,
+            c.DataStart,
+            c.DataEnd,
+            c.PositionUser,
+            c.DescriptionUsersWork,
+            c.Link,
+            c.AppUserId,
+            c.CompanySkills.Select(cs => cs.Skill.SkillName).ToArray())).ToList();
         return Ok(response);
     }
 
@@ -97,5 +104,12 @@ public class CompanyController(ICompanyService service) : ControllerBase
     {
         var result = await service.DeleteCompany(companyId);
         return companyId;
+    }
+
+    [HttpDelete("/deleteCompanySkill/{companyId:guid}/{skillName}")]
+    public async Task<ActionResult<Guid>> DeleteCompanySkill(Guid companyId, string skillName)
+    {
+        var result = await service.DeleteCompanySkill(companyId, skillName);
+        return Ok(result);
     }
 }

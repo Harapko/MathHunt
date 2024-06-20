@@ -18,6 +18,7 @@ public class AppUserRepository(
         var userEntity = await userManager.Users
             .AsNoTracking()
             .Include(u=>u.PhotoUserEntities)
+            .Include(u=>u.UserSkillsEntities)
             .ToListAsync();
 
         foreach (var user in userEntity)
@@ -70,16 +71,17 @@ public class AppUserRepository(
         return newUser.Id;
     }
 
-    public async Task<string> Update(string userName, AppUser user)
+    public async Task<string> Update(string userId, AppUser user)
     {
         await userManager.Users
-            .Where(u => u.UserName == userName)
+            .Where(u => u.Id == userId)
             .ExecuteUpdateAsync(set => set
-                .SetProperty(u => u.UserName, user.UserName)
+                // .SetProperty(u => u.UserName, user.UserName)
                 .SetProperty(u => u.UserSurname, user.UserSurname)
                 .SetProperty(u => u.Email, user.Email)
                 .SetProperty(u => u.PhoneNumber, user.PhoneNumber)
                 .SetProperty(u => u.EnglishLevel, user.EnglishLevel)
+                .SetProperty(u=>u.GitHubLink, user.GitHubLink)
                 .SetProperty(u => u.DescriptionSkill, user.DescriptionSkill));
         
         return user.Id;

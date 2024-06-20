@@ -40,4 +40,9 @@ public class CompanyService(ICompanyRepository repository) : ICompanyService
     {
         return await repository.Delete(companyId);
     }
+
+    public async Task<Guid> DeleteCompanySkill(Guid companyId, string skillName)
+    {
+        return await repository.DeleteSkill(companyId, skillName);
+    }
 }

@@ -119,18 +119,19 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         return Ok(await userService.BanUser(userName));
     }
 
-    [HttpPut("updateUser/{userName}")]
-    public async Task<ActionResult> UpdateUser([FromBody] PUTUpdateUserRequest request, string userName)
+    [HttpPut("updateUser/{userId}")]
+    public async Task<ActionResult<Guid>> UpdateUser([FromBody] PUTUpdateUserRequest request, string userId)
     {
         var updateUser = AppUser.Create(
             Guid.NewGuid().ToString(),
-            request.userName,
+            // request.userName,
+            "",
             request.userSurname,
             request.email,
             request.phoneNumber,
             request.englishLevel,
             request.descriptionSkill,
-            "",
+            request.gitHubLink,
             "",
             [],
             [],
@@ -138,8 +139,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         ).appUser;
         
         
-        var userId = await userService.UpdateUser(userName, updateUser);
-        return Ok(userId);
+        var userResponse = await userService.UpdateUser(userId, updateUser);
+        return Ok(new { message = "User update successfully" });
     }
     
     // [HttpGet]

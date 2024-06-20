@@ -43,6 +43,7 @@ public class CompanyRepository(AppDbContext context) : ICompanyRepository
             DataStart = company.DataStart,
             DataEnd = company.DataEnd,
             PositionUser = company.PositionUser,
+            Link = company.Link,
             DescriptionUsersWork = company.DescriptionUsersWork,
             AppUserId = company.AppUserId
         };
@@ -93,6 +94,16 @@ public class CompanyRepository(AppDbContext context) : ICompanyRepository
     {
         await context.Company
             .Where(c => c.Id == companyId)
+            .ExecuteDeleteAsync();
+
+        return companyId;
+    }
+
+    public async Task<Guid> DeleteSkill(Guid companyId, string skillName)
+    {
+        await context.CompanySkill
+            .Where(cs => cs.CompanyId == companyId)
+            .Where(cs => cs.Skill.SkillName == skillName)
             .ExecuteDeleteAsync();
 
         return companyId;

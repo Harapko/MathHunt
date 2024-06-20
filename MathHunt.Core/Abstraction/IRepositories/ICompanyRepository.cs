@@ -11,4 +11,5 @@ public interface ICompanyRepository
     Task<Guid> Update(Company company, Guid companyId);
     Task<Guid> UpdateSkill(Guid companyId, Guid oldSkillId, Guid newSkillId);
     Task<Guid> Delete(Guid companyId);
+    Task<Guid> DeleteSkill(Guid companyId, string skillName);
 }
