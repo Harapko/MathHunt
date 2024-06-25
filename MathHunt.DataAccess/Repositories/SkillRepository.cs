@@ -26,12 +26,14 @@ public class SkillRepository(AppDbContext context) : ISkillRepository
             .AsNoTracking()
             .Where(s => s.SkillName == skillName)
             .Include(u => u.UserSkillEntities)
+            .ThenInclude(us => us.AppUserEntity)
             .ToListAsync();
         var skill = skillListEntity
             .Select(s => Skill
                 .Create(s.Id, s.SkillName, s.UserSkillEntities
                     .Select(us => UserSkill
-                        .Create(us.AppUserId, us.SkillId, us.ProficiencyLevel, null, null)
+                        .Create(us.AppUserId, us.SkillId, us.ProficiencyLevel, AppUser.Create(us.AppUserId, us.AppUserEntity.UserName, "", "", "", "", "", "", "", DateTime.Now, 
+                            false, [], [], []).appUser, null)
                         .userSkill)
                     .ToList())
                 .userSkill)
@@ -70,6 +72,4 @@ public class SkillRepository(AppDbContext context) : ISkillRepository
             .ExecuteDeleteAsync();
         return id;
     }
-
-    
 }

@@ -10,5 +10,7 @@ public record GETUserByIdResponse(
     string gitHubLink,
     string descriptionSkill,
     string role,
-    string? photoPath
+    string? photoPath,
+    DateTime? lockEnd,
+    bool isLock
     );

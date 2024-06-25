@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using MathHunt.Contracts.CompanyContract;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
@@ -28,7 +27,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 u.DescriptionSkill,
                 u.Role,
                 u.PhotoUsers
-                    .Select(p => p.Path).FirstOrDefault()))
+                    .Select(p => p.Path).FirstOrDefault(),
+                u.LockEnd,
+                u.IsLock
+                ))
             .ToList();
                 
 
@@ -43,7 +45,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         if (id.Length >= 3)
         {
             var user = await userService.GetUserById(id);
-            var response = new GETUserByIdResponse(user.Id,
+            var response = new GETUserByIdResponse(
+                user.Id,
                 user.UserName,
                 user.UserSurname,
                 user.Email,
@@ -52,7 +55,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
                 user.GitHubLink,
                 user.DescriptionSkill,
                 user.Role,
-                user.PhotoUsers.Select(p => p.Path).FirstOrDefault());
+                $"https://storage.cloud.google.com/math-hunt/{user.Id}?authuser=1",
+                user.LockEnd,
+                user.IsLock
+                );
             return Ok(response);
         }
         else
@@ -78,11 +84,13 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             user.GitHubLink,
             user.DescriptionSkill,
             user.Role,
-            user.PhotoUsers.Select(p => p.Path).FirstOrDefault(),
+            $"https://storage.cloud.google.com/math-hunt/{user.Id}?authuser=1",
             user.Companies.ToArray(),
             user.UserSkills
                 .Select(us=> new GETUserSkillResponse(us.SkillId, us.Skill.SkillName, us.ProficiencyLevel))
-                .ToArray()
+                .ToArray(),
+            user.LockEnd,
+            user.IsLock
         );
         return Ok(result);
     }
@@ -102,6 +110,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             "",
             "",
             postRegisterRequest.role,
+            DateTime.Now,
+            false,
             [],
             [],
             []
@@ -113,10 +123,10 @@ public class AppUserController(IAppUserService userService) : ControllerBase
     }
     
     [HttpPost]
-    [Route("/banUser")]
-    public async Task<ActionResult> BanUser(string userName)
+    [Route("/banUser/{userName}")]
+    public async Task<ActionResult> BanUser([FromRoute]string userName)
     {
-        return Ok(await userService.BanUser(userName));
+        return Ok( new {message = await userService.BanUser(userName)});
     }
 
     [HttpPut("updateUser/{userId}")]
@@ -133,6 +143,8 @@ public class AppUserController(IAppUserService userService) : ControllerBase
             request.descriptionSkill,
             request.gitHubLink,
             "",
+            DateTime.Now,
+            true,
             [],
             [],
             []
@@ -143,14 +155,6 @@ public class AppUserController(IAppUserService userService) : ControllerBase
         return Ok(new { message = "User update successfully" });
     }
     
-    // [HttpGet]
-    // [Route("/logout")]
-    // public async Task<ActionResult> Logout()
-    // {
-    //     // Выполните логику выхода пользователя
-    //     var result =  userRepository.Logout();
-    //     return Ok(new { message = "Logged out successfully", result });
-    // }
     
     [HttpDelete]
     [Route("/deleteUser")]

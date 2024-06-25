@@ -26,19 +26,5 @@ public class UserManagerService(IUserManagerRepository repository) : IUserManage
     {
         return await repository.DeleteSkill(userId, skillName);
     }
-
-    public async Task<PhotoUser> CreateUsersPhoto(IFormFile titlePhoto, string appUserId)
-    {
-        return await repository.CreatePhoto(titlePhoto, appUserId);
-    }
-
-    public async Task<Guid> UpdatePhoto(Guid id, IFormFile path, string appUserId)
-    {
-        return await repository.UpdatePhoto(id, path, appUserId);
-    }
-
-    public async Task<Guid> DeletePhoto(Guid id)
-    {
-        return await repository.DeletePhoto(id);
-    }
+    
 }

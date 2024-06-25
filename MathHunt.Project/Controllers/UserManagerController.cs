@@ -1,3 +1,4 @@
+using Google.Cloud.Storage.V1;
 using MathHunt.Contracts.Identity;
 using MathHunt.Contracts.Role;
 using MathHunt.Contracts.Skill;
@@ -22,8 +23,7 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
     public async Task<ActionResult<string>> AddSkillToUser([FromBody] POSTAddSkillToUserRequest skillToUserRequest)
     {
         var result = await service.AddSkillToUser(skillToUserRequest.userName, skillToUserRequest.skillName, skillToUserRequest.proficiencyLevel);
-        var response = new POSTAddSkillToUserResponse(result);
-        return Ok(response);
+        return Ok(new { message = $"Add Skill to user successfully {result}" });
     }
 
     [HttpPut("/updateUsersSkill/")]
@@ -34,33 +34,11 @@ public class UserManagerController(IUserManagerService service) : ControllerBase
     }
 
     [HttpDelete("/deleteUsersSkill/{userId}/{skillName}")]
-    public async Task<ActionResult<DELETEUsersSkillResponse>> DeleteUserSkills([FromRoute] DELETEUserSkillRequest request)
+    public async Task<ActionResult<string>> DeleteUserSkills([FromRoute] DELETEUserSkillRequest request)
     {
         var result = await service.DeleteSkill(request.userId, request.skillName);
-        var response = new DELETEUsersSkillResponse(result);
-        return Ok(response);
+        return Ok(new { message = $"Delete user skill successfully {result}" });
     } 
     
-    [HttpPost]
-    [Route("/createUsersPhoto")]
-    public async Task<ActionResult> CreateUsersPhoto(IFormFile file, string appUserId)
-    {
-        var result = await service.CreateUsersPhoto(file, appUserId);
-        return Ok(result);
-    }
-
-    [HttpPut("/updateUserPhoto/{id:guid}")]
-    public async Task<ActionResult> UpdateUserPhoto(Guid id, IFormFile path, string appUserId)
-    {
-        var result = await service.UpdatePhoto(id, path, appUserId);
-        return Ok(result);
-    }
-
     
-    [HttpDelete("/deleteUserPhotos/{id:guid}")]
-    public async Task<ActionResult> DeleteUserPhotos(Guid id)
-    {
-        var result = await service.DeletePhoto(id);
-        return Ok(result);
-    }
 }

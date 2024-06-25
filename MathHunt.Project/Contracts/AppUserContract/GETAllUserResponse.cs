@@ -14,7 +14,9 @@ public record GETAllUserResponse(
     string gitHubLink,
     string descriptionSkill,
     string role,
-    string? photoPath
+    string? photoPath,
+    DateTime? lockEnd,
+    bool isLock
     );
 
 

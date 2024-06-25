@@ -251,3 +251,13 @@ C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\MathHunt
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\MathHunt.Project.genruntimeconfig.cache
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\obj\Debug\net8.0\ref\MathHunt.Project.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\MathHunt.Project.staticwebassets.runtime.json
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Api.Gax.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Apis.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Apis.Auth.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Apis.Core.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Apis.Storage.v1.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Google.Cloud.Storage.V1.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\System.Management.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll

@@ -28,7 +28,7 @@ public class AppUserRepository(
 
         var userList = userEntity
             .Select(u => AppUser.Create(u.Id, u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel,
-                u.DescriptionSkill, u.GitHubLink, u.Role, [], [], u.PhotoUserEntities
+                u.DescriptionSkill, u.GitHubLink, u.Role, u.LockoutEnd.Value.Date, u.IsLock, [], [], u.PhotoUserEntities
                     .Select(p=> PhotoUser
                         .Create(p.Id, p.Path, p.AppUserEntityId).photoUser)
                     .ToList()).appUser)
@@ -86,20 +86,7 @@ public class AppUserRepository(
         
         return user.Id;
     }
-
-    // public Task Logout()
-    // {
-    //     var result = signInManager.SignOutAsync();
-    //     if (result.IsCompleted)
-    //     {
-    //         
-    //         return result;
-    //     }
-    //     else
-    //     {
-    //         throw new Exception($"Failed to create user: {result.Exception}");
-    //     }
-    // }
+    
     
     public async Task<bool> Delete(string userName)
     {
@@ -111,22 +98,19 @@ public class AppUserRepository(
     public async Task<string> Ban(string userName)
     {
         var user = await userManager.FindByNameAsync(userName);
-        if (user.LockoutEnd <= DateTimeOffset.Now)
+        user.IsLock = !user.IsLock;
+        await userManager.UpdateAsync(user);
+        if (user.LockoutEnd <= DateTimeOffset.Now.AddDays(1).ToOffset(default)) 
         {
             await userManager.SetLockoutEndDateAsync(user, DateTimeOffset.Now.AddDays(10).ToOffset(default));
             return $"User {user.UserName} is block";
         }
-        else
-        {
-            await userManager.SetLockoutEndDateAsync(user, DateTimeOffset.Now.ToOffset(default));
-            return $"User {user.UserName} is unblock";
-        }
-        
+
+        await userManager.SetLockoutEndDateAsync(user, DateTimeOffset.Now.ToOffset(default));
+        return $"User {user.UserName} is unblock";
+
     }
     
-    
-    
-
 }
 
 

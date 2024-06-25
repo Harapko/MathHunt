@@ -6,13 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace MathHunt.Controllers;
 
 [ApiController]
-[Route("[controller]")]
 public class SkillController(
     ISkillService service) : ControllerBase
 {
-    [HttpGet]
-    [Route("/getSkill")]
-    public async Task<ActionResult<List<Skill>>> GetSkills()
+    [HttpGet("/getSkill")]
+    public async Task<ActionResult<List<GETAllSkillResponse>>> GetSkills()
     {
         var skillList = await service.GetUserSkill();
         var response = skillList.Select(s => new GETAllSkillResponse(s.Id, s.SkillName)).ToList();
@@ -20,11 +18,17 @@ public class SkillController(
     }
 
     [HttpGet("/getUsersBySkill")]
-    public async Task<ActionResult> GetUserBySkill(string skillName)
+    public async Task<ActionResult> GetUsersBySkill(string skillName)
     {
-        var skill = await service.GetUsersBySkillName(skillName);
-        
-        return Ok(skill);
+        var skillList = await service.GetUsersBySkillName(skillName);
+        var userList = skillList.Select(s => s.UserSkills).FirstOrDefault();
+        var response = userList.Select(us => new GETUsersBySkillResponse(
+            us.AppUser.Id,
+            us.AppUser.UserName,
+            us.ProficiencyLevel
+        )).ToList();
+
+        return Ok(response);
     }
 
     [HttpPost("/createSkill")]
@@ -43,7 +47,7 @@ public class SkillController(
         var skillId = await service.CreateUserSkill(skill);
         return Ok(skillId);
     }
-    
+
 
     [HttpPut("/editSkill/{id:guid}")]
     public async Task<ActionResult<Guid>> EditSkill(Guid id, string skillName)

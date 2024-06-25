@@ -87,6 +87,9 @@ builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<IUserManagerService, UserManagerService>();
 builder.Services.AddScoped<IUserManagerRepository, UserManagerRepository>();
 
+builder.Services.AddScoped<IPhotoUserService, PhotoUserService>();
+builder.Services.AddScoped<IPhotoUserRepository, PhotoUserRepository>();
+
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

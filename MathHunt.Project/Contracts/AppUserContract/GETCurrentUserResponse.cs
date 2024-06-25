@@ -14,5 +14,7 @@ public record GETCurrentUserResponse(
     string role,
     string photoPath,
     Company[] companyList,
-    GETUserSkillResponse[] skillName
+    GETUserSkillResponse[] skillName,
+    DateTime? lockEnd,
+    bool isLock
     );
