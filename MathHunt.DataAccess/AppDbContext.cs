@@ -6,14 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MathHunt.DataAccess;
 
-public class AppDbContext : IdentityDbContext<AppUserEntity>
+public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<AppUserEntity>(options)
 {
-
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-        
-    }
-    
     public DbSet<AppUserEntity> AppUsers { get; set; }
     public DbSet<SkillEntity> Skill { get; set; }
     public DbSet<CompanyEntity> Company { get; set; }

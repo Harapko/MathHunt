@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt.DataAccess", "Math
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt.Application", "MathHunt.Application\MathHunt.Application.csproj", "{76EBC0C0-4343-484C-81E1-2D1BAA15AC76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathHunt.Test", "MathHunt.Test\MathHunt.Test.csproj", "{5A2FB04F-96C7-411E-B2AE-3F6CEACA9304}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{76EBC0C0-4343-484C-81E1-2D1BAA15AC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76EBC0C0-4343-484C-81E1-2D1BAA15AC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76EBC0C0-4343-484C-81E1-2D1BAA15AC76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2FB04F-96C7-411E-B2AE-3F6CEACA9304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2FB04F-96C7-411E-B2AE-3F6CEACA9304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2FB04F-96C7-411E-B2AE-3F6CEACA9304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2FB04F-96C7-411E-B2AE-3F6CEACA9304}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
