@@ -8,6 +8,7 @@ Admin can block users
 # Technologies:
 #### Web Api
 #### Asp.Net Core 8
+#### Asp.Net Identity
 #### Entity Framework Core
 #### PostgreSQL
 #### Type Script
