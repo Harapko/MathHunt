@@ -46,10 +46,7 @@ builder.Services.AddSwaggerGen(o =>
     
 });
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(AppDbContext)));
-});
+builder.Services.AddDbContext<AppDbContext>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

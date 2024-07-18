@@ -1,13 +1,12 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ec011d3_002D07e7_002D44f2_002D9e88_002Dff3fe89ff4c4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AppUserRepository_GetUsers_ReturnsUsers" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ec011d3_002D07e7_002D44f2_002D9e88_002Dff3fe89ff4c4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AppUserRepository_GetUsers_ReturnsUsers" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::5A2FB04F-96C7-411E-B2AE-3F6CEACA9304::net8.0::MathHunt.Test.Repository.SkillRepositoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a09e9411_002D5c58_002D4a9d_002Da80a_002D2214b6151e53/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SkillRepository_GetSkill_ReturnUser" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a09e9411_002D5c58_002D4a9d_002Da80a_002D2214b6151e53/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SkillRepository_GetSkill_ReturnUser" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::5A2FB04F-96C7-411E-B2AE-3F6CEACA9304::net8.0::MathHunt.Test.Repository.SkillRepositoryTests.SkillRepository_GetSkill_ReturnUser&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5A2FB04F-96C7-411E-B2AE-3F6CEACA9304::net8.0::MathHunt.Test.Repository.AppUserRepositoryTests.AppUserRepository_GetUsers_ReturnsUsers&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5A2FB04F-96C7-411E-B2AE-3F6CEACA9304::net8.0::MathHunt.Test.Repository.SkillRepositoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ec54199f_002D4c19_002D406a_002D8e01_002D6d53823a38ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;

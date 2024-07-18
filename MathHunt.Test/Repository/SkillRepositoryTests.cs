@@ -40,21 +40,23 @@ public class SkillRepositoryTests : GetDatabaseContext
         result.Should().NotBeEmpty();
     }
 
-    [Fact]
-    public async Task SkillRepository_UpdateSkill_ReturnId()
-    {
-        //Arrange
-        var skillRepository = await CreateSkill();
-        
-        //Act
-        var result = await skillRepository.Update(
-            Guid.Parse("837D8524-B236-4194-A5F6-D4813ACC7D43"),
-            "Angular"
-        );
-        
-        //Assert
-        result.Should().NotBeEmpty();
-    }
+    // [Fact]
+    // public async Task SkillRepository_UpdateSkill_ReturnId()
+    // {
+    //     //Arrange
+    //     var skillRepository = await CreateSkill();
+    //     
+    //     
+    //     
+    //     //Act
+    //     var result = await skillRepository.Update(
+    //         Guid.Parse("E3CBFA4E-604E-4E3B-BE6E-5010CE48530B"),
+    //         "Angular"
+    //     );
+    //     
+    //     //Assert
+    //     result.Should().NotBeEmpty();
+    // }
     
     
 

@@ -11,6 +11,7 @@ public class AppUserEntity : IdentityUser
     public string? DescriptionSkill { get; set; } = string.Empty;
     public string GitHubLink { get; set; } = string.Empty;
     public bool IsLock { get; set; } = false;
+    public override DateTimeOffset? LockoutEnd { get; set; } = DateTimeOffset.UtcNow;
     public List<UserSkillEntity>? UserSkillsEntities { get; set; } = [];
     public List<CompanyEntity>? CompaniesEntity { get; set; } = [];
     public List<PhotoUserEntity> PhotoUserEntities { get; set; } = [];

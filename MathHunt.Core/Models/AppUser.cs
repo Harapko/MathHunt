@@ -35,7 +35,7 @@ public sealed class AppUser
     public string? DescriptionSkill { get; } = string.Empty;
     public string GitHubLink { get; } = string.Empty;
     public string Role { get; } = string.Empty;
-    public DateTime? LockEnd { get; }
+    public DateTime? LockEnd { get; } = DateTime.Now;
     public bool IsLock { get; } = true;
     public List<UserSkill>? UserSkills { get; } = [];
     public List<Company> Companies { get; } = [];

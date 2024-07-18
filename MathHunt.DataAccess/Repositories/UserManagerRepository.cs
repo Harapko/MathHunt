@@ -1,10 +1,6 @@
-using Google.Cloud.Storage.V1;
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

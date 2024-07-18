@@ -18,7 +18,7 @@ public class GetDatabaseContext
 
         
 
-        var databaseContext = new AppDbContext(option);
+        var databaseContext = new AppDbContext(option, null);
         await databaseContext.Database
             .EnsureCreatedAsync();
 
