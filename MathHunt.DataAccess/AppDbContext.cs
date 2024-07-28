@@ -21,7 +21,8 @@ public class AppDbContext(
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // modelBuilder.ApplyConfiguration(new AppUserConfiguration());
-        // modelBuilder.ApplyConfiguration(new SkillConfiguration());
+        // modelBuilder.ApplyConfiguration(new SkillConfi
+        // guration());
         // modelBuilder.ApplyConfiguration(new CompanyConfiguration());
         // modelBuilder.ApplyConfiguration(new PhotoUserConfiguration());
         // modelBuilder.ApplyConfiguration(new UserSkillConfiguration());
@@ -33,11 +34,19 @@ public class AppDbContext(
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder
-            .UseNpgsql(configuration.GetConnectionString(nameof(AppDbContext)))
-            .UseLoggerFactory(CreateLoggerFactory())
-            .EnableSensitiveDataLogging();
+            .UseNpgsql(configuration.GetConnectionString("AppDbContext"));
+        // .UseLoggerFactory(CreateLoggerFactory())
+        // .EnableSensitiveDataLogging();
     }
+    
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     optionsBuilder
+    //         .UseNpgsql(configuration.GetConnectionString(nameof(AppDbContext)))
+    //         .UseLoggerFactory(CreateLoggerFactory())
+    //         .EnableSensitiveDataLogging();
+    // }
 
-    public ILoggerFactory CreateLoggerFactory() =>
-        LoggerFactory.Create(builder => { builder.AddConsole(); });
+    // public ILoggerFactory CreateLoggerFactory() =>
+    //     LoggerFactory.Create(builder => { builder.AddConsole(); });
 }

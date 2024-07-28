@@ -179,6 +179,22 @@ namespace MathHunt.DataAccess.Migrations
                     b.ToTable("PhotoUser");
                 });
 
+            modelBuilder.Entity("MathHunt.DataAccess.Entities.RoleEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("NameRole")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RoleEntity");
+                });
+
             modelBuilder.Entity("MathHunt.DataAccess.Entities.SkillEntity", b =>
                 {
                     b.Property<Guid>("Id")

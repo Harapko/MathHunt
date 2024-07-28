@@ -2,38 +2,42 @@ using System.Security.Claims;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
+using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MathHunt.Controllers;
 
 [ApiController]
 
-public class AppUserController(IAppUserService userService) : ControllerBase
+public class AppUserController(
+    IAppUserService userService,
+    ICacheService cacheService,
+    ILogger<AppUserController> logger) : ControllerBase
 {
     [HttpGet]
     [Route("/getUser")]
     public async Task<ActionResult<List<GETAllUserResponse>>> GetUser()
     {
         var userList = await userService.GetAllUser();
+        
         var response = userList
             .Select(u => new GETAllUserResponse(
                 u.Id,
                 u.UserName,
                 u.UserSurname,
                 u.Email,
-                u.PhoneNumber,
+                u.PhoneNumber, 
                 u.EnglishLevel,
                 u.GitHubLink,
                 u.DescriptionSkill,
-                u.Role,
+                u.Role, 
                 u.PhotoUsers
                     .Select(p => p.Path).FirstOrDefault(),
                 u.LockEnd,
                 u.IsLock
                 ))
             .ToList();
-                
-
+        
         return Ok(response);
     }
     

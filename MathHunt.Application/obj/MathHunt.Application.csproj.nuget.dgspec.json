@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/MathHunt.Application.csproj": {}
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {}
   },
   "projects": {
-    "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/MathHunt.Application.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/MathHunt.Application.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj",
         "projectName": "MathHunt.Application",
-        "projectPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/MathHunt.Application.csproj",
-        "packagesPath": "/Users/maks/.nuget/packages/",
-        "outputPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Application/obj/",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\MathHunt.Application.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/maks/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj": {
-                "projectPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj"
+              "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
+                "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj"
               }
             }
           }
@@ -74,6 +76,10 @@
               "target": "Package",
               "version": "[8.0.5, )"
             },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[7.6.0, )"
@@ -81,6 +87,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.8.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -107,26 +117,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.107/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj": {
+    "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj",
+        "projectUniqueName": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
         "projectName": "MathHunt.Core",
-        "projectPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/MathHunt.Core.csproj",
-        "packagesPath": "/Users/maks/.nuget/packages/",
-        "outputPath": "/Users/maks/RiderProjects/MathHunt/MathHunt.Core/obj/",
+        "projectPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\MathHunt.Core.csproj",
+        "packagesPath": "C:\\Users\\bakud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/maks/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bakud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -177,6 +189,10 @@
               "target": "Package",
               "version": "[8.0.5, )"
             },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[7.6.0, )"
@@ -184,6 +200,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.8.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -210,7 +230,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.107/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

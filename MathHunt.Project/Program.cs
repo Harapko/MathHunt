@@ -1,17 +1,12 @@
-using System.Text;
-using System.Text.Json.Serialization;
 using MathHunt.Application;
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using MathHunt.DataAccess.Repositories;
-using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,7 +41,24 @@ builder.Services.AddSwaggerGen(o =>
     
 });
 
-builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddEntityFrameworkNpgsql()
+    .AddDbContext<AppDbContext>();
+
+var redisConnStr = builder
+    .Configuration.GetConnectionString(nameof(RedisCache));
+
+builder.Services.AddStackExchangeRedisCache(options =>
+    options.Configuration = redisConnStr);
+
+
+builder.Services.AddOutputCache(options =>
+{
+    options.AddBasePolicy(x =>
+        x.Expire(TimeSpan.FromSeconds(60)));
+
+    options.AddPolicy("MyCustom", x =>
+        x.Expire(TimeSpan.FromSeconds(30)));
+});
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -87,6 +99,9 @@ builder.Services.AddScoped<IUserManagerRepository, UserManagerRepository>();
 builder.Services.AddScoped<IPhotoUserService, PhotoUserService>();
 builder.Services.AddScoped<IPhotoUserRepository, PhotoUserRepository>();
 
+builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<ICacheRepository, CacheRepository>();
+
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -121,7 +136,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseOutputCache();
 app.UseStaticFiles();
 app.UseCors("CorsPolicy");
 app.UseAuthentication();

@@ -1,16 +1,24 @@
 ﻿services:
-  mathhunt:
-    image: mathhunt:latest
+  
+  mathhunt.api:
+    image: mathhunt.api:latest
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+  
+  mathhunt.cache:
+    image: redis:latest
+    restart: always
     ports:
-      - "8080:8081"
+      - '6379:6379'
 
-  postgres:
-    container_name: postgres
+  mathhunt.postgresDb:
+    container_name: postgresDb
     image: postgres:latest
     environment:
       POSTGRES_DB: "skillDb"
@@ -22,4 +30,5 @@
       - "5432:5432"
 
 volumes:
-  postgres-data: 
+  postgres-data:
+  

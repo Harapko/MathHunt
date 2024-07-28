@@ -1,39 +1,39 @@
 {
   "Files": [
     {
-      "Id": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-03-06 203340.png",
-      "PackagePath": "staticwebassets/PhotoUser/Снимок экрана 2023-03-06 203340.png"
+      "Id": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-03-06 203340.png",
+      "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2023-03-06 203340.png"
     },
     {
-      "Id": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-04-03 145415.png",
-      "PackagePath": "staticwebassets/PhotoUser/Снимок экрана 2023-04-03 145415.png"
+      "Id": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-04-03 145415.png",
+      "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2023-04-03 145415.png"
     },
     {
-      "Id": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-05-21 170059.png",
-      "PackagePath": "staticwebassets/PhotoUser/Снимок экрана 2023-05-21 170059.png"
+      "Id": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-05-21 170059.png",
+      "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2023-05-21 170059.png"
     },
     {
-      "Id": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-05-23 205955.png",
-      "PackagePath": "staticwebassets/PhotoUser/Снимок экрана 2023-05-23 205955.png"
+      "Id": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-05-23 205955.png",
+      "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2023-05-23 205955.png"
     },
     {
-      "Id": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2024-03-18 143619.png",
-      "PackagePath": "staticwebassets/PhotoUser/Снимок экрана 2024-03-18 143619.png"
+      "Id": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2024-03-18 143619.png",
+      "PackagePath": "staticwebassets\\PhotoUser\\Снимок экрана 2024-03-18 143619.png"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.MathHunt.Project.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MathHunt.Project.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.MathHunt.Project.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.MathHunt.Project.props",
       "PackagePath": "build\\MathHunt.Project.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.MathHunt.Project.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.MathHunt.Project.props",
       "PackagePath": "buildMultiTargeting\\MathHunt.Project.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.MathHunt.Project.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.MathHunt.Project.props",
       "PackagePath": "buildTransitive\\MathHunt.Project.props"
     }
   ],
