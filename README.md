@@ -11,6 +11,7 @@ Admin can block users
 #### Asp.Net Identity
 #### Entity Framework Core
 #### PostgreSQL
+#### Redis
 #### Type Script
 #### Angular 18
 #### HTML
