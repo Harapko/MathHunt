@@ -1,9 +1,9 @@
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Models;
+using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace MathHunt.DataAccess.Repositories;
 
 public class CompanyRepository(AppDbContext context) : ICompanyRepository
 {

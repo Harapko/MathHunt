@@ -1,4 +1,3 @@
-using MathHunt.DataAccess.Configuration;
 using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -31,13 +30,13 @@ public class AppDbContext(
         base.OnModelCreating(modelBuilder);
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder
-            .UseNpgsql(configuration.GetConnectionString("AppDbContext"));
-        // .UseLoggerFactory(CreateLoggerFactory())
-        // .EnableSensitiveDataLogging();
-    }
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     optionsBuilder
+    //         .UseNpgsql(configuration.GetConnectionString("AppDbContext"))
+    //     .UseLoggerFactory(CreateLoggerFactory())
+    //     .EnableSensitiveDataLogging();
+    // }
     
     // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     // {
@@ -47,6 +46,6 @@ public class AppDbContext(
     //         .EnableSensitiveDataLogging();
     // }
 
-    // public ILoggerFactory CreateLoggerFactory() =>
-    //     LoggerFactory.Create(builder => { builder.AddConsole(); });
+    private ILoggerFactory CreateLoggerFactory() =>
+        LoggerFactory.Create(builder => { builder.AddConsole(); });
 }

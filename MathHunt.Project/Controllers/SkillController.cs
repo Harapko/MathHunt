@@ -1,32 +1,35 @@
 using MathHunt.Contracts.Skill;
-using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
+using MathHunt.DataAccess.Skill.Command.CreateSkillCommand;
+using MathHunt.DataAccess.Skill.Command.DeleteSkillCommand;
+using MathHunt.DataAccess.Skill.Command.UpdateSkillCommand;
+using MathHunt.DataAccess.Skill.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MathHunt.Controllers;
 
 [ApiController]
-public class SkillController(
-    ISkillService service) : ControllerBase
+public class SkillController(IMediator mediator) : ControllerBase
 {
     [HttpGet("/getSkill")]
     public async Task<ActionResult<List<GETAllSkillResponse>>> GetSkills()
     {
-        var skillList = await service.GetUserSkill();
-        var response = skillList.Select(s => new GETAllSkillResponse(s.Id, s.SkillName)).ToList();
-        return Ok(response);
+        var result = await mediator.Send(new GetAllSkillQuery());
+        var response = result.Select(s => new GETAllSkillResponse(s.Id, s.SkillName)).ToList();
+
+        return response;
     }
 
     [HttpGet("/getUsersBySkill")]
-    public async Task<ActionResult> GetUsersBySkill(string skillName)
+    public async Task<ActionResult<List<GETUsersBySkillResponse>>> GetUsersBySkill(string skillName)
     {
-        var skillList = await service.GetUsersBySkillName(skillName);
-        var userList = skillList.Select(s => s.UserSkills).FirstOrDefault();
-        var response = userList.Select(us => new GETUsersBySkillResponse(
-            us.AppUser.Id,
-            us.AppUser.UserName,
-            us.ProficiencyLevel
-        )).ToList();
+        var result = await mediator.Send(new GetUserBySkillNameQueries(skillName));
+        var response = result.Select(u =>
+            new GETUsersBySkillResponse(
+                u.Id, 
+                u.UserName, 
+                u.UserSkillsEntities.Select(us => us.ProficiencyLevel).FirstOrDefault()));
 
         return Ok(response);
     }
@@ -44,22 +47,23 @@ public class SkillController(
             return BadRequest(error);
         }
 
-        var skillId = await service.CreateUserSkill(skill);
-        return Ok(skillId);
+        // var skillId = await service.CreateUserSkill(skill);
+        var result = await mediator.Send(new CreateSkillCommand(skill));
+        return Ok(result);
     }
 
 
     [HttpPut("/editSkill/{id:guid}")]
     public async Task<ActionResult<Guid>> EditSkill(Guid id, string skillName)
     {
-        var skillId = await service.UpdateUserSkill(id, skillName);
-        return Ok(skillId);
+        var result = await mediator.Send(new UpdateSkillCommand(id, skillName));
+        return Ok(new {message = $"Skill {result} was updated on {skillName}"});
     }
 
     [HttpDelete("/deleteSkill/{id:guid}")]
     public async Task<ActionResult<Guid>> DeleteSkill(Guid id)
     {
-        var skillId = await service.DeleteUserSkill(id);
-        return Ok(skillId);
+        var result = await mediator.Send(new DeleteSkillCommand(id));
+        return Ok(new {message = $"Skill {result} was deleted"});
     }
 }

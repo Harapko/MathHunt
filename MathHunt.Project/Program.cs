@@ -1,3 +1,4 @@
+using System.Reflection;
 using MathHunt.Application;
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Abstraction.IServices;
@@ -6,6 +7,7 @@ using MathHunt.DataAccess.Entities;
 using MathHunt.DataAccess.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.OpenApi.Models;
 
@@ -41,8 +43,16 @@ builder.Services.AddSwaggerGen(o =>
     
 });
 
-builder.Services.AddEntityFrameworkNpgsql()
-    .AddDbContext<AppDbContext>();
+// builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+
+//Unit test working with implement DbContext here
+//Now DbContext implement here
+builder.Services.AddDbContext<AppDbContext>(options => 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("AppDbContext")));
+
+// builder.Services.AddEntityFrameworkNpgsql()
+//     .AddDbContext<AppDbContext>();
 
 var redisConnStr = builder
     .Configuration.GetConnectionString(nameof(RedisCache));
@@ -83,9 +93,6 @@ builder.Services.AddSingleton<IHttpContextAccessor,
 
 builder.Services.AddScoped<IRoleUserService, RoleUserService>();
 builder.Services.AddScoped<IRoleUserRepository, RoleUserRepository>();
-
-builder.Services.AddScoped<ISkillService, SkillService>();
-builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 
 builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();

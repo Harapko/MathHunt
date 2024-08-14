@@ -414,3 +414,5 @@ C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Microsof
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\MediatR.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Project\bin\Debug\net8.0\MediatR.Contracts.dll

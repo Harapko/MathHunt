@@ -199,17 +199,12 @@ C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.E
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
-C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
-C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
@@ -330,3 +325,5 @@ C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\obj\Debug\net8.0\refint\Math
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\obj\Debug\net8.0\MathHunt.Test.pdb
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\obj\Debug\net8.0\MathHunt.Test.genruntimeconfig.cache
 C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\obj\Debug\net8.0\ref\MathHunt.Test.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\MediatR.dll
+C:\Users\bakud\RiderProjects\MathHunt\MathHunt.Test\bin\Debug\net8.0\MediatR.Contracts.dll

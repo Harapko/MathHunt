@@ -1,10 +1,10 @@
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Models;
+using MathHunt.DataAccess;
 using MathHunt.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace MathHunt.DataAccess.Repositories;
 
 public class UserManagerRepository(
     AppDbContext context,

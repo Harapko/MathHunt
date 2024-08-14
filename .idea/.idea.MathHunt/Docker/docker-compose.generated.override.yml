@@ -5,33 +5,17 @@ services:
       context: "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project"
       dockerfile: "Dockerfile"
       target: "base"
-      args:
-        BUILD_CONFIGURATION: "Debug"
     command: []
     entrypoint:
-    - "/opt/rider-debugger/linux-x64/JetBrains.Debugger.Worker"
-    - "--runtimeconfig"
-    - "/opt/rider-debugger/JetBrains.Debugger.Worker.runtimeconfig.json"
-    - "--mode=server"
-    - "--frontend-port=57100"
-    - "--backend-port=57300"
-    - "--timeout=60"
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MathHunt.Project.dll"
     environment:
       ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/MathHunt.Project.staticwebassets.runtime.CT.json"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
-      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
-      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "mathhunt.api:dev"
-    ports:
-    - "127.0.0.1:57004:57100"
-    - "127.0.0.1:57204:57300"
+    ports: []
     volumes:
     - "C:\\Users\\bakud\\.nuget\\packages:/home/app/.nuget/packages"
     - "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project:/app:rw"
     - "C:\\Users\\bakud\\RiderProjects\\MathHunt:/src:rw"
-    - "C:\\Users\\bakud\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2024.1.2\\\
-      Linux64:/opt/rider-debugger"
-    - "C:\\Users\\bakud\\AppData\\Local\\JetBrains\\JetBrains Rider 2023.2.1\\bin:/etc/opt/rider-debugger/backend-log.xml"
-    - "C:\\Users\\bakud\\AppData\\Local\\JetBrains\\Rider2024.1\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2024_7_27_19_38_25:/var/opt/rider-debugger:rw"
     working_dir: "/app"

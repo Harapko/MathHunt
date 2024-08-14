@@ -1,4 +1,3 @@
-using System.Formats.Asn1;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
 using MathHunt.DataAccess.Entities;
@@ -11,10 +10,10 @@ namespace MathHunt.DataAccess.Repositories;
 
 public class AppUserRepository(
     UserManager<AppUserEntity> userManager,
-    IRoleUserService roleService,
-    ICacheService cacheService,
-    ILogger<AppUserRepository> logger,
-    IConfiguration configuration
+    IRoleUserService? roleService,
+    ICacheService? cacheService,
+    ILogger<AppUserRepository?> logger,
+    IConfiguration? configuration
     ) : IAppUserRepository
 {
     public async Task<List<AppUser>> Get()
@@ -30,6 +29,11 @@ public class AppUserRepository(
                 .Include(u=>u.PhotoUserEntities)
                 .Include(u=>u.UserSkillsEntities)
                 .ToListAsync();
+            
+            foreach (var user in userListEntity)
+            {
+                user.Role = await roleService.GetUserRole(user.UserName);
+            }
                 
             await cacheService.SetData(configuration["AppUserRedis"] ?? string.Empty, userListEntity);
             logger.LogInformation("Data from Db");
@@ -40,11 +44,6 @@ public class AppUserRepository(
             userListEntity = cacheData;
         }
         
-
-        foreach (var user in userListEntity)
-        {
-            user.Role = await roleService.GetUserRole(user.UserName);
-        }
 
         var userList = userListEntity
             .Select(u => AppUser.Create(u.Id, u.UserName, u.UserSurname, u.Email, u.PhoneNumber, u.EnglishLevel,

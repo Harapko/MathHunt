@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using MathHunt.Application.Filters;
 using MathHunt.Contracts.Identity;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.Core.Models;
@@ -9,13 +10,11 @@ namespace MathHunt.Controllers;
 
 [ApiController]
 
-public class AppUserController(
-    IAppUserService userService,
-    ICacheService cacheService,
-    ILogger<AppUserController> logger) : ControllerBase
+public class AppUserController(IAppUserService userService) : ControllerBase
 {
     [HttpGet]
     [Route("/getUser")]
+    [TestFilter]
     public async Task<ActionResult<List<GETAllUserResponse>>> GetUser()
     {
         var userList = await userService.GetAllUser();
