@@ -2,7 +2,7 @@
 services:
   mathhunt.api:
     build:
-      context: "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project"
+      context: "/Users/maks/RiderProjects/MathHunt/MathHunt.Project"
       dockerfile: "Dockerfile"
       target: "base"
     command: []
@@ -15,7 +15,7 @@ services:
     image: "mathhunt.api:dev"
     ports: []
     volumes:
-    - "C:\\Users\\bakud\\.nuget\\packages:/home/app/.nuget/packages"
-    - "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project:/app:rw"
-    - "C:\\Users\\bakud\\RiderProjects\\MathHunt:/src:rw"
+    - "/Users/maks/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/maks/RiderProjects/MathHunt/MathHunt.Project:/app:rw"
+    - "/Users/maks/RiderProjects/MathHunt:/src:rw"
     working_dir: "/app"

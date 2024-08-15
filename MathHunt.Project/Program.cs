@@ -1,10 +1,12 @@
-using System.Reflection;
+using FluentValidation;
 using MathHunt.Application;
 using MathHunt.Core.Abstraction.IRepositories;
 using MathHunt.Core.Abstraction.IServices;
 using MathHunt.DataAccess;
+using MathHunt.DataAccess.Behaviors;
 using MathHunt.DataAccess.Entities;
 using MathHunt.DataAccess.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -43,8 +45,9 @@ builder.Services.AddSwaggerGen(o =>
     
 });
 
-// builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 
 //Unit test working with implement DbContext here
 //Now DbContext implement here
@@ -64,10 +67,10 @@ builder.Services.AddStackExchangeRedisCache(options =>
 builder.Services.AddOutputCache(options =>
 {
     options.AddBasePolicy(x =>
-        x.Expire(TimeSpan.FromSeconds(60)));
+        x.Expire(TimeSpan.FromSeconds(1)));
 
     options.AddPolicy("MyCustom", x =>
-        x.Expire(TimeSpan.FromSeconds(30)));
+        x.Expire(TimeSpan.FromSeconds(1)));
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

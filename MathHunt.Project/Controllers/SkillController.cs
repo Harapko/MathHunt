@@ -10,9 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace MathHunt.Controllers;
 
 [ApiController]
+[Route("[action]")]
 public class SkillController(IMediator mediator) : ControllerBase
 {
-    [HttpGet("/getSkill")]
+    [HttpGet]
     public async Task<ActionResult<List<GETAllSkillResponse>>> GetSkills()
     {
         var result = await mediator.Send(new GetAllSkillQuery());
@@ -21,7 +22,7 @@ public class SkillController(IMediator mediator) : ControllerBase
         return response;
     }
 
-    [HttpGet("/getUsersBySkill")]
+    [HttpGet]
     public async Task<ActionResult<List<GETUsersBySkillResponse>>> GetUsersBySkill(string skillName)
     {
         var result = await mediator.Send(new GetUserBySkillNameQueries(skillName));
@@ -34,36 +35,25 @@ public class SkillController(IMediator mediator) : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost("/createSkill")]
-    public async Task<ActionResult<Guid>> CreateSkill(string skillName)
+    [HttpPost]
+    public async Task<ActionResult<Guid>> CreateSkill([FromBody] CreateSkillCommand command)
     {
-        var (skill, error) = Skill.Create(
-            Guid.NewGuid(),
-            skillName,
-            []);
-
-        if (!string.IsNullOrWhiteSpace(error))
-        {
-            return BadRequest(error);
-        }
-
-        // var skillId = await service.CreateUserSkill(skill);
-        var result = await mediator.Send(new CreateSkillCommand(skill));
+        var result = await mediator.Send(new CreateSkillCommand(command.SkillName));
         return Ok(result);
     }
 
 
-    [HttpPut("/editSkill/{id:guid}")]
-    public async Task<ActionResult<Guid>> EditSkill(Guid id, string skillName)
+    [HttpPut]
+    public async Task<ActionResult<Guid>> EditSkill([FromBody] UpdateSkillCommand command)
     {
-        var result = await mediator.Send(new UpdateSkillCommand(id, skillName));
-        return Ok(new {message = $"Skill {result} was updated on {skillName}"});
+        var result = await mediator.Send(new UpdateSkillCommand(command.Id, command.SkillName));
+        return Ok(new {message = $"Skill {result} was updated on {command.SkillName}"});
     }
 
-    [HttpDelete("/deleteSkill/{id:guid}")]
-    public async Task<ActionResult<Guid>> DeleteSkill(Guid id)
+    [HttpDelete]
+    public async Task<ActionResult<Guid>> DeleteSkill([FromBody] DeleteSkillCommand command)
     {
-        var result = await mediator.Send(new DeleteSkillCommand(id));
+        var result = await mediator.Send(new DeleteSkillCommand(command.Id));
         return Ok(new {message = $"Skill {result} was deleted"});
     }
 }

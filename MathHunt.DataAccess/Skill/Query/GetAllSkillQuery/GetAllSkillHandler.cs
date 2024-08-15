@@ -11,6 +11,7 @@ public class GetAllSkillHandler(AppDbContext context) : IRequestHandler<GetAllSk
     public async Task<List<Skill>> Handle(GetAllSkillQuery request, CancellationToken cancellationToken)
     {
         var skillEntity = await context.Skill
+            .AsNoTracking()
             .Include(s => s.UserSkillEntities)
             .ToListAsync(cancellationToken: cancellationToken);
         

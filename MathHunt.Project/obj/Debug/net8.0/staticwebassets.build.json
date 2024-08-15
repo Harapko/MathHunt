@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rh9MpwM8wVARAVMTVUARImIQbdZpZQZVpeuRVRz8z5A=",
+  "Hash": "Tq+DAFUSXve6dFvNbi6WUPL/FFLnaFyZ9clIrfeY4mU=",
   "Source": "MathHunt.Project",
   "BasePath": "_content/MathHunt.Project",
   "Mode": "Default",
@@ -8,19 +8,19 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "MathHunt.Project\\wwwroot",
+      "Name": "MathHunt.Project/wwwroot",
       "Source": "MathHunt.Project",
-      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "ContentRoot": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/",
       "BasePath": "_content/MathHunt.Project",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-03-06 203340.png",
+      "Identity": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-03-06 203340.png",
       "SourceId": "MathHunt.Project",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "ContentRoot": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/",
       "BasePath": "_content/MathHunt.Project",
       "RelativePath": "PhotoUser/Снимок экрана 2023-03-06 203340.png",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-03-06 203340.png"
+      "OriginalItemSpec": "wwwroot/PhotoUser/Снимок экрана 2023-03-06 203340.png"
     },
     {
-      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-04-03 145415.png",
+      "Identity": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-04-03 145415.png",
       "SourceId": "MathHunt.Project",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "ContentRoot": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/",
       "BasePath": "_content/MathHunt.Project",
       "RelativePath": "PhotoUser/Снимок экрана 2023-04-03 145415.png",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-04-03 145415.png"
+      "OriginalItemSpec": "wwwroot/PhotoUser/Снимок экрана 2023-04-03 145415.png"
     },
     {
-      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-05-21 170059.png",
+      "Identity": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-05-21 170059.png",
       "SourceId": "MathHunt.Project",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "ContentRoot": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/",
       "BasePath": "_content/MathHunt.Project",
       "RelativePath": "PhotoUser/Снимок экрана 2023-05-21 170059.png",
       "AssetKind": "All",
@@ -71,13 +71,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-05-21 170059.png"
+      "OriginalItemSpec": "wwwroot/PhotoUser/Снимок экрана 2023-05-21 170059.png"
     },
     {
-      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2023-05-23 205955.png",
+      "Identity": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2023-05-23 205955.png",
       "SourceId": "MathHunt.Project",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "ContentRoot": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/",
       "BasePath": "_content/MathHunt.Project",
       "RelativePath": "PhotoUser/Снимок экрана 2023-05-23 205955.png",
       "AssetKind": "All",
@@ -90,13 +90,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2023-05-23 205955.png"
+      "OriginalItemSpec": "wwwroot/PhotoUser/Снимок экрана 2023-05-23 205955.png"
     },
     {
-      "Identity": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\PhotoUser\\Снимок экрана 2024-03-18 143619.png",
+      "Identity": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/PhotoUser/Снимок экрана 2024-03-18 143619.png",
       "SourceId": "MathHunt.Project",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bakud\\RiderProjects\\MathHunt\\MathHunt.Project\\wwwroot\\",
+      "ContentRoot": "/Users/maks/RiderProjects/MathHunt/MathHunt.Project/wwwroot/",
       "BasePath": "_content/MathHunt.Project",
       "RelativePath": "PhotoUser/Снимок экрана 2024-03-18 143619.png",
       "AssetKind": "All",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\PhotoUser\\Снимок экрана 2024-03-18 143619.png"
+      "OriginalItemSpec": "wwwroot/PhotoUser/Снимок экрана 2024-03-18 143619.png"
     }
   ]
 }

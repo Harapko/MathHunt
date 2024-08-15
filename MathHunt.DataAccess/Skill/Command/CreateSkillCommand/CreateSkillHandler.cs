@@ -9,8 +9,8 @@ public class CreateSkillHandler(AppDbContext context) : IRequestHandler<CreateSk
     {
         var userSkillEntity = new SkillEntity()
         {
-            Id = request.skill.Id,
-            SkillName = request.skill.SkillName,
+            Id = request.Id,
+            SkillName = request.SkillName,
         };
 
         await context.Skill.AddAsync(userSkillEntity, cancellationToken);
