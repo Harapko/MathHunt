@@ -12,10 +12,6 @@ Admin can block users
 #### Entity Framework Core
 #### PostgreSQL
 #### Redis
-#### Type Script
-#### Angular 18
-#### HTML
-#### SCSS
-#### RxJs
+#### Fluent Validations
 #### Docker
 #### xUnit
